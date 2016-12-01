@@ -1,0 +1,98 @@
+/*--- Font Imports ---*/
+@font-face {
+  font-family: PierSans-Regular;
+  src: url("../fonts/pier/PierSans-Regular.otf");
+  src: url("../fonts/pier/PierSans-Regular.otf?#iefix") format("opentype");
+  font-weight: 400;
+  font-style: normal; }
+
+@font-face {
+  font-family: PierSans-Medium;
+  src: url("../fonts/pier/PierSans-Medium.otf");
+  src: url("../fonts/pier/PierSans-Medium.otf?#iefix") format("opentype");
+  font-weight: 500;
+  font-style: normal; }
+
+@font-face {
+  font-family: PierSans-Bold;
+  src: url("../fonts/pier/PierSans-Bold.otf");
+  src: url("../fonts/pier/PierSans-Bold.otf?#iefix") format("opentype");
+  font-weight: 600;
+  font-style: normal; }
+
+html, body, #app {
+  background-color: #fefefa;
+  height: 100%;
+  width: 100%;
+  cursor: default; }
+
+h1, h2, h3, h4, p, a, i {
+  color: #000; }
+
+a, i {
+  cursor: pointer; }
+
+a:hover {
+  color: #000;
+  text-decoration: none; }
+
+.layout-container {
+  height: 100%; }
+
+h1 {
+  font-family: 'PierSans-Regular', arial, sans-serif;
+  text-transform: uppercase;
+  font-size: 32px; }
+
+.menu-container {
+  margin-right: 20px;
+  box-shadow: 0 0px 10px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0 0px 10px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 0px 10px rgba(0, 0, 0, 0.15);
+  -o-box-shadow: 0 0px 10px rgba(0, 0, 0, 0.15); }
+
+.bm-item-list {
+  padding: 100px 20px 20px 100px; }
+
+.bm-item-list h1 {
+  margin-bottom: 70px; }
+
+.menu-item {
+  display: block;
+  font-size: 22px;
+  text-transform: uppercase;
+  margin-bottom: 10px; }
+
+/*--- Div Containers ---*/
+.small-icon-container i {
+  margin-right: 15px; }
+
+.small-icon-container i:hover {
+  color: #c7c7c7; }
+
+.big-test {
+  background-color: #000; }
+
+.header-container {
+  position: absolute;
+  top: 80px;
+  left: 100px; }
+
+.social-container {
+  position: absolute;
+  min-width: 100%;
+  padding: 5px;
+  top: 0px; }
+
+.footer-container {
+  position: absolute;
+  min-width: 100%;
+  padding: 5px;
+  bottom: 0px; }
+
+.content-container {
+  position: absolute;
+  top: 100px;
+  left: 350px;
+  width: 50%;
+  height: 50%; }
