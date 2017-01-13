@@ -148,4 +148,4 @@ gulp.task('watch', function() {
 
 gulp.task('default', ['sass-task', 'es6-task', 'css', 'serve', 'watch']);
 
-gulp.task('build', ['sass-task', 'useref', 'fonts', 'images']);
+gulp.task('build', ['default', 'useref', 'images']);

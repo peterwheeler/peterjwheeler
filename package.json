@@ -14,9 +14,12 @@
   "dependencies": {
     "radium": "^0.18.1",
     "react": "^15.3.2",
+    "react-breadcrumbs": "^1.5.2",
     "react-burger-menu": "^1.10.9",
     "react-dom": "^15.3.2",
-    "react-router": "^2.8.1"
+    "react-grid-gallery": "^0.2.9",
+    "react-router": "^2.8.1",
+    "svg-mesh-3d": "^1.1.0"
   },
   "devDependencies": {
     "babel-core": "^6.17.0",

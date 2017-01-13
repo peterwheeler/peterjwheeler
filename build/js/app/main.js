@@ -16,10 +16,9 @@ ReactDOM.render(
 		<Route path="/" component={LayoutComponent}>
 			<Route path="home" component={Home}/>
 			<Route path="about" component={About}/>
-			<Route path="projects" component={Projects}>
-				<Route path="projects/:projectID" component={Project}/>
-			</Route>
+			<Route path="projects" component={Projects}/>
+			<Route path="projects/:projectID" component={Project}/>
 			<Route path="coder" component={Coder}/>
 		</Route>
 	</Router>	
-, app);
+, App);

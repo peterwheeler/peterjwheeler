@@ -4,8 +4,8 @@ import { Link } from "react-router";
 export default class Project extends React.Component {
   render() {
     return (
-      <div>
-      	<h1>Project</h1>
+      <div className="project-container">
+      	<h1>{this.props.params.projectID}</h1>
       </div>
     );
   }

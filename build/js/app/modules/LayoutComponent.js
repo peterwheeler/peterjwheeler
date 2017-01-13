@@ -2,7 +2,9 @@ import React from 'react'
 import { Link } from "react-router";
 import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import Breadcrumbs from 'react-breadcrumbs';
 
+import BreadComponent from './BreadComponent';
 import NavComponent from './NavComponent';
 import FooterComponent from './FooterComponent';
 import SocialComponent from './SocialComponent';
@@ -10,27 +12,34 @@ import SocialComponent from './SocialComponent';
 export default class LayoutComponent extends React.Component {
   render() {
     const content = this.props.children;
-
+    const routes = this.props.routes;
+    const params = this.props.params;
     const containerStyle = {
-     height: "100%",
-     width: "100%"
+     height: "100%"
     };
     return (
-      <div className="layout-container">
-          <Grid fluid style={containerStyle}>
-            <Row className="show-grid" style={containerStyle}>
-              <Col xs={12}>
-              <div className="social-container"><SocialComponent /></div>
-              </Col>
-              <Clearfix></Clearfix>
-              <Col md={3} xsHidden smHidden>
-                <div className="nav-container"><NavComponent /></div>
-              </Col>
-              <Col xs={12} sm={12} md={9}>
-                <div className="content-container">{content}</div>
-              </Col>
-            </Row>
-          </Grid>  
+      <div className="parent-container">
+        <div className="content-container">
+          <div className="top-content">
+            <div id="breadcrumbs"><Breadcrumbs breadcrumbName="askdasd" routes={routes} params={params} /></div>
+            <div className="nav-container"><NavComponent /></div>
+          </div>
+          <div className="middle-content">{content}</div>
+          <div className="bottom-content">
+            <div className="social-container"><SocialComponent /></div>
+          </div>
+        </div>
+        <div className="background-container">
+          <div className="top">
+            <div className="top-container"></div>
+          </div>
+          <div className="middle">
+            <div className="middle-container"></div>
+          </div>
+          <div className="bottom">
+            <div className="bottom-container"></div>
+          </div>
+        </div>
       </div>
       )
     }

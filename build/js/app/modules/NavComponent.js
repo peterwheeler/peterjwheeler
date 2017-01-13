@@ -3,10 +3,12 @@ import { Link } from "react-router";
 import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
+
+
 export default class NavComponent extends React.Component {
   render() {
     return (
-    	<div>	      
+    	<div>
 		    <Grid fluid>
 		         <Row className="show-grid">
 	         		<Col md={12} xsHidden>
@@ -35,4 +37,3 @@ export default class NavComponent extends React.Component {
     	);
   }
 }
-
