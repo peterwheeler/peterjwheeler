@@ -9,11 +9,16 @@ export default class Coder extends React.Component {
 
   render() {
     return (
-      <div className="coder-container">
-      	<h1>Coder</h1>
-      	<div className="big-test"></div>
-      	<canvas></canvas>
-      </div>
+    <div className="coder-container">
+	    <div className="coding-box">
+	      	<input type="checkbox" id="cbox"/><label>This is a checkbox</label>
+	      	<div className="main">
+			  <div className="holder">
+			      <div id="morseTape"></div>
+			  </div>
+			</div>
+		</div>
+    </div>
     );
   }
 }

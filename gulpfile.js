@@ -17,6 +17,7 @@ var cssnano = require('gulp-cssnano');
 var rename = require('gulp-rename');
 // var imagemin = require('gulp-imagemin');
 var historyApiFallback = require('connect-history-api-fallback');
+var path = require('path');
 
 // --------------------------------- //
 // Error handler for running gulp //
@@ -67,10 +68,16 @@ gulp.task('es6-task', function(){
     return gulp.src("./build/js/app/main.js")
         .pipe(webpack({
             watch: true,
-            entry: "./build/js/app/main.js",
+            entry: ["./build/js/app/main.js", "./build/js/threejs/svgCloud.js", "./build/js/text-bitmap/three-bmfont-text.js"],
+            bail: true,
+            // devtool: 'source-map',
             output: {
-                    filename: "bundle.js",
-                  },
+              filename: "bundle.js",
+            },
+            // entry: {
+            //         './build/js/app/main': './build/js/app/main', // will be  ./build/application/bundle.js,
+            //         'build/library/bundle': './src/library`'// will be  ./build/library/bundle.js
+            //       },
             module: {
               loaders: [
                 {
@@ -80,7 +87,23 @@ gulp.task('es6-task', function(){
                   query: {
                     presets: ['es2015', 'react']
                   }
-                }
+                },
+                {
+                  test: /\.(png|jpg|gif)$/,
+                  loader: 'url-loader',
+                  options: {
+                    name: '../images/img-[hash:6].[ext]',
+                    limit: 350000
+                  }
+                },
+                {
+                  test: /\.(png|jpg|gif)$/,
+                  loader: 'file-loader',
+                  options: {
+                    name: '[path][name].[hash:6].[ext]',
+                    limit: 350000
+                  }
+                },
               ]
             }
         }))
