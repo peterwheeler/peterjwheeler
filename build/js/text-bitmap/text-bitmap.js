@@ -17,7 +17,14 @@ var TextBitmap = function( config ) {
   });
 
   var material = this.material = new THREE.ShaderMaterial({
-    uniforms: THREE.UniformsUtils.clone( SDFShader.uniforms ),
+    uniforms: THREE.UniformsUtils.merge([
+              THREE.UniformsUtils.clone( SDFShader.uniforms ),
+              {animationParam: {
+                    type: "1f",
+                    value: 0
+                    }
+              }
+              ]),
     fragmentShader: SDFShader.fragmentShader,
     vertexShader: SDFShader.vertexShader,
     side: THREE.DoubleSide,

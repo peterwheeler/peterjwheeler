@@ -2,10 +2,11 @@ var paragraphs = [{text: "<Literatim>", yPos: 15}, {text: "Coding beautiful thin
 
 import TWEEN from 'tween.js';
 import svgMesh3d from 'svg-mesh-3d';
-
+var width, height;
 var canvas, bmtext, font, randomFont, sphere;
-var allPositions = [], randomAllPositions = [], allGlyphs = [], wordsGroup;
+var allPositions = [], randomAllPositions = [], allGlyphs = [];
 var scene, renderer, camera, controls;
+var wordsGroup;
 var container = document.getElementById('three-container');
 
 function init(){
@@ -19,41 +20,105 @@ function init(){
     devicePixelRatio: window.devicePixelRatio
   });
   renderer.setClearColor(0xfefefa, 0);
-  renderer.setSize(window.innerWidth, window.innerHeight, false)
+  renderer.setSize(window.innerWidth, window.innerHeight, false);
   canvas = renderer.domElement;
-  canvas.id = "three-canvas"
+  canvas.id = "three-canvas";
 
   container.appendChild(canvas);
 
-  camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight , 0.1, 1000)
-  camera.position.set(0, 0, 60)
+  camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight , 0.1, 1000);
+  camera.position.set(0, 0, 60);
 
-  controls = new THREE.TrackballControls(camera, canvas);
-  controls.rotateSpeed = 1;
-  controls.panSpeed = 1;
-  controls.noZoom = true;
+  // controls = new THREE.TrackballControls(camera, canvas);
+  // controls.rotateSpeed = 1;
+  // controls.panSpeed = 1;
+  // controls.noZoom = true;
 
-  wordsGroup = new THREE.Group();
+  wordsGroup = new THREE.Object3D();
 
   var button = document.getElementById( 'table' );
   button.addEventListener( 'click', function ( event ) {
     transform();
   }, false );
+
 }
 
 function resize () {
-    // var [ width, height ] = cloud.shape
-    var width = window.innerWidth,
-    height = window.innerHeight
-    camera.aspect = width / height
-    renderer.setSize(width, height, false)
-    camera.updateProjectionMatrix()
+  var t;
+    width = window.outerWidth;
+    height = window.outerHeight;
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    t = -(height / 2) / Math.tan(camera.fov * Math.PI / 180 / 2);
+    // camera.position.set(0, 0, 0);
+    renderer.setSize(width, height);
     render();
 }
 
+// function mouseMove(){
+//   container.addEventListener("mouseover", function(t) {
+
+//                       for (var i = 0; i < wordsGroup.length; i++) {
+
+//                         var mouseObject = scene.getObjectByName("para-" + i);
+//                         return TweenLite.to(mouseObject.children[0].material.uniforms.animationParam, 1.4, {
+//                             value: 10,
+//                             ease: Linear.easeNone,
+//                             overwrite: !0,
+//                             onUpdate: function() {
+//                                 render();
+//                             }
+//                         });
+//                     }
+//                 }),
+//   container.addEventListener('mouseout', function(t) {
+//                       for (var i = 0; i < wordsGroup.length; i++) {
+//                         var mouseObject = scene.getObjectByName("para-" + i);
+//                         return TweenLite.to(mouseObject.children[0].material.uniforms.animationParam, 1.4, {
+//                             value: 0,
+//                             ease: Linear.easeNone,
+//                             overwrite: !0,
+//                             onUpdate: function() {
+//                                 render();
+//                             }
+//                         });
+//                     }
+//                 });
+// }
+
+var onMouseMove = function(event){
+var mouse = {};
+  container.addEventListener("mousemove", function(event){
+  // Update the mouse variable
+    event.preventDefault();
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+
+    var mouse3D = new THREE.Vector3(mouse.x, mouse.y, 0.5);
+
+    // Direction we are already facing (without rotation)
+    var forward = new THREE.Vector3(0,0,-1);
+
+      // Direction we want to be facing (towards mouse pointer)
+      var target = new THREE.Vector3().subVectors(mouse3D, wordsGroup.position).normalize();
+
+      // Axis and angle of rotation
+      var axis = new THREE.Vector3().crossVectors(forward, target);
+      var sinAngle = axis.length(); // |u x v| = |u|*|v|*sin(a)
+      var cosAngle = forward.dot(target); // u . v = |u|*|v|*cos(a)
+      var angle = Math.atan2(sinAngle, cosAngle); // atan2(sin(a),cos(a)) = a
+      axis.normalize();
+
+      // Overwrite rotation
+      // mouseObject.rotation.makeRotationAxis(axis, angle);
+      wordsGroup.quaternion.setFromAxisAngle(axis, angle);
+      animate();
+  });
+};
+
 var getFont = function (){
   var r = new XMLHttpRequest();
-  r.open('GET', './fonts/Karla/Karla-regular.json');
+  r.open('GET', './fonts/karla/Karla-regular.json');
   r.onreadystatechange = function() {
     if (r.readyState === 4 && r.status === 200) {
       font = JSON.parse(r.responseText);
@@ -61,13 +126,13 @@ var getFont = function (){
     }
   };
   r.send();
-}
+};
 
 var setup = function(current) {
   var truePositions, truePositionsClone, glyphs;
   for ( var i = 0; i < paragraphs.length; i++ ){
       bmtext = new TextBitmap({
-        imagePath: './fonts/Karla/Karla-regular.png',
+        imagePath: './fonts/karla/Karla-regular.png',
         text: paragraphs[i].text,
         renderer: renderer,
         width: 800,
@@ -87,11 +152,12 @@ var setup = function(current) {
       truePositionsClone = truePositions.clone();
       allPositions.push(truePositionsClone);
 
+      wordsGroup.add(bmtext.group);
       glyphs = bmtext.group.children[0].geometry.visibleGlyphs;
       allGlyphs.push(glyphs);
       scrabblePositions(glyphs, truePositions, bmtext.group);
   }
-}
+};
 
 var scrabblePositions = function(inputGlyphs, inputPositions, inputObject){
   var randomPositions = new Float32Array(inputGlyphs.length * 4 * 2);
@@ -126,19 +192,20 @@ var scrabblePositions = function(inputGlyphs, inputPositions, inputObject){
     // BR
     randomPositions[i++] = x + w;
     randomPositions[i++] = y;
-  })
+  });
 
 arrayPositions.array = randomPositions;
 arrayPositions.needsUpdate = true;
 
 randomAllPositions.push(arrayPositions);
-wordsGroup.add(object);
-scene.add(object);
-}
+// wordsGroup.add(object);
+scene.add(wordsGroup);
+};
 
 init();
 resize();
 getFont();
+// onMouseMove();
 
 var transform = function(){
   var newPositions, currentPositions, currentGlyph, objectName;
@@ -150,7 +217,7 @@ var transform = function(){
 
       tweener(currentGlyph, currentPositions, newPositions, objectName);
   }
-}
+};
 
 var tweener = function(g, c, n, o){
     var duration = 3000;
@@ -167,7 +234,6 @@ var tweener = function(g, c, n, o){
       .easing(TWEEN.Easing.Exponential.InOut)
       .onUpdate( function(){
         // bottleneck?
-        console.log(frozenPosition.array);
         tweenPositions = frozenPosition.array.map(function(el, idx){
           return el + progress.v * deltaPositions[idx];
         });
@@ -175,17 +241,17 @@ var tweener = function(g, c, n, o){
         o.children[0].geometry.attributes.position.array = tweenPositions;
         o.children[0].geometry.attributes.position.needsUpdate = true;
       })
-      .onComplete( function(){
-       console.log("done tweening")
-     })
+     //  .onComplete( function(){
+     //   console.log("done tweening");
+     // })
       .start();
-}
+};
 
 requestAnimationFrame(animate);
 
 function animate(time) {
     requestAnimationFrame(animate);
-    controls.update();
+    // controls.update();
     TWEEN.update(time);
     render();
 }

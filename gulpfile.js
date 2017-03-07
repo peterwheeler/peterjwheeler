@@ -68,7 +68,7 @@ gulp.task('es6-task', function(){
     return gulp.src("./build/js/app/main.js")
         .pipe(webpack({
             watch: true,
-            entry: ["./build/js/app/main.js", "./build/js/threejs/svgCloud.js", "./build/js/text-bitmap/three-bmfont-text.js"],
+            entry: ["./build/js/app/main.js", "./build/js/threejs/svgCloud.js", "./build/js/threejs/projects-svgCloud.js", "./build/js/text-bitmap/three-bmfont-text.js", "./build/js/svg-logo/svg-logo.js"],
             bail: true,
             // devtool: 'source-map',
             output: {

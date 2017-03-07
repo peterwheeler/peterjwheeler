@@ -7,8 +7,6 @@ import { LinkContainer } from 'react-router-bootstrap';
 export default class About extends React.Component {
 
   render() {
-
-
   	// const imgBig = <img src={image} />
 
     return (

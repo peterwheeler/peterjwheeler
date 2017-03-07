@@ -3,6 +3,7 @@
   font-family: PierSans-Regular;
   src: url("../fonts/pier/PierSans-Regular.otf");
   src: url("../fonts/pier/PierSans-Regular.otf?#iefix") format("opentype");
+  src: url("../fonts/pier/PierSans-Regular.ttf?#iefix") format("truetype");
   font-weight: 400;
   font-style: normal; }
 
@@ -10,6 +11,7 @@
   font-family: PierSans-Medium;
   src: url("../fonts/pier/PierSans-Medium.otf");
   src: url("../fonts/pier/PierSans-Medium.otf?#iefix") format("opentype");
+  src: url("../fonts/pier/PierSans-Medium.ttf?#iefix") format("truetype");
   font-weight: 500;
   font-style: normal; }
 
@@ -17,6 +19,23 @@
   font-family: PierSans-Bold;
   src: url("../fonts/pier/PierSans-Bold.otf");
   src: url("../fonts/pier/PierSans-Bold.otf?#iefix") format("opentype");
+  src: url("../fonts/pier/PierSans-Bold.ttf?#iefix") format("truetype");
+  font-weight: 600;
+  font-style: normal; }
+
+@font-face {
+  font-family: Karla-Regular;
+  src: url("../fonts/karla/Karla-Regular.otf");
+  src: url("../fonts/karla/Karla-Regular.otf?#iefix") format("opentype");
+  src: url("../fonts/karla/Karla-Regular.ttf?#iefix") format("truetype");
+  font-weight: 400;
+  font-style: normal; }
+
+@font-face {
+  font-family: Karla-Bold;
+  src: url("../fonts/karla/Karla-Bold.otf");
+  src: url("../fonts/karla/Karla-Bold.otf?#iefix") format("opentype");
+  src: url("../fonts/karla/Karla-Bold.ttf?#iefix") format("truetype");
   font-weight: 600;
   font-style: normal; }
 
@@ -29,6 +48,7 @@ html, body, #app {
   cursor: default; }
 
 h1, h2, h3, h4, p, a, i {
+  font-family: 'Karla-Regular', sans-serif;
   color: #000; }
 
 a, i {
@@ -45,7 +65,7 @@ ol, ul {
   list-style: none; }
 
 h1 {
-  font-family: 'PierSans-Regular', arial, sans-serif;
+  font-family: 'Karla-Regular', sans-serif;
   text-transform: uppercase;
   font-size: 32px; }
 
@@ -79,10 +99,13 @@ h1 {
   background-color: #000; }
 
 .social-container {
-  /*position: absolute;*/
-  min-width: 100%;
-  padding: 5px;
-  top: 0px; }
+  position: absolute;
+  padding: 15px;
+  bottom: 0px;
+  right: 0px; }
+
+.small-icon-container i {
+  margin: 3px; }
 
 .navigation {
   position: absolute;
@@ -248,6 +271,13 @@ h1 {
   height: 50vh;
   width: 75vh;
   z-index: 15; }
+
+.svg-container {
+  height: 10vh;
+  width: 10vw; }
+
+line, polyline, polygon, ellipse, path, rect {
+  opacity: 0; }
 
 .middle-content {
   position: absolute;
@@ -432,7 +462,7 @@ h1 {
   width: 45vh;
   z-index: 15; }
 
-#three-container {
+#three-container, #three-projects-container {
   height: 100vh;
   width: 100vw; }
 

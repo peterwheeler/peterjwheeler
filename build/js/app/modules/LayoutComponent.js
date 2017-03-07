@@ -21,7 +21,7 @@ export default class LayoutComponent extends React.Component {
       <div className="parent-container">
         <div className="content-container">
           <div className="top-content">
-            <div id="breadcrumbs"><Breadcrumbs breadcrumbName="askdasd" routes={routes} params={params} /></div>
+            {/*<div id="breadcrumbs"><Breadcrumbs breadcrumbName="askdasd" routes={routes} params={params} /></div>*/}
             <div className="nav-container"><NavComponent /></div>
           </div>
           <div className="middle-content">

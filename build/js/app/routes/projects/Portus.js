@@ -29,7 +29,9 @@ const IMAGES =
 
 
 export default class Portus extends React.Component {
-render(
-
-);
+        render() {
+                return (
+                        <div id="three-projects-container"></div>
+                );
+        }
 }

@@ -8,11 +8,11 @@ export default class SocialComponent extends React.Component {
     return (
 	    	<Grid fluid>
 		        <Row className="show-grid">
-			        <Col xs={6} sm={3} smHidden mdHidden lgHidden>
+			        {/*<Col xs={6} sm={3} smHidden mdHidden lgHidden>
 				    	<div className="small-icon-container">
 				    		<i className="fa fa-bars fa-2x" aria-hidden="true"></i>
 				    	</div>
-				    </Col>
+				    </Col>*/}
 			        <Col xs={6} sm={3} md={2} lg={2} smOffset={9} mdOffset={8}>
 				    	<div className="small-icon-container">
 					    	<i className="fa fa-twitter fa-2x" aria-hidden="true"></i>
