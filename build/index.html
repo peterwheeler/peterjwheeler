@@ -35,27 +35,45 @@ https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js
 <!-- <script type="text/javascript" src="../node_modules/react/dist/react.js"></script> -->
 <!-- <script type="text/javascript" src="../node_modules/react-dom/dist/react-dom.js"></script> -->
 
-
 <!--build:js /dist/js/main.min.js -->
 <script type="text/javascript" src="/js/threejs/three.min.js"></script>
 <script type="text/javascript" src="/js/threejs/TrackballControls.js"></script>
 <script type="text/javascript" src="/js/threejs/PointerLockControls.js"></script>
 <!-- <script type="text/javascript" src="/js/threejs/tween.min.js"></script> -->
 <!-- <script type="text/javascript" src="/js/threejs/FlyControls.js"></script> -->
-<script type="text/javascript" src="/js/tweenlite/TweenLite.min.js"></script>
-<script type="text/javascript" src="/js/tweenlite/TimelineLite.min.js"></script>
-<script type="text/javascript" src="/js/tweenlite/CSSPlugin.min.js"></script>
 <script type="text/javascript" src="/js/raphael/raphael.min.js"></script>
+<script type="text/javascript" src="/js/createjs/preloadjs-0.6.2.min.js"></script>
+
 <!-- endbuild -->
 
 </head>
 
-<body>
+<body class="loaded">
 <div id=app></div>
 <script type="text/javascript" src="/js/bundle.js"></script>
 <script type="text/javascript" src="/js/morseCoder/morseCoder.js"></script>
 <script type="text/javascript" src="/js/text-bitmap/sdf-shader.js"></script>
 <script type="text/javascript" src="/js/text-bitmap/text-bitmap.js"></script>
+<script type="text/javascript">
+	document.body.onload = function() {
+		var loadImage = function() {
+			var preload = new createjs.LoadQueue();
+			preload.addEventListener("fileload", handleFileComplete);
+			preload.loadFile("images/avatar_web.jpg");
+		}();
+
+		var loadData = function(){
+
+		}
+
+		function handleFileComplete(event) {
+			setTimeout(function() {
+				document.getElementById('meter-id').className = "meter-hidden";
+				// document.body.className = "loaded";
+			}, 500);
+		}
+	}
+</script>
 </body>
 
 </html>

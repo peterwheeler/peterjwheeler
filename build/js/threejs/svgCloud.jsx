@@ -1,13 +1,14 @@
 var paragraphs = [{text: "<Literatim>", yPos: 15}, {text: "Coding beautiful things, letter-by-letter; literally.", yPos: 10}, {text: "I am Peter, a web developer with a heritage past.", yPos: 5}, {text: "Experienced working in HTML, CSS, Javascript & Wordpress for the past 3 years. Check out my projects.", yPos: 0}, {text: "</Literatim>", yPos: -5}, {text: "<!-- Click Events -->", yPos: -10}, {text: "<a href='#'onclick='scrabble()'>Scrabble</a>", yPos: -15}];
 
+import React from 'react';
 import TWEEN from 'tween.js';
 import svgMesh3d from 'svg-mesh-3d';
 var width, height;
 var canvas, bmtext, font, randomFont, sphere;
 var allPositions = [], randomAllPositions = [], allGlyphs = [];
-var scene, renderer, camera, controls;
+var scene, renderer, camera, controls, manager;
 var wordsGroup;
-var container = document.getElementById('three-container');
+// var container = document.getElementById('three-container');
 
 function init(){
 
@@ -24,7 +25,7 @@ function init(){
   canvas = renderer.domElement;
   canvas.id = "three-canvas";
 
-  container.appendChild(canvas);
+  // container.appendChild(canvas);
 
   camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight , 0.1, 1000);
   camera.position.set(0, 0, 60);
@@ -34,25 +35,20 @@ function init(){
   // controls.panSpeed = 1;
   // controls.noZoom = true;
 
+  manager = new THREE.LoadingManager();
+
+  manager.onProgress = function (item, loaded, total) {
+      console.log(item, loaded, total);
+  };
+  manager.onLoad = function () {
+      console.log('all items loaded');
+  };
+  manager.onError = function () {
+      console.log('there has been an error');
+  };
+
   wordsGroup = new THREE.Object3D();
 
-  var button = document.getElementById( 'table' );
-  button.addEventListener( 'click', function ( event ) {
-    transform();
-  }, false );
-
-}
-
-function resize () {
-  var t;
-    width = window.outerWidth;
-    height = window.outerHeight;
-    camera.aspect = width / height;
-    camera.updateProjectionMatrix();
-    t = -(height / 2) / Math.tan(camera.fov * Math.PI / 180 / 2);
-    // camera.position.set(0, 0, 0);
-    renderer.setSize(width, height);
-    render();
 }
 
 // function mouseMove(){
@@ -140,10 +136,11 @@ var setup = function(current) {
         font: current,
         lineHeight: font.common.lineHeight - 20,
         letterSpacing: 1,
-        scale: 0.1,
+        scale: 0.05,
         rotate: false,
         color: "#000",
-        showHitBox: false // for debugging
+        showHitBox: false,
+        manager: manager // for debugging
       });
       bmtext.group.position.y = paragraphs[i].yPos;
       bmtext.group.name = "para-" + i;
@@ -202,10 +199,6 @@ randomAllPositions.push(arrayPositions);
 scene.add(wordsGroup);
 };
 
-init();
-resize();
-getFont();
-// onMouseMove();
 
 var transform = function(){
   var newPositions, currentPositions, currentGlyph, objectName;
@@ -247,15 +240,54 @@ var tweener = function(g, c, n, o){
       .start();
 };
 
-requestAnimationFrame(animate);
+var startTransform =  function(){
+  setTimeout(function() {
+        transform();
+        console.log("transformed");
+      }, 2000);
+}
 
-function animate(time) {
+var HomeContainer = function(props) {
+    return (
+      <div id="three-container"></div>
+    );
+};
+
+var HomeMount = function() {
+    return canvas
+};
+
+var HomeRender = function(props){
+    init();
+    resize();
+    getFont();
+
+    function resize () {
+      width = window.outerWidth;
+      height = window.outerHeight;
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+      render();
+    }
+
     requestAnimationFrame(animate);
-    // controls.update();
-    TWEEN.update(time);
-    render();
-}
-//Render function
-function render(){
-    renderer.render(scene, camera);
-}
+
+    function animate(time) {
+        requestAnimationFrame(animate);
+        // controls.update();
+        TWEEN.update(time);
+        render();
+    }
+    //Render function
+    function render(){
+        renderer.render(scene, camera);
+    }
+};
+
+module.exports = {
+  startTransform: startTransform,
+  HomeContainer: HomeContainer,
+  HomeMount: HomeMount,
+  HomeRender: HomeRender
+};

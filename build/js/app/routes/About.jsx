@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from "react-router";
 import { Image } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-// import image from 'avatar_web.jpg';
 
 export default class About extends React.Component {
 

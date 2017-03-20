@@ -65,27 +65,32 @@ gulp.task('sass-task', function() {
 });
 
 gulp.task('es6-task', function(){
-    return gulp.src("./build/js/app/main.js")
+    return gulp.src("./build/js/app/main.jsx")
         .pipe(webpack({
             watch: true,
-            entry: ["./build/js/app/main.js", "./build/js/threejs/svgCloud.js", "./build/js/threejs/projects-svgCloud.js", "./build/js/text-bitmap/three-bmfont-text.js", "./build/js/svg-logo/svg-logo.js"],
+            entry: ["./build/js/app/main.jsx",
+                    "./build/js/text-bitmap/three-bmfont-text.js"
+            ],
             bail: true,
-            // devtool: 'source-map',
+            // babelrc: false,
+            devtool: 'source-map',
             output: {
               filename: "bundle.js",
             },
-            // entry: {
-            //         './build/js/app/main': './build/js/app/main', // will be  ./build/application/bundle.js,
-            //         'build/library/bundle': './src/library`'// will be  ./build/library/bundle.js
-            //       },
             module: {
               loaders: [
                 {
-                  test: /\.js$/,
+                  test: /\.(js|jsx)$/,
+                  include: path.resolve(__dirname, 'build'),
                   exclude: /(node_modules|bower_components)/,
                   loader: 'babel-loader',
                   query: {
-                    presets: ['es2015', 'react']
+                    presets: ['es2015', 'react'],
+                    plugins: [
+                                // ["babel-plugin-root-import", {
+                                //   "rootPathSuffix": "build/js"
+                                // }]
+                              ]
                   }
                 },
                 {
@@ -105,7 +110,7 @@ gulp.task('es6-task', function(){
                   }
                 },
               ]
-            }
+            }            
         }))
         .on('error', function(err) {
             console.error('JSX ERROR in ' + err.fileName);
