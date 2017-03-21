@@ -6,7 +6,6 @@ export default class Project extends React.Component {
 	constructor(props, context) {
 	    super(props, context);
 	};
-
 	componentDidMount() {
 		const parsed = queryString.parse(this.props.location.search);
 
@@ -16,7 +15,7 @@ export default class Project extends React.Component {
 	}
 	render() {
 		return (
-				<ProjectsContainer/>
+			<ProjectsContainer/>
 		);
 	}
 }

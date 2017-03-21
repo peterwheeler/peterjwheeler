@@ -24858,8 +24858,12 @@
 	    var _this = _possibleConstructorReturn(this, (LayoutComponent.__proto__ || Object.getPrototypeOf(LayoutComponent)).call(this, props));
 	
 	    _this.state = {
-	      loadProgress: 0
+	      loadProgress: 0,
+	      nameProject: "",
+	      hrefProject: ""
 	    };
+	
+	    _this.handleProjectUpdate = _this.handleProjectUpdate.bind(_this);
 	    return _this;
 	  }
 	
@@ -24871,13 +24875,24 @@
 	      });
 	    }
 	  }, {
+	    key: 'handleProjectUpdate',
+	    value: function handleProjectUpdate(projectValue) {
+	      this.setState({
+	        hrefProject: projectValue.href,
+	        nameProject: projectValue.name
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+	
 	      var routes = this.props.routes;
 	      var params = this.props.params;
 	      var containerStyle = {
 	        height: "100%"
 	      };
+	
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'parent-container' },
@@ -24890,7 +24905,7 @@
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'nav-container' },
-	              _react2.default.createElement(_NavComponent2.default, { load: this.state.loadProgress })
+	              _react2.default.createElement(_NavComponent2.default, { load: this.state.loadProgress, currentProjectName: this.state.nameProject, currentProjectHref: this.state.hrefProject })
 	            )
 	          ),
 	          _react2.default.createElement(
@@ -24907,7 +24922,10 @@
 	                  _reactRouterDom.Switch,
 	                  null,
 	                  _react2.default.createElement(_reactRouterDom.Route, { path: '/', exact: true, component: _Home2.default }),
-	                  _react2.default.createElement(_reactRouterDom.Route, { path: '/projects', exact: true, component: _Projects2.default }),
+	                  _react2.default.createElement(_reactRouterDom.Route, { path: '/projects', exact: true, render: function render(props) {
+	                      return _react2.default.createElement(_Projects2.default, { updateProject: _this2.handleProjectUpdate });
+	                    }
+	                  }),
 	                  _react2.default.createElement(_reactRouterDom.Route, { path: '/projects/:projectID', component: _Project2.default }),
 	                  _react2.default.createElement(_reactRouterDom.Route, { path: '/coder', component: _Coder2.default })
 	                )
@@ -44394,10 +44412,10 @@
 	var NavComponent = function (_React$Component) {
 		_inherits(NavComponent, _React$Component);
 	
-		function NavComponent() {
+		function NavComponent(props) {
 			_classCallCheck(this, NavComponent);
 	
-			return _possibleConstructorReturn(this, (NavComponent.__proto__ || Object.getPrototypeOf(NavComponent)).apply(this, arguments));
+			return _possibleConstructorReturn(this, (NavComponent.__proto__ || Object.getPrototypeOf(NavComponent)).call(this, props));
 		}
 	
 		_createClass(NavComponent, [{
@@ -44425,6 +44443,16 @@
 								_reactRouterDom.Link,
 								{ to: '/projects', className: 'menu-item' },
 								'Projects'
+							),
+							_react2.default.createElement(
+								'p',
+								null,
+								' > '
+							),
+							_react2.default.createElement(
+								_reactRouterDom.Link,
+								{ to: this.props.currentProjectHref, className: 'menu-item project-link' },
+								this.props.currentProjectName
 							)
 						),
 						_react2.default.createElement(
@@ -66792,13 +66820,30 @@
 	var Projects = function (_React$Component) {
 		_inherits(Projects, _React$Component);
 	
-		function Projects() {
+		function Projects(props) {
 			_classCallCheck(this, Projects);
 	
-			return _possibleConstructorReturn(this, (Projects.__proto__ || Object.getPrototypeOf(Projects)).apply(this, arguments));
+			var _this = _possibleConstructorReturn(this, (Projects.__proto__ || Object.getPrototypeOf(Projects)).call(this, props));
+	
+			_this.state = { hoverLink: "" };
+	
+			_this.handleHover = _this.handleHover.bind(_this);
+			return _this;
 		}
 	
 		_createClass(Projects, [{
+			key: 'handleHover',
+			value: function handleHover(evt) {
+				// evt.persist()
+				// this.setState(prevState => ({
+				//   hoverLink: evt.target.alt
+				// }));
+				var url = evt.currentTarget.href;
+				var href = url.split("/projects")[1];
+				var evtValues = { "href": "/projects" + href, "name": evt.target.alt };
+				this.props.updateProject(evtValues);
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				var styleWidth = 270;
@@ -66810,14 +66855,14 @@
 						{ className: 'floats-gallery' },
 						_react2.default.createElement(
 							'li',
-							{ className: 'slanted', style: { "width": "16.65vw" } },
+							{ className: 'slanted', style: { "width": "16.66vw" } },
 							_react2.default.createElement(
 								'div',
 								{ className: 'unslanted' },
 								_react2.default.createElement(
 									_reactRouterDom.Link,
-									{ className: 'menu-item', to: { pathname: "/projects/portus", search: "id=0" } },
-									_react2.default.createElement(_reactBootstrap.Image, { src: 'http://i.telegraph.co.uk/multimedia/archive/03519/potd-squirrel_3519920k.jpg', style: { "height": "auto", "width": "1366px" } })
+									{ className: 'menu-item', to: { pathname: "/projects/portus", search: "id=0" }, onMouseOver: this.handleHover },
+									_react2.default.createElement(_reactBootstrap.Image, { src: 'http://i.telegraph.co.uk/multimedia/archive/03519/potd-squirrel_3519920k.jpg', alt: 'Portus', style: { "height": "auto", "width": "1366px" } })
 								)
 							)
 						),
@@ -66829,8 +66874,8 @@
 								{ className: 'unslanted' },
 								_react2.default.createElement(
 									_reactRouterDom.Link,
-									{ className: 'menu-item', to: { pathname: "/projects/storytour", search: "id=1" } },
-									_react2.default.createElement(_reactBootstrap.Image, { src: 'http://jootix.ir/wp-content/uploads/2015/10/jootix.ir--83098753.jpg', style: { "height": "auto", "width": "1366px" } })
+									{ className: 'menu-item', to: { pathname: "/projects/storytour", search: "id=1" }, onMouseOver: this.handleHover },
+									_react2.default.createElement(_reactBootstrap.Image, { src: 'http://jootix.ir/wp-content/uploads/2015/10/jootix.ir--83098753.jpg', alt: 'P.O.R.T.U.S', style: { "height": "auto", "width": "1366px" } })
 								)
 							)
 						),
@@ -66842,8 +66887,8 @@
 								{ className: 'unslanted' },
 								_react2.default.createElement(
 									_reactRouterDom.Link,
-									{ className: 'menu-item', to: { pathname: "/projects/photography", search: "id=2" } },
-									_react2.default.createElement(_reactBootstrap.Image, { src: 'http://supplychainconference.co/wp-content/uploads/2014/03/320x200.png', style: { "height": "auto", "width": "1366px" } })
+									{ className: 'menu-item', to: { pathname: "/projects/photography", search: "id=2" }, onMouseOver: this.handleHover },
+									_react2.default.createElement(_reactBootstrap.Image, { src: 'http://supplychainconference.co/wp-content/uploads/2014/03/320x200.png', alt: 'Photography', style: { "height": "auto", "width": "1366px" } })
 								)
 							)
 						)

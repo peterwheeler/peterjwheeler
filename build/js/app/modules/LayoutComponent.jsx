@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
 import Breadcrumbs from 'react-breadcrumbs';
 
@@ -20,8 +20,12 @@ export default class LayoutComponent extends React.Component {
     super(props);
 
     this.state = {
-      loadProgress: 0
+      loadProgress: 0,
+      nameProject: "",
+      hrefProject: ""
     };
+
+    this.handleProjectUpdate = this.handleProjectUpdate.bind(this);
   }
 
   componentDidMount() {
@@ -30,18 +34,26 @@ export default class LayoutComponent extends React.Component {
     })
   }
 
+  handleProjectUpdate(projectValue) {
+    this.setState({
+        hrefProject: projectValue.href,
+        nameProject: projectValue.name
+    });
+  }
+
   render() {
     const routes = this.props.routes;
     const params = this.props.params;
     const containerStyle = {
       height: "100%"
     };
+
     return (
       <div className="parent-container">
         <div className="content-container">
           <div className="top-content">
             {/*<div id="breadcrumbs"><Breadcrumbs breadcrumbName="askdasd" routes={routes} params={params} /></div>*/}
-            <div className="nav-container"><NavComponent load={this.state.loadProgress}/></div>
+            <div className="nav-container"><NavComponent load={this.state.loadProgress} currentProjectName={this.state.nameProject} currentProjectHref={this.state.hrefProject}/></div>
           </div>
           <div className="middle-content" id="slanted-container">
             <ProgressComponent load={this.state.loadProgress}/>
@@ -49,7 +61,9 @@ export default class LayoutComponent extends React.Component {
               <div className="middle-content-container">
                 <Switch>
                   <Route path="/" exact component={Home}></Route>
-                  <Route path="/projects" exact component={Projects}/>
+                  <Route path="/projects" exact render={(props) => (
+                    <Projects updateProject={this.handleProjectUpdate}/> )}
+                  />
                   <Route path="/projects/:projectID" component={Project}/>
                   <Route path="/coder" component={Coder}/>
                 </Switch>
