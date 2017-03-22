@@ -1,4 +1,4 @@
-var paragraphs = [{text: "<Literatim>", yPos: 15}, {text: "Coding beautiful things, letter-by-letter; literally.", yPos: 10}, {text: "I am Peter, a web developer with a heritage past.", yPos: 5}, {text: "Experienced working in HTML, CSS, Javascript & Wordpress for the past 3 years. Check out my projects.", yPos: 0}, {text: "</Literatim>", yPos: -5}, {text: "<!-- Click Events -->", yPos: -10}, {text: "<a href='#'onclick='scrabble()'>Scrabble</a>", yPos: -15}];
+var paragraphs = [{text: "<Literatim>", yPos: 15}, {text: "Coding beautiful things, letter-by-letter; literally.", yPos: 10}, {text: "I am Peter, a web developers with a heritage past.", yPos: 5}, {text: "Experienced working in HTML, CSS, Javascript & Wordpress for the past 3 years. Check out my projects.", yPos: 0}, {text: "</Literatim>", yPos: -5}, {text: "<!-- Click Events -->", yPos: -10}, {text: "<a href='#'onclick='scrabble()'>Scrabble</a>", yPos: -15}];
 
 import React from 'react';
 import TWEEN from 'tween.js';

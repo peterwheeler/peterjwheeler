@@ -45,7 +45,7 @@ export default class LayoutComponent extends React.Component {
     const routes = this.props.routes;
     const params = this.props.params;
     const containerStyle = {
-      height: "100%"
+      height: "50%"
     };
 
     return (

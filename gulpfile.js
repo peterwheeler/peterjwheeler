@@ -2,22 +2,24 @@
 // All requirements for running gulp //
 // --------------------------------- //
 
-var gulp        = require('gulp');
+var gulp = require('gulp');
 var	gutil = require('gulp-util');
 var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
 var babel = require('gulp-babel');
-// var sourcemaps = require('gulp-sourcemaps');
-var webpack = require('webpack-stream');
-
+var webpack = require('webpack');
+// var webpackStream = require('webpack-stream');
+var environments = require('gulp-environments');
 var useref = require('gulp-useref');
 var gulpIf = require('gulp-if');
 var uglify = require('gulp-uglify');
 var cssnano = require('gulp-cssnano');
 var rename = require('gulp-rename');
-// var imagemin = require('gulp-imagemin');
 var historyApiFallback = require('connect-history-api-fallback');
+var webpackDevMiddleware = require('webpack-dev-middleware');
+var webpackHotMiddleware = require('webpack-hot-middleware');
 var path = require('path');
+var bundler;
 
 // --------------------------------- //
 // Error handler for running gulp //
@@ -31,26 +33,67 @@ var onError = function(err) {
   this.emit("end");
 };
 
-// --------------------------- //
-// Tasks to do before building //
-// --------------------------- //
+// --------------------------------- //
+// Config comes from https://words.mxbry.com/making-react-webpack-browsersync-gulp-play-nice-and-hot-reload-b2c1e01522e3#.n0sjx9w0f //
+// --------------------------------- //
 
-// Copy react.js and react-dom.js to assets/js/src/vendor
-// only if the copy in node_modules is "newer"
-// gulp.task('copy-react', function() {
-//   return gulp.src('node_modules/react/dist/react.js')
-//     // .pipe(newer('assets/js/src/vendor/react.js'))
-//     .pipe(gulp.dest('build/js/react/'));
-// });
-// gulp.task('copy-react-dom', function() {
-//   return gulp.src('node_modules/react-dom/dist/react-dom.js')
-//     // .pipe(newer('assets/js/src/vendor/react-dom.js'))
-//     .pipe(gulp.dest('build/js/react/'));
-// });
+var webpackSettings = {
+  entry: {
+    app: [
+        "webpack/hot/dev-server",
+        "webpack-hot-middleware/client",
+        "react-hot-loader/patch",
+        path.join(process.cwd(), "build/js/text-bitmap/three-bmfont-text.js"),
+        path.join(process.cwd(), "build/js/app/main.jsx")
+    ]
+  },
+  output: {
+    path: path.join(process.cwd(), "build/js/"),
+    publicPath: "/js/",
+    filename: "bundle.js"
+  },
+  plugins: environments.production() ? [
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin()
+  ] : [
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin()
+  ],
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
+  // devtools: 'source-map',
+  // debug: environments.development(),
+  module: {
+    loaders: [{
+        test: /\.(js|jsx)$/,
+        include: path.join(process.cwd(), "build/js/"),
+        exclude: /(node_modules|bower_components)/,
+        loader: ['babel-loader?presets[]=react,presets[]=es2015', 'webpack-module-hot-accept']
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        loader: 'url-loader',
+        options: {
+          name: '../images/img-[hash:6].[ext]',
+          limit: 350000
+        }
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[hash:6].[ext]',
+          limit: 350000
+        }
+      }
+    ]
+  }
+}
 
-// ------------------------------------ //
-// Main tasks to do during the build //
-// ------------------------------------ //
+gulp.task("webpack", function(callback) {
+  bundler = webpack(webpackSettings);
+});
 
 gulp.task('sass-task', function() {
     var s = sass({});
@@ -64,62 +107,30 @@ gulp.task('sass-task', function() {
         .pipe(browserSync.stream());
 });
 
-gulp.task('es6-task', function(){
-    return gulp.src("./build/js/app/main.jsx")
-        .pipe(webpack({
-            watch: true,
-            entry: ["./build/js/app/main.jsx",
-                    "./build/js/text-bitmap/three-bmfont-text.js"
-            ],
-            bail: true,
-            // babelrc: false,
-            devtool: 'source-map',
-            output: {
-              filename: "bundle.js",
-            },
-            module: {
-              loaders: [
-                {
-                  test: /\.(js|jsx)$/,
-                  include: path.resolve(__dirname, 'build'),
-                  exclude: /(node_modules|bower_components)/,
-                  loader: 'babel-loader',
-                  query: {
-                    presets: ['es2015', 'react'],
-                    plugins: [
-                                // ["babel-plugin-root-import", {
-                                //   "rootPathSuffix": "build/js"
-                                // }]
-                              ]
-                  }
-                },
-                {
-                  test: /\.(png|jpg|gif)$/,
-                  loader: 'url-loader',
-                  options: {
-                    name: '../images/img-[hash:6].[ext]',
-                    limit: 350000
-                  }
-                },
-                {
-                  test: /\.(png|jpg|gif)$/,
-                  loader: 'file-loader',
-                  options: {
-                    name: '[path][name].[hash:6].[ext]',
-                    limit: 350000
-                  }
-                },
-              ]
-            }            
-        }))
-        .on('error', function(err) {
-            console.error('JSX ERROR in ' + err.fileName);
-            console.error(err.message);
-            this.end();
-          })
-        .pipe(gulp.dest("./build/js"))
-        .pipe(browserSync.stream());
-});
+// --------------------- //
+// Serve and watch build //
+// --------------------- //
+
+gulp.task('dev', function(){
+  browserSync.init({
+    server: {
+      baseDir: ["./", "./build"]
+    },
+    port: 4000,
+    browser: "C://Users//pw8g08//AppData//Local//Google//Chrome SxS//Application//chrome.exe",
+    middleware: [
+      webpackDevMiddleware(bundler, {
+          publicPath: webpackSettings.output.publicPath,
+          stats: { colors: true }
+        }),
+      webpackHotMiddleware(bundler)
+      // historyApiFallback()
+    ],
+    files: [
+      path.join(process.cwd(), "build/") + '**/*.html'
+    ]
+  })
+})
 
 // --------------------------------- //
 // Misc tasks to do at the end of build //
@@ -147,33 +158,12 @@ gulp.task('images', function(){
 		.pipe(gulp.dest("dist/images"));
 });
 
-// --------------------- //
-// Serve and watch build //
-// --------------------- //
-
-gulp.task('serve', function(){
-	browserSync.init({
-        server:{
-            baseDir: ["./", "./build"]
-        },
-        port: 4000,
-        browser: "C://Users//pw8g08//AppData//Local//Google//Chrome SxS//Application//chrome.exe",
-        // open: false,
-        middleware: [historyApiFallback()]
-    });
-});
-
 gulp.task('watch', function() {
-    gulp.watch("./build/sass/**/*.scss", ['sass-task'], browserSync.reload);
-    // gulp.watch("./build/js/**/*.js", browserSync.reload);
-    gulp.watch("./build/js/bundle.js").on('change', browserSync.reload);
-    gulp.watch("./build/index.html").on('change', browserSync.reload);
+    gulp.watch(path.join(process.cwd(), "build/sass/") + "**/*.scss", ['sass-task']);
 });
 
 // -------------------------- //
 // Run gulp with default task //
 // -------------------------- //
 
-gulp.task('default', ['sass-task', 'es6-task', 'css', 'serve', 'watch']);
-
-gulp.task('build', ['default', 'useref', 'images']);
+gulp.task('default', ['sass-task', 'webpack', 'dev', 'watch']);

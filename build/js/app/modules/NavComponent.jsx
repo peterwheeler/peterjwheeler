@@ -20,10 +20,14 @@ export default class NavComponent extends React.Component {
 		         		<Link to="/projects" className="menu-item">Projects</Link><p> > </p><Link to={this.props.currentProjectHref} className="menu-item project-link">{this.props.currentProjectName}</Link>
 	               	</Col>
 	               	<Col md={12} xsHidden>
-		                <Link to="/coder" className="menu-item">Coder</Link>
+		                <Link to="/coder" className="menu-item">Coders</Link>
 	               	</Col>
 		         </Row>
 	    	</Grid>
 		);
 	}
+}
+
+if (module.hot) {
+  module.hot.accept();
 }
