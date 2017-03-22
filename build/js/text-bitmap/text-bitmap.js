@@ -34,6 +34,7 @@ var TextBitmap = function( config ) {
 
   material.uniforms.map.value = texture;
   material.uniforms.color.value = new THREE.Color( config.color );
+  material.uniforms.smoothing.value = config.smoothing;
 
   var mesh = this.mesh = new THREE.Mesh( geometry, material );
   var group = this.group = new THREE.Object3D();

@@ -137,11 +137,13 @@ var setup = function(current) {
         lineHeight: font.common.lineHeight - 20,
         letterSpacing: 1,
         scale: 0.05,
+        smoothing: 0.2,
         rotate: false,
         color: "#000",
         showHitBox: false,
         manager: manager // for debugging
       });
+      console.log(bmtext.text.charCodeAt(0));
       bmtext.group.position.y = paragraphs[i].yPos;
       bmtext.group.name = "para-" + i;
 
@@ -290,4 +292,8 @@ module.exports = {
   HomeContainer: HomeContainer,
   HomeMount: HomeMount,
   HomeRender: HomeRender
+};
+
+if (module.hot) {
+  module.hot.accept();
 };

@@ -5,7 +5,7 @@
 var fs = require('fs');
 var load = require('load-bmfont');
 
-var folder = './build/fonts/Karla/';
+var folder = './build/fonts/karla/';
 var fileName = 'Karla-regular';
 
 load(folder + fileName + '.fnt', function(err, font) {
