@@ -10,6 +10,7 @@ export default class Projects extends React.Component {
 	    this.state = {hoverLink: ""};
 
 		this.handleHover = this.handleHover.bind(this);
+		this.handleOut = this.handleOut.bind(this);
 	}
 
 	handleHover(evt) {
@@ -17,16 +18,27 @@ export default class Projects extends React.Component {
 	    // this.setState(prevState => ({
 	    //   hoverLink: evt.target.alt
 	    // }));
+	    const style = {
+			display: 'table-cell'
+		};
+	    this.props.updateStyle(style)
 		var url = evt.currentTarget.href;
 		var href = url.split("/projects")[1];
 	    var evtValues = {"href": "/projects" + href, "name": evt.target.alt};
 	    this.props.updateProject(evtValues)
 	}
 
+	handleOut() {
+		const style = {
+			display: 'none'
+		};
+	    this.props.updateStyle(style)
+	}
+
   	render() {
   		const styleWidth = 270;
 	    return (
-	    	<div className="projects-container">
+	    	<div className="projects-container" onMouseOut={this.handleOut}>
 	    		<ul className="floats-gallery">
 	    			<li className="slanted" style={{"width" : "16.66vw"}}>
 		    			<div className="unslanted">

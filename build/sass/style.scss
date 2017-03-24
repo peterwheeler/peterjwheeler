@@ -101,8 +101,12 @@ h1 {
   margin-bottom: 70px;
 }
 
-.projects-dynamic-link {
-  display: inline-block;
+.projects-link {
+  display: table;
+}
+
+.projects-static-link, .projects-dynamic-link {
+  display: table-cell;
 }
 
 .menu-item {
@@ -113,10 +117,17 @@ h1 {
 }
 
 .sub-menu-item {
+  display: table-cell;
   font-size: $submenuLink;
   margin-bottom: 10px;
   text-transform: uppercase;
   text-decoration: none;
+}
+
+.projects-dynamic-link .fa {
+  display: table-cell;
+  padding: 0px 12px;
+  vertical-align: baseline;
 }
 
 /*--- Div Containers ---*/
@@ -182,9 +193,6 @@ h1 {
 
 .nav-container {
   margin: 50px 0px 0px 50px;
-  height: 25vh;
-  width: 15vw;
-  /*transform: rotate(45deg);*/
 }
 
 .overflow {
@@ -327,8 +335,8 @@ h1 {
   position: absolute;
   top: 0px;
   left: 0px;
-  height: 50vh;
-  width: 75vh;
+  height: 30vh;
+  width: 30vw;
   z-index: 15;
 }
 

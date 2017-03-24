@@ -13,15 +13,23 @@ export default class NavComponent extends React.Component {
 	return (
 		    <Grid fluid>
 		         <Row className="show-grid">
-	         		<Col md={12} xsHidden>
+	         		<Col md={4} xsHidden>
 		         		<Link to="/"><SVGComponent load={this.props.load}/></Link>
 					</Col>
-	               	<Col md={12} xsHidden>
-		               	<div className="projects-dynamic-link">
-			         		<Link to="/projects" className="menu-item">Projects</Link><i className="fa fa-angle-right fa-lg" aria-hidden="true"></i><Link to={this.props.currentProjectHref} className="sub-menu-item project-link">{this.props.currentProjectName}</Link>
+					<Clearfix/>
+	               	<Col md={4} xsHidden>
+	               		<div className="project-link">
+			               	<div className="projects-static-link">
+				         		<Link to="/projects" className="menu-item">Projects</Link>
+				         	</div>
+				         	<div className="projects-dynamic-link" style={this.props.submenuStyle}>
+				         		<i className="fa fa-angle-right fa-lg" aria-hidden="true"></i>
+				         		<Link to={this.props.currentProjectHref} className="sub-menu-item project-link">{this.props.currentProjectName}</Link>
+				         	</div>
 			         	</div>
 	               	</Col>
-	               	<Col md={12} xsHidden>
+	               	<Clearfix/>
+	               	<Col md={4} xsHidden>
 		                <Link to="/coder" className="menu-item">Coder</Link>
 	               	</Col>
 		         </Row>

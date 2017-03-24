@@ -16,7 +16,7 @@ THREE.FlyControls = function ( object, domElement ) {
 
 	this.dragToLook = false;
 	this.autoForward = false;
-	this.lookOnly = false;
+	this.lookOnly = true;
 
 	// disable default target object behavior
 

@@ -22,10 +22,14 @@ export default class LayoutComponent extends React.Component {
     this.state = {
       loadProgress: 0,
       nameProject: "",
-      hrefProject: ""
+      hrefProject: "",
+      projectsStyle: {
+        display: 'table-cell'
+      }
     };
 
     this.handleProjectUpdate = this.handleProjectUpdate.bind(this);
+    this.handleProjectStyle = this.handleProjectStyle.bind(this);
   }
 
   componentDidMount() {
@@ -41,6 +45,12 @@ export default class LayoutComponent extends React.Component {
     });
   }
 
+  handleProjectStyle(styleValue) {
+      this.setState({
+        projectsStyle: styleValue
+    });
+  }
+
   render() {
     const routes = this.props.routes;
     const params = this.props.params;
@@ -53,7 +63,7 @@ export default class LayoutComponent extends React.Component {
         <div className="content-container">
           <div className="top-content">
             {/*<div id="breadcrumbs"><Breadcrumbs breadcrumbName="askdasd" routes={routes} params={params} /></div>*/}
-            <div className="nav-container"><NavComponent load={this.state.loadProgress} currentProjectName={this.state.nameProject} currentProjectHref={this.state.hrefProject}/></div>
+            <div className="nav-container"><NavComponent load={this.state.loadProgress} currentProjectName={this.state.nameProject} currentProjectHref={this.state.hrefProject} submenuStyle={this.state.projectsStyle}/></div>
           </div>
           <div className="middle-content" id="slanted-container">
             <ProgressComponent load={this.state.loadProgress}/>
@@ -62,7 +72,7 @@ export default class LayoutComponent extends React.Component {
                 <Switch>
                   <Route path="/" exact component={Home}></Route>
                   <Route path="/projects" exact render={(props) => (
-                    <Projects updateProject={this.handleProjectUpdate}/> )}
+                    <Projects updateProject={this.handleProjectUpdate} updateStyle={this.handleProjectStyle}/> )}
                   />
                   <Route path="/projects/:projectID" component={Project}/>
                   <Route path="/coder" component={Coder}/>
