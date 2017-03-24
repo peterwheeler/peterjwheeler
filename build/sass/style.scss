@@ -42,6 +42,7 @@
 
 $headline: 32px;
 $menuLink: 22px;
+$submenuLink: 18px;
 $background: #fefefa;
 $black: #000;
 $grey: #c7c7c7;
@@ -100,11 +101,22 @@ h1 {
   margin-bottom: 70px;
 }
 
+.projects-dynamic-link {
+  display: inline-block;
+}
+
 .menu-item {
-  display: block;
   font-size: $menuLink;
-  text-transform: uppercase;
   margin-bottom: 10px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.sub-menu-item {
+  font-size: $submenuLink;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  text-decoration: none;
 }
 
 /*--- Div Containers ---*/

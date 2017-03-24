@@ -16,6 +16,7 @@ THREE.FlyControls = function ( object, domElement ) {
 
 	this.dragToLook = false;
 	this.autoForward = false;
+	this.lookOnly = false;
 
 	// disable default target object behavior
 
@@ -279,15 +280,20 @@ THREE.FlyControls = function ( object, domElement ) {
 	var _keyup = bind( this, this.keyup );
 
 	this.domElement.addEventListener( 'contextmenu', contextmenu, false );
+	if ( this.lookOnly == true ) {
+		this.domElement.addEventListener( 'mousemove', _mousemove, false );
+		console.log("yes");
+	}
+	else {
+		this.domElement.addEventListener( 'mousemove', _mousemove, false );
+		this.domElement.addEventListener( 'mousedown', _mousedown, false );
+		this.domElement.addEventListener( 'mouseup',   _mouseup, false );
 
-	this.domElement.addEventListener( 'mousemove', _mousemove, false );
-	this.domElement.addEventListener( 'mousedown', _mousedown, false );
-	this.domElement.addEventListener( 'mouseup',   _mouseup, false );
-
-	window.addEventListener( 'keydown', _keydown, false );
-	window.addEventListener( 'keyup',   _keyup, false );
+		window.addEventListener( 'keydown', _keydown, false );
+		window.addEventListener( 'keyup',   _keyup, false );
+		console.log("no");
+	}
 
 	this.updateMovementVector();
 	this.updateRotationVector();
-
 };

@@ -82,11 +82,20 @@ h1 {
 .bm-item-list h1 {
   margin-bottom: 70px; }
 
+.projects-dynamic-link {
+  display: inline-block; }
+
 .menu-item {
-  display: block;
   font-size: 22px;
+  margin-bottom: 10px;
   text-transform: uppercase;
-  margin-bottom: 10px; }
+  text-decoration: none; }
+
+.sub-menu-item {
+  font-size: 18px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  text-decoration: none; }
 
 /*--- Div Containers ---*/
 .small-icon-container i {

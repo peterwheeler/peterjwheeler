@@ -40,7 +40,7 @@ var onError = function(err) {
 var webpackSettings = {
   entry: {
     app: [
-        "webpack/hot/dev-server",
+        "webpack/hot/dev-server?reload",
         "webpack-hot-middleware/client",
         "react-hot-loader/patch",
         path.join(process.cwd(), "build/js/text-bitmap/three-bmfont-text.js"),

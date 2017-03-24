@@ -8,10 +8,10 @@ var canvas, bmtext, font, randomFont, sphere;
 var allPositions = [], randomAllPositions = [], allGlyphs = [];
 var scene, renderer, camera, controls, manager;
 var wordsGroup;
+var clock;
 // var container = document.getElementById('three-container');
 
-function init(){
-
+var init = function(){
   scene = new THREE.Scene();
   window.scene = scene;
 
@@ -28,88 +28,34 @@ function init(){
   // container.appendChild(canvas);
 
   camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight , 0.1, 1000);
-  camera.position.set(0, 0, 60);
+  camera.position.set(0, 0, 120);
 
   // controls = new THREE.TrackballControls(camera, canvas);
   // controls.rotateSpeed = 1;
   // controls.panSpeed = 1;
   // controls.noZoom = true;
+  clock = new THREE.Clock();
 
-  manager = new THREE.LoadingManager();
+  controls = new THREE.FlyControls(camera);
+    controls.movementSpeed = 1000;
+    controls.rollSpeed = 0.025;
+    controls.autoForward = false;
+    controls.dragToLook = false;
+    controls.lookOnly = true;
 
-  manager.onProgress = function (item, loaded, total) {
-      console.log(item, loaded, total);
-  };
-  manager.onLoad = function () {
-      console.log('all items loaded');
-  };
-  manager.onError = function () {
-      console.log('there has been an error');
-  };
+  // manager = new THREE.LoadingManager();
+
+  // manager.onProgress = function (item, loaded, total) {
+  //     console.log(item, loaded, total);
+  // };
+  // manager.onLoad = function () {
+  //     console.log('all items loaded');
+  // };
+  // manager.onError = function () {
+  //     console.log('there has been an error');
+  // };
 
   wordsGroup = new THREE.Object3D();
-
-}
-
-// function mouseMove(){
-//   container.addEventListener("mouseover", function(t) {
-
-//                       for (var i = 0; i < wordsGroup.length; i++) {
-
-//                         var mouseObject = scene.getObjectByName("para-" + i);
-//                         return TweenLite.to(mouseObject.children[0].material.uniforms.animationParam, 1.4, {
-//                             value: 10,
-//                             ease: Linear.easeNone,
-//                             overwrite: !0,
-//                             onUpdate: function() {
-//                                 render();
-//                             }
-//                         });
-//                     }
-//                 }),
-//   container.addEventListener('mouseout', function(t) {
-//                       for (var i = 0; i < wordsGroup.length; i++) {
-//                         var mouseObject = scene.getObjectByName("para-" + i);
-//                         return TweenLite.to(mouseObject.children[0].material.uniforms.animationParam, 1.4, {
-//                             value: 0,
-//                             ease: Linear.easeNone,
-//                             overwrite: !0,
-//                             onUpdate: function() {
-//                                 render();
-//                             }
-//                         });
-//                     }
-//                 });
-// }
-
-var onMouseMove = function(event){
-var mouse = {};
-  container.addEventListener("mousemove", function(event){
-  // Update the mouse variable
-    event.preventDefault();
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
-
-    var mouse3D = new THREE.Vector3(mouse.x, mouse.y, 0.5);
-
-    // Direction we are already facing (without rotation)
-    var forward = new THREE.Vector3(0,0,-1);
-
-      // Direction we want to be facing (towards mouse pointer)
-      var target = new THREE.Vector3().subVectors(mouse3D, wordsGroup.position).normalize();
-
-      // Axis and angle of rotation
-      var axis = new THREE.Vector3().crossVectors(forward, target);
-      var sinAngle = axis.length(); // |u x v| = |u|*|v|*sin(a)
-      var cosAngle = forward.dot(target); // u . v = |u|*|v|*cos(a)
-      var angle = Math.atan2(sinAngle, cosAngle); // atan2(sin(a),cos(a)) = a
-      axis.normalize();
-
-      // Overwrite rotation
-      // mouseObject.rotation.makeRotationAxis(axis, angle);
-      wordsGroup.quaternion.setFromAxisAngle(axis, angle);
-      animate();
-  });
 };
 
 var getFont = function (){
@@ -131,19 +77,18 @@ var setup = function(current) {
         imagePath: './fonts/karla/Karla-regular.png',
         text: paragraphs[i].text,
         renderer: renderer,
-        width: 800,
+        width: 1000,
         align: 'left',
         font: current,
-        lineHeight: font.common.lineHeight - 20,
+        lineHeight: font.common.lineHeight,
         letterSpacing: 1,
-        scale: 0.05,
+        scale: 0.1,
         smoothing: 0.2,
         rotate: false,
         color: "#000",
         showHitBox: false,
         manager: manager // for debugging
       });
-      console.log(bmtext.text.charCodeAt(0));
       bmtext.group.position.y = paragraphs[i].yPos;
       bmtext.group.name = "para-" + i;
 
@@ -236,18 +181,39 @@ var tweener = function(g, c, n, o){
         o.children[0].geometry.attributes.position.array = tweenPositions;
         o.children[0].geometry.attributes.position.needsUpdate = true;
       })
-     //  .onComplete( function(){
-     //   console.log("done tweening");
-     // })
       .start();
 };
+
+var resize = function() {
+    width = window.outerWidth;
+    height = window.outerHeight;
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(width, height);
+    render();
+}
+
+// Animate function
+var animate = function(time) {
+    requestAnimationFrame(animate);
+    // controls.update();
+    TWEEN.update(time);
+    render();
+}
+
+//Render function
+var render = function(){
+    var delta = clock.getDelta();
+    renderer.render(scene, camera);
+    controls.update(delta);
+}
 
 var startTransform =  function(){
   setTimeout(function() {
         transform();
         console.log("transformed");
       }, 2000);
-}
+};
 
 var HomeContainer = function(props) {
     return (
@@ -262,29 +228,12 @@ var HomeMount = function() {
 var HomeRender = function(props){
     init();
     resize();
-    getFont();
-
-    function resize () {
-      width = window.outerWidth;
-      height = window.outerHeight;
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-      renderer.setSize(width, height);
-      render();
-    }
-
     requestAnimationFrame(animate);
+    getFont();
+    controls.domElement = document.getElementById('three-container');
 
-    function animate(time) {
-        requestAnimationFrame(animate);
-        // controls.update();
-        TWEEN.update(time);
-        render();
-    }
-    //Render function
-    function render(){
-        renderer.render(scene, camera);
-    }
+    // document.getElementById('three-container').addEventListener("mouseover", mouseOver, false);
+    // document.getElementById('three-container').addEventListener("mouseout", mouseOut, false);
 };
 
 module.exports = {
