@@ -15,34 +15,62 @@ export default class NavComponent extends React.Component {
 	    	mobileStyle:  {
 		        display: "none"
 		    },
-		    mobileContainer: ""
+		    mobileTopContainer: "",
+		    mobileBottomContainer: "",
+		    mobileSocialContainer: ""
 	    };
 		this.menuToggle = this.menuToggle.bind(this);
 	}
 
 	componentDidMount(){
 		this.setState({
-      		mobileContainer: document.getElementById("slanted-container")
+      		mobileTopContainer: document.getElementById("top-div-id"),
+      		mobileBottomContainer: document.getElementById("bottom-div-id"),
+      		mobileSocialContainer: document.getElementById("mobile-social-id")
 	    });
 	}
 
 	menuToggle() {
 		if(this.state.mobileOpen === false) {
-			this.setState({
-				mobileOpen: true,
-				mobileStyle:  {
-		        	display: "block"
-		    	}
+			TweenLite.to(this.state.mobileTopContainer, 0.25, {
+				top:"-100vh",
+				ease:Linear.easeNone,
+				onComplete: function(){
+								this.setState({
+									mobileOpen: true,
+									mobileStyle:  {
+						        		display: "block"
+						    		}
+								})
+							}.bind(this)
+			}),
+			TweenLite.to(this.state.mobileBottomContainer, 0.25, {
+				bottom:"-110vh", 
+				ease:Linear.easeNone,
+				onComplete: function(){
+								this.state.mobileSocialContainer.style.display = "block"
+							}.bind(this)
 			});
-			this.state.mobileContainer.style.left = "-40vw"
 		} else if (this.state.mobileOpen === true)
-			this.setState({
-				mobileOpen: false,
-				mobileStyle:  {
-		        	display: "none"
-		    	}
+			TweenLite.to(this.state.mobileTopContainer, 0.25, {
+				top:"-125vh",
+				ease:Linear.easeNone,
+				onStart: function(){
+								this.setState({
+									mobileOpen: false,
+									mobileStyle:  {
+		        						display: "none"
+		    						}
+								})
+							}.bind(this)
+			}),
+			TweenLite.to(this.state.mobileBottomContainer, 0.25, {
+				bottom:"-125vh",
+				ease:Linear.easeNone,
+				onStart: function(){
+								this.state.mobileSocialContainer.style.display = "none"
+							}.bind(this)
 			});
-			this.state.mobileContainer.style.left = "0vw"
 	}
 
 	render() {
