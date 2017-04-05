@@ -37,23 +37,11 @@ var init = function(){
   clock = new THREE.Clock();
 
   controls = new THREE.FlyControls(camera);
-    controls.movementSpeed = 1000;
-    controls.rollSpeed = 0.025;
+    controls.movementSpeed = 100;
+    controls.rollSpeed = 0.003;
     controls.autoForward = false;
     controls.dragToLook = false;
     controls.lookOnly = true;
-
-  // manager = new THREE.LoadingManager();
-
-  // manager.onProgress = function (item, loaded, total) {
-  //     console.log(item, loaded, total);
-  // };
-  // manager.onLoad = function () {
-  //     console.log('all items loaded');
-  // };
-  // manager.onError = function () {
-  //     console.log('there has been an error');
-  // };
 
   wordsGroup = new THREE.Object3D();
 };
@@ -196,7 +184,6 @@ var resize = function() {
 // Animate function
 var animate = function(time) {
     requestAnimationFrame(animate);
-    // controls.update();
     TWEEN.update(time);
     render();
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, HashRouter} from 'react-router-dom';
 
 import LayoutComponent from './modules/LayoutComponent.jsx';
 
@@ -10,13 +10,13 @@ export default class App extends React.Component {
 	}
 	render() {
 		return (
-			<BrowserRouter>
+			<HashRouter>
 				<div>
 					<Switch>
 						<Route path="/" component={LayoutComponent}></Route>
 					</Switch>
 				</div>
-			</BrowserRouter>
+			</HashRouter>
 		)
 	}
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import queryString from 'query-string';
-import { ProjectsContainer, ProjectsMount, ProjectsRender } from 'C:/Users/pw8g08/hubiC/webroot/htdocs/literatim/build/js/threejs/projects-svgCloud.jsx';
+import { ProjectsContainer, ProjectsMount, ProjectsRender, ProjectsView } from 'C:/Users/pw8g08/hubiC/webroot/htdocs/literatim/build/js/threejs/projects-svgCloud.jsx';
 
 export default class Project extends React.Component {
 	constructor(props, context) {
@@ -11,11 +11,12 @@ export default class Project extends React.Component {
 
 		ProjectsRender(parsed.id);
 		var canvas = ProjectsMount();
-		document.getElementById('three-projects-container').appendChild(canvas); 
-	}
+		document.getElementById('three-projects-container').appendChild(canvas);
+		ProjectsView(parsed.id);
+	};
 	render() {
 		return (
 			<ProjectsContainer/>
 		);
-	}
+	};
 }

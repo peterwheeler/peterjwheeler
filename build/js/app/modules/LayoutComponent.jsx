@@ -1,19 +1,19 @@
-import React from 'react';
+import React from "react";
 import { Route, Switch, Link } from "react-router-dom";
-import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
-import Breadcrumbs from 'react-breadcrumbs';
+import { Grid, Row, Col, Clearfix } from "react-bootstrap";
+import Breadcrumbs from "react-breadcrumbs";
 
-import BreadComponent from './BreadComponent.jsx';
-import NavComponent from './NavComponent.jsx';
-import FooterComponent from './FooterComponent.jsx';
-import SocialComponent from './SocialComponent.jsx';
-import ProgressComponent from './ProgressComponent.jsx';
+import BreadComponent from "./BreadComponent.jsx";
+import NavComponent from "./NavComponent.jsx";
+import FooterComponent from "./FooterComponent.jsx";
+import SocialComponent from "./SocialComponent.jsx";
+import ProgressComponent from "./ProgressComponent.jsx";
 
-import Home from '../routes/Home.jsx';
-import About from '../routes/About.jsx';
-import Projects from '../routes/Projects.jsx';
-import Project from '../routes/projects/Project.jsx';
-import Coder from '../routes/Coder.jsx';
+import Home from "../routes/Home.jsx";
+import About from "../routes/About.jsx";
+import Projects from "../routes/Projects.jsx";
+import Project from "../routes/projects/Project.jsx";
+import Coder from "../routes/Coder.jsx";
 
 export default class LayoutComponent extends React.Component {
   constructor(props) {
@@ -24,18 +24,21 @@ export default class LayoutComponent extends React.Component {
       nameProject: "",
       hrefProject: "",
       projectsStyle: {
-        display: 'table-cell'
-      }
+        display: "table-cell"
+      },
+      scrollProgress: 0,
+      viewUpdate: this.props.location.pathname
     };
 
     this.handleProjectUpdate = this.handleProjectUpdate.bind(this);
     this.handleProjectStyle = this.handleProjectStyle.bind(this);
+    this.scrollUpdate = this.scrollUpdate.bind(this);
   }
 
   componentDidMount() {
     this.setState({
       loadProgress: 0.5
-    })
+    });
   }
 
   handleProjectUpdate(projectValue) {
@@ -51,19 +54,31 @@ export default class LayoutComponent extends React.Component {
     });
   }
 
+  scrollUpdate(scrollValue){
+      this.setState({
+        scrollProgress: scrollValue
+      });
+  }
+
   render() {
     const routes = this.props.routes;
     const params = this.props.params;
     const containerStyle = {
       height: "50%"
     };
-
     return (
       <div className="parent-container">
         <div className="content-container">
           <div className="top-content">
             {/*<div id="breadcrumbs"><Breadcrumbs breadcrumbName="askdasd" routes={routes} params={params} /></div>*/}
-            <div className="nav-container"><NavComponent load={this.state.loadProgress} currentProjectName={this.state.nameProject} currentProjectHref={this.state.hrefProject} submenuStyle={this.state.projectsStyle}/></div>
+            <div className="navigation-container">
+              <NavComponent
+                load={this.state.loadProgress}
+                currentProjectName={this.state.nameProject}
+                currentProjectHref={this.state.hrefProject}
+                submenuStyle={this.state.projectsStyle}
+              />
+            </div>
           </div>
           <div className="middle-content" id="slanted-container">
             <ProgressComponent load={this.state.loadProgress}/>
@@ -72,16 +87,16 @@ export default class LayoutComponent extends React.Component {
                 <Switch>
                   <Route path="/" exact component={Home}></Route>
                   <Route path="/projects" exact render={(props) => (
-                    <Projects updateProject={this.handleProjectUpdate} updateStyle={this.handleProjectStyle}/> )}
+                    <Projects updateProject={this.handleProjectUpdate} updateStyle={this.handleProjectStyle} scrollMove={this.state.scrollProgress}/>)}
                   />
-                  <Route path="/projects/:projectID" component={Project}/>
+                  <Route path="/project/:projectID" component={Project}/>
                   <Route path="/coder" component={Coder}/>
                 </Switch>
               </div>
             </div>
           </div>
           <div className="bottom-content">
-            <div className="social-container"><SocialComponent /></div>
+            <div className="social-container"><SocialComponent updateView={this.state.viewUpdate} updateScroll={this.scrollUpdate}/></div>
           </div>
         </div>
       </div>

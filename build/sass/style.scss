@@ -47,6 +47,8 @@ $background: #fefefa;
 $black: #000;
 $grey: #c7c7c7;
 $blackRGB: rgba(0, 0, 0, 0.15);
+$projectWidthLarge: 33.33vw;
+$projectWidthSmall: 16.66vw;
 
 /*--- CSS ---*/
 
@@ -133,11 +135,16 @@ h1 {
 /*--- Div Containers ---*/
 
 .small-icon-container {
-
+  transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
 }
 
 .small-icon-container i {
   margin-right: 15px;
+  transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
 }
 
 .small-icon-container i:hover {
@@ -154,6 +161,15 @@ h1 {
   padding: 15px;
   bottom: 0px;
   right: 0px;
+}
+
+.arrows-scroll .fa {
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.fa-45x {
+  font-size: 4.5em;
 }
 
 .small-icon-container i {
@@ -191,7 +207,7 @@ h1 {
   box-shadow:0 0 5px rgba(0,0,0,0.8);
 }
 
-.nav-container {
+.navigation-container {
   margin: 50px 0px 0px 50px;
 }
 
@@ -373,9 +389,9 @@ line, polyline, polygon, ellipse, path, rect {
   z-index: 15;
   background: $background;
   color: #eee;
-  box-shadow: 0px 0px 10px 1px grey;
-    -webkit-box-shadow: 0px 0px 10px 1px grey;
-    -moz-box-shadow: 0px 0px 1px 10px grey;
+  box-shadow: 0px 0px 10px 1px #424242;
+    -webkit-box-shadow: 0px 0px 10px 1px #424242;
+    -moz-box-shadow: 0px 0px 1px 10px #424242;
 }
 
 .middle-content:after {
@@ -387,9 +403,9 @@ line, polyline, polygon, ellipse, path, rect {
   z-index: 15;
   background: $background;
   color: #eee;
-  box-shadow: 0px 0px 10px 1px grey;
-    -webkit-box-shadow: 0px 0px 10px 1px grey;
-    -moz-box-shadow: 0px 0px 1px 10px grey;
+  box-shadow: 0px 0px 10px 1px #424242;
+    -webkit-box-shadow: 0px 0px 10px 1px #424242;
+    -moz-box-shadow: 0px 0px 1px 10px #424242;
 }
 
 /* Animation effects for preloader */
@@ -497,18 +513,27 @@ line, polyline, polygon, ellipse, path, rect {
 .floats-gallery {
   position: absolute;
   height: 100vh;
-  width: 100vw;
+  width: 200vw;
   padding: 0;
+}
+
+.projects-container>.floats-gallery .slanted {
+  transition: width 0.5s;
+  -webkit-transition: width 0.5s;
+  transition-timing-function: ease;
+  -webkit-transition-timing-function: ease;
 }
 
 .projects-container>.floats-gallery>.slanted {
   float: left;
   position: relative;
   height: 100vh;
+  width: $projectWidthSmall;
 }
 
 .projects-container>.floats-gallery>.slanted+.slanted {
   overflow: hidden;
+  width: $projectWidthLarge;
   transform-origin: 0% 100%;
     -ms-transform-origin: 0% 100%;
     -webkit-transform-origin: 0% 100%;
@@ -535,9 +560,26 @@ line, polyline, polygon, ellipse, path, rect {
     -webkit-transform: skewX(45deg);
 }
 
+.projects-container>.floats-gallery>.slanted:hover {
+    width: -webkit-calc(#{$projectWidthSmall} + 5vw);
+    width:    -moz-calc(#{$projectWidthSmall} + 5vw);
+    width:         calc(#{$projectWidthSmall} + 5vw);
+}
+
+.projects-container>.floats-gallery>.slanted+.slanted:hover {
+    width: -webkit-calc(#{$projectWidthLarge} + 5vw);
+    width:    -moz-calc(#{$projectWidthLarge} + 5vw);
+    width:         calc(#{$projectWidthLarge} + 5vw);
+}
+
 .project-container {
   position: relative;
   margin: 10px 200px;
+}
+
+.projects-scroll {
+  height: 100vh;
+  width: 100vw;
 }
 
 .hover-button {
@@ -675,4 +717,65 @@ button {
 button:active {
   color: #000000;
   background-color: rgba(0,255,255,0.75);
+}
+
+@media (max-width: 1023px) {
+  .navigation-container {
+    margin: 10px 0px 0px 15px;
+  }
+
+  .top-content {
+    height: 15vh;
+    width: 15vw;
+  }
+
+  .mobile-menu {
+    width: 10vw;
+    height: 10vh;
+  }
+
+  .bottom-content {
+    height: 15vh;
+    width: 15vh;
+  }
+
+  .loaded .middle-content {
+    height: 80vh;
+    left: -40vw;
+  }
+
+  .loaded .middle-content:after {
+    top: 80vh;
+  }
+
+  // .loaded .top-content .mobile-menu {
+  //   height: 30vh;
+  //   width: 30vw;
+  // }
+
+  .middle-straight {
+    left: 30vw;
+    top: -15vh;
+  }
+
+  .mobile-navigation {
+    height: 30vh;
+    width: 30vw;
+  }
+
+  .mobile-gallery {
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .image-item {
+    height: 20vh;
+    width: 100vw;
+    overflow: hidden;
+  }
+
+  .image-item .image-caption {
+    position: absolute;
+    margin: 10px;
+  }
 }
