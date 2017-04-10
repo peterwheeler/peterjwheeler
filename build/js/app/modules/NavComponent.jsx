@@ -75,29 +75,29 @@ export default class NavComponent extends React.Component {
 
 	render() {
 	return (
-		<div id="outer-container">
+		<div id="inner-navigation-container">
 			<MediaQuery maxWidth={1023} className="mobile-navigation" component="div">
 				<i className="fa fa-bars fa-2x" aria-hidden="true" onClick={() => this.menuToggle()}></i>
 				<div className="mobile-menu" style={this.state.mobileStyle}>
 					<Col md={4}>
-						<Link to="/" className="menu-item">Literatim</Link>
+						<Link to="/"><SVGComponent load={this.props.load}/></Link>
 					</Col>
 					<Col md={4}>
 						<Link to="/projects" className="menu-item">Projects</Link>
 					</Col>
-					<Col md={4}>
+					{/*<Col md={4}>
 						<Link to="/coder" className="menu-item">Coder</Link>
-					</Col>
+					</Col>*/}
 				</div>
 			</MediaQuery>
 	    	<MediaQuery minWidth={1024} className="desktop-navigation">
 				<Grid fluid>
 					<Row className="show-grid">
-						<Col md={4} xsHidden>
+						<Col md={4}>
 							<Link to="/"><SVGComponent load={this.props.load}/></Link>
 						</Col>
 						<Clearfix/>
-						<Col md={4} xsHidden>
+						<Col md={4}>
 							<div className="project-link">
 								<div className="projects-static-link">
 									<Link to="/projects" className="menu-item">Projects</Link>
@@ -108,10 +108,10 @@ export default class NavComponent extends React.Component {
 								</div>
 							</div>
 						</Col>
-						<Clearfix/>
-						<Col md={4} xsHidden>
+						{/*<Clearfix/>
+						<Col md={4}>
 							<Link to="/coder" className="menu-item">Coder</Link>
-						</Col>
+						</Col>*/}
 					</Row>
 				</Grid>
 	    	</MediaQuery>

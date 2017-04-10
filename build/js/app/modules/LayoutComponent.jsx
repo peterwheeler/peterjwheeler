@@ -24,7 +24,7 @@ export default class LayoutComponent extends React.Component {
       nameProject: "",
       hrefProject: "",
       projectsStyle: {
-        display: "table-cell"
+        display: "none"
       },
       scrollProgress: 0,
       viewUpdate: this.props.location.pathname
@@ -68,39 +68,37 @@ export default class LayoutComponent extends React.Component {
     };
     return (
       <div className="parent-container">
-        <div className="content-container">
-          <div className="top-content">
+         <div className="content-container">
+            <div className="top-content">
             {/*<div id="breadcrumbs"><Breadcrumbs breadcrumbName="askdasd" routes={routes} params={params} /></div>*/}
-            <div className="navigation-container">
-              <NavComponent
-                load={this.state.loadProgress}
-                currentProjectName={this.state.nameProject}
-                currentProjectHref={this.state.hrefProject}
-                submenuStyle={this.state.projectsStyle}
-              />
+               <div className="navigation-container">
+                  <NavComponent
+                   load={this.state.loadProgress}
+                   currentProjectName={this.state.nameProject}
+                   currentProjectHref={this.state.hrefProject}
+                   submenuStyle={this.state.projectsStyle}
+                  />
+               </div>
             </div>
-          </div>
-          <div className="top-div" id="top-div-id"></div>
-          <div className="middle-content" id="slanted-container">
-            <ProgressComponent load={this.state.loadProgress}/>
-            <div className="middle-content-container">
-              <Switch>
+            <div className="top-div" id="top-div-id"></div>
+            <div className="middle-content" id="slanted-container">
+               <ProgressComponent load={this.state.loadProgress}/>
+               <div className="middle-content-container">
+               <Switch>
                 <Route path="/" exact component={Home}></Route>
                 <Route path="/projects" exact render={(props) => (
                   <Projects updateProject={this.handleProjectUpdate} updateStyle={this.handleProjectStyle} scrollMove={this.state.scrollProgress}/>)}
                 />
                 <Route path="/project/:projectID" component={Project}/>
                 <Route path="/coder" component={Coder}/>
-              </Switch>
+               </Switch>
+               </div>
             </div>
-          </div>
-          <div className="bottom-content">
-            <div className="social-container">
-              <SocialComponent updateView={this.state.viewUpdate} updateScroll={this.scrollUpdate}/>
+            <div className="bottom-content">
+               <SocialComponent updateView={this.state.viewUpdate} updateScroll={this.scrollUpdate}/>
             </div>
-          </div>
-          <div className="bottom-div" id="bottom-div-id"></div>
-        </div>
+            <div className="bottom-div" id="bottom-div-id"></div>
+         </div>
       </div>
       )
     }

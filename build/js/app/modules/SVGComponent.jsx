@@ -94,17 +94,17 @@ export default class SVGComponent extends React.Component {
       mainTimeline.timescale = 0.6;
       // mainTimeline.start();
 
-      var svg = document.getElementById('svg');
-      if (window.innerWidth < 600) {
-        svg.style.width = window.innerWidth+'px';
-      }
+      var svg = document.getElementById('svg-literatim');
+      // console.log(document);
+      // if (window.innerWidth < 600) {
+      //   svg.style.width = window.innerWidth+'px';
+      // }
   }
 
   render() {
     return (
     	<div className="svg-container">
-			<svg id="svg" version="1.1" id="literatim" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-				 viewBox="60 0 300 100" enableBackground="new 60 0 300 100" xmlSpace="preserve">
+			<svg id="svg-literatim" x="0px" y="0px" viewBox="60 0 300 100" enableBackground="new 60 0 300 100" preserveAspectRatio="xMinYMin meet">
 				{/* L */}
 					<rect id="L1" x="68.327" y="70.277" width="17.36" height="4.278"/>
 					<rect id="L2" x="63.429" y="35.557" width="4.898" height="38.998"/>

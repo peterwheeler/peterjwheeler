@@ -26,50 +26,22 @@ export default class SocialComponent extends React.Component {
 				var divStyle = {display: "block"};
 		}
 	    return (
-    		<div className="inner-social-container">
+    		<div className="social-container">
     			<MediaQuery maxWidth={1023} className="mobile-social" id="mobile-social-id" component="div">
-    				<Grid fluid>
-				        <Row className="show-grid">
-					        <Col xs={6} sm={3} md={2} lg={2} smOffset={9} mdOffset={8}>
-						    	<div className="small-icon-container">
-							    	<i className="fa fa-twitter fa-2x" aria-hidden="true"></i>
-							    	<i className="fa fa-linkedin fa-2x" aria-hidden="true"></i>
-							    	<i className="fa fa-github fa-2x" aria-hidden="true"></i>
-						    	</div>
-					    	</Col>
-				    	</Row>
-			    	</Grid>
+    				<div className="small-icon-container">
+						<a href="mailto:PWheeler@soton.ac.uk"><i className="fa fa-envelope fa-lg" aria-hidden="true"style={{"paddingRight" : "3px"}}></i></a>
+						<a href="https://twitter.com/peter__wheeler"><i className="fa fa-twitter  fa-lg" aria-hidden="true"></i></a>
+						<a href="https://uk.linkedin.com/in/peterjwheeler"><i className="fa fa-linkedin  fa-lg" aria-hidden="true"></i></a>
+						<a href="https://github.com/peterwheeler"><i className="fa fa-github  fa-lg" aria-hidden="true"></i></a>
+					</div>
 				</MediaQuery>
 				<MediaQuery minWidth={1024} className="desktop-social" component="div">
-					<div className="arrows-container" style={divStyle}>
-						{isScrollOn ? (
-								<div className="arrows-scroll scroller">
-									<i className="fa fa-angle-left fa-45x" aria-hidden="true" onClick={() => this.scrollMove(250)}></i>
-									<i className="fa fa-angle-right fa-45x" aria-hidden="true" onClick={() => this.scrollMove(-250)}></i>
-								</div>
-							):(
-								<div className="arrows-scroll switcher">
-									<i className="fa fa-angle-left fa-45x" aria-hidden="true" onClick={() => this.scrollMove(250)}></i>
-									<i className="fa fa-angle-right fa-45x" aria-hidden="true" onClick={() => this.scrollMove(-250)}></i>
-								</div>
-						)}		
+					<div className="small-icon-container">
+						<a href="mailto:PWheeler@soton.ac.uk"><i className="fa fa-envelope fa-lg" aria-hidden="true"style={{"paddingRight" : "3px"}}></i></a>
+						<a href="https://twitter.com/peter__wheeler"><i className="fa fa-twitter fa-2x" aria-hidden="true"></i></a>
+						<a href="https://uk.linkedin.com/in/peterjwheeler"><i className="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
+						<a href="https://github.com/peterwheeler"><i className="fa fa-github fa-2x" aria-hidden="true"></i></a>
 					</div>
-			    	<Grid fluid>
-				        <Row className="show-grid">
-					        {/*<Col xs={6} sm={3} smHidden mdHidden lgHidden>
-						    	<div className="small-icon-container">
-						    		<i className="fa fa-bars fa-2x" aria-hidden="true"></i>
-						    	</div>
-						    </Col>*/}
-					        <Col xs={6} sm={3} md={2} lg={2} smOffset={9} mdOffset={8}>
-						    	<div className="small-icon-container">
-							    	<i className="fa fa-twitter fa-2x" aria-hidden="true"></i>
-							    	<i className="fa fa-linkedin fa-2x" aria-hidden="true"></i>
-							    	<i className="fa fa-github fa-2x" aria-hidden="true"></i>
-						    	</div>
-					    	</Col>
-				    	</Row>
-			    	</Grid>
 		    	</MediaQuery>
 	    	</div>
 	    );
