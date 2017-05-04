@@ -63,12 +63,17 @@ normal);
 
 
 /*--- Variables settings ---*/
-
+$mobile-sm-font: 10px;
+$mobile-smmed-font: 12px;
+$mobile-med-font: 14px;
+$mobile-lg-font: 18px;
+$mobile-xlg-font: 20px;
 $headline: 2rem;
 $subheadline: 1.75rem;
 $subsubheadline: 1.5rem;
+$mobilemenuLink: 1.5rem;
 $menuLink: 1.25rem;
-$submenuLink: 1.15;
+$submenuLink: 1.15rem;
 $background: #fefefa;
 $black: #000;
 $grey: #c7c7c7;
@@ -87,7 +92,7 @@ body,
    background-color: $background;
    height: 100%;
    width: 100%;
-   font-size: 10px;
+   font-size: $mobile-sm-font;
    cursor: default;
 }
 
@@ -164,7 +169,7 @@ h3 {
 }
 
 .menu-item {
-   font-size: $menuLink;
+   font-size: $mobilemenuLink;
    margin-bottom: 10px;
    text-decoration: none;
 }
@@ -184,7 +189,6 @@ h3 {
 
 
 /*---------------------- Div Containers ----------------------*/
-
 
 /*------- General Containers -------*/
 
@@ -233,15 +237,14 @@ rect {
    opacity: 1;
 }
 
-
 /*------- Top Containers -------*/
 
 .top-content {
    position: absolute;
    top: 0px;
    left: 0px;
-   height: 30vh;
-   width: 30vw;
+   height: 25vh;
+   width: 35vw;
    z-index: 17;
    display: none;
 }
@@ -258,38 +261,24 @@ rect {
    width: 125vw;
    background-color: $background;
    transform: rotate(-45deg);
-   -ms-transform: rotate(-45deg);
-   -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
    transform-origin: 50% 50% 0;
    box-shadow: 0px 0px 10px 1px #424242;
-   -webkit-box-shadow: 0px 0px 10px 1px #424242;
-   -moz-box-shadow: 0px 0px 1px 10px #424242;
+      -webkit-box-shadow: 0px 0px 10px 1px #424242;
+      -moz-box-shadow: 0px 0px 1px 10px #424242;
    z-index: 15;
 }
 
 .loaded .top-div {
-   top: -68vh;
-   left: -68vw;
+   top: -100vh;
+   left: -100vw;
 }
-
 
 /*-- Navigation --*/
 
 .navigation-container {
-   margin: 50px 0px 0px 50px;
-}
-
-.svg-container {
-   width: 12vw;
-}
-
-line,
-polyline,
-polygon,
-ellipse,
-path,
-rect {
-   opacity: 0;
+   margin: 2vh 0px 0px 5vw;
 }
 
 .logo-item {
@@ -300,6 +289,15 @@ rect {
    background-repeat: no-repeat;
 }
 
+.mobile-menu {
+   width: 10vw;
+   height: 10vh;
+}
+
+.mobile-navigation {
+   height: 30vh;
+   width: 30vw;
+}
 
 /*------- Middle Containers -------*/
 
@@ -311,10 +309,6 @@ rect {
    left: 0vw;
    overflow: hidden;
    z-index: 14;
-   // transform: rotate(-45deg);
-   //   -ms-transform: rotate(-45deg);
-   //   -webkit-transform: rotate(-45deg);
-   // transform-origin: 50% 50% 0;
    background: $background;
    color: #eee;
 }
@@ -326,6 +320,19 @@ rect {
    top: 0vh;
    left: 0vw;
    z-index: 14;
+}
+
+.logo-container {
+   position: absolute;
+   right: 3vh;
+}
+
+.logo-container .logo-item {
+   width: 35vw;
+   height: 20vh;
+   background-image: url(../images/signature.png);
+   background-size: 100px 100px;
+   background-repeat: no-repeat;
 }
 
 /*-- Homepage --*/
@@ -348,14 +355,11 @@ rect {
 .home-silhoutte {
    position: absolute;
    width: 100vw;
-   height: 40vh;
-   max-height: 45vh;
+   height: 30vh;
    bottom: 0;
 }
 
 .home-silhoutte #scene {
-   position: relative;
-   overflow: hidden;
    width: 100vw;
    height: 100vh;
    margin: 0;
@@ -363,7 +367,6 @@ rect {
 }
 
 .home-silhoutte #scene .layer {
-   // position: absolute !important;
    width: 100vw;
    height: 50vh;
    left: 0px;
@@ -373,47 +376,35 @@ rect {
 .home-silhoutte .silhoutte {
    position: absolute;
    bottom: 0px;
-   max-width: 120vw;
 }
 
 .home-silhoutte #silhoutte-1 {
-   width: 110vw;
+   width: 150vw;
    height: 30vh;
-   left: -5vw;
-   bottom: 18vh;
+   left: -25vw;
+   bottom: 9vh;
    background-image: url("../images/silhoutte-dev.png");
-   background-size: 110vw auto;
+   background-size: 150vw auto;
    background-repeat: no-repeat;
 }
 
 .home-silhoutte #silhoutte-2 {
-   width: 110vw;
+   width: 150vw;
    height: 30vh;
-   left: -5vw;
+   left: -25vw;
    bottom: 5vh;
    background-image: url("../images/silhoutte-arch.png");
-   background-size: 110vw auto;
+   background-size: 150vw auto;
    background-repeat: no-repeat;
 }
 
 .home-silhoutte #silhoutte-3 {
-   height: 50vh;
+   height: 70vh;
    width: 30vw;
-   right: 5vw;
-   bottom: 5vh;
-   background-image: url("../images/avatar_flipped.png");
-   background-size: 20vw auto;
-   background-repeat: no-repeat;
-}
-
-.main-silhoutte {
-   position: absolute;
+   right: -5vw;
    bottom: 0;
-   right: 0;
-   width: 10vw;
-   height: 20vh;
    background-image: url("../images/avatar_flipped.png");
-   background-size: 100px auto;
+   background-size: 60vw auto;
    background-repeat: no-repeat;
 }
 
@@ -657,14 +648,18 @@ rect {
 }
 
 .loaded .bottom-div {
-   bottom: -80vh;
-   right: -80vw;
+   bottom: -110vh;
+   right: -110vw;
 }
 
 .social-container {
    position: absolute;
    bottom: 8vh;
    right: 0vw;
+}
+
+.mobile-social {
+   display: none;
 }
 
 .small-icon-container {
@@ -696,7 +691,202 @@ rect {
 
 /*---------------------- Media Queries ----------------------*/
 
-@media (max-width: 1023px) {
+@media (min-width: 360px) {
+   html,
+   body,
+   #app {
+      font-size: $mobile-smmed-font;
+   }
+
+   .logo-container {
+      right: 0vh;
+   }
+
+   .logo-container .logo-item {
+      background-size: 110px 110px;
+   }
+
+   .home-typed {
+      margin: 25vh 0 0 0;
+   }
+
+   .home-silhoutte #silhoutte-1 {
+      width: 150vw;
+      height: 30vh;
+      left: -25vw;
+      bottom: 9.5vh;
+      background-size: 200vw auto;
+   }
+
+   .home-silhoutte #silhoutte-2 {
+      width: 150vw;
+      height: 30vh;
+      left: -25vw;
+      bottom: 5vh;
+      background-size: 200vw auto;
+   }
+
+   .home-silhoutte #silhoutte-3 {
+      height: 70vh;
+      width: 30vw;
+      right: -5vw;
+      bottom: 0;
+      background-size: 60vw auto;
+   }
+}
+
+@media (min-width: 380px) {
+   html,
+   body,
+   #app {
+      font-size: $mobile-med-font;
+   }
+
+   .logo-container {
+      right: 0vh;
+   }
+
+   .logo-container .logo-item {
+      background-size: 130px 130px;
+   }
+
+   .home-typed {
+      margin: 25vh 0 0 0;
+   }
+
+   .home-silhoutte #silhoutte-1 {
+      width: 160vw;
+      height: 30vh;
+      left: -30vw;
+      bottom: 10vh;
+      background-size: 225vw auto;
+   }
+
+   .home-silhoutte #silhoutte-2 {
+      width: 160vw;
+      height: 30vh;
+      left: -30vw;
+      bottom: 5vh;
+      background-size: 225vw auto;
+   }
+
+   .home-silhoutte #silhoutte-3 {
+      height: 70vh;
+      width: 30vw;
+      right: -5vw;
+      bottom: 0;
+      background-size: 60vw auto;
+   }
+}
+
+@media (min-width: 768px) {
+   html,
+   body,
+   #app {
+      font-size: $mobile-lg-font;
+   }
+   /*------- Top Containers -------*/
+   .top-content {
+      top: 0px;
+      left: 0px;
+      height: 20vh;
+      width: 20vw;
+   }
+   .top-div {
+      top: -45vh;
+      left: -45vw;
+      height: 125vh;
+      width: 200vw;
+   }
+   .loaded .top-div {
+      top: -120vh;
+      left: -120vw;
+   }
+
+   .logo-container .logo-item {
+      background-size: 200px 200px;
+   }
+   /*------- Middle Containers -------*/
+
+   /*-- Projects --*/
+   .mobile-gallery {
+      height: 100vh;
+      width: 100vw;
+   }
+   .header-div {
+      margin: 1vh 2vw;
+   }
+   .projects-header {
+      text-align: right;
+   }
+   .image-item {
+      position: relative;
+      height: 20vh;
+      width: 100vw;
+      overflow: hidden;
+   }
+   .image-item .image-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: 0 3vw 1vh 3vw;
+      background: rgba(255, 255, 255, 0.2);
+   }
+
+   .image-item h3 {
+      text-transform: none;
+   }
+
+   .home-silhoutte #silhoutte-1 {
+      width: 120vw;
+      height: 30vh;
+      left: -10vw;
+      bottom: 9.5vh;
+      background-size: 150vw auto;
+   }
+
+   .home-silhoutte #silhoutte-2 {
+      width: 120vw;
+      height: 30vh;
+      left: -10vw;
+      bottom: 5vh;
+      background-size: 150vw auto;
+   }
+
+   .home-silhoutte #silhoutte-3 {
+      height: 70vh;
+      width: 30vw;
+      right: -5vw;
+      bottom: 0;
+      background-size: 60vw auto;
+   }
+
+   /*------- Bottom Containers -------*/
+   .bottom-content {
+      bottom: 0px;
+      right: 0px;
+      height: 30vh;
+      width: 30vh;
+   }
+   .bottom-div {
+      bottom: -45vh;
+      right: -45vw;
+      height: 125vh;
+      width: 200vw;
+   }
+   .loaded .bottom-div {
+      bottom: -125vh;
+      right: -125vw;
+   }
+}
+
+@media (min-width: 1024px) {
+   html,
+   body,
+   #app {
+      font-size: $mobile-xlg-font;
+   }
 
    /*------- Top Containers -------*/
 
@@ -725,14 +915,8 @@ rect {
       left: -120vw;
    }
 
-   .mobile-menu {
-      width: 10vw;
-      height: 10vh;
-   }
-
-   .mobile-navigation {
-      height: 30vh;
-      width: 30vw;
+   .desktop-navigation .logo-item {
+      display: none;
    }
 
    /*------- Middle Containers -------*/
@@ -740,6 +924,11 @@ rect {
    .loaded .middle-content {
       height: 100vh;
       width: 100vw;
+   }
+
+   .logo-container .logo-item {
+      width: 25vw;
+      height: 20vh;
    }
 
    /*-- Projects --*/
@@ -771,6 +960,30 @@ rect {
       right: 0;
       margin: 0 3vw 1vh 3vw;
       background: rgba(255, 255, 255, 0.2);
+   }
+
+   .home-silhoutte #silhoutte-1 {
+      width: 120vw;
+      height: 35vh;
+      left: -10vw;
+      bottom: 12.5vh;
+      background-size: 140vw auto;
+   }
+
+   .home-silhoutte #silhoutte-2 {
+      width: 120vw;
+      height: 35vh;
+      left: -10vw;
+      bottom: 5vh;
+      background-size: 140vw auto;
+   }
+
+   .home-silhoutte #silhoutte-3 {
+      height: 70vh;
+      width: 30vw;
+      right: -10vw;
+      bottom: 0;
+      background-size: 40vw auto;
    }
 
    /*------- Bottom Containers -------*/
@@ -814,74 +1027,463 @@ rect {
    }
 }
 
-@media (max-width: 767px) {
-   /*------- Top Containers -------*/
-   .top-content {
-      top: 0px;
-      left: 0px;
-      height: 20vh;
-      width: 20vw;
-   }
-   .top-div {
-      top: -45vh;
-      left: -45vw;
-      height: 125vh;
-      width: 200vw;
-   }
-   .loaded .top-div {
-      top: -120vh;
-      left: -120vw;
-   }
-   /*------- Middle Containers -------*/
+@media (min-width: 1280px) {
 
-   /*-- Projects --*/
-   .mobile-gallery {
+}
+
+@media (min-width: 1366px) {
+   /*---------------------- Div Containers ----------------------*/
+
+   /*------- General Containers -------*/
+
+   .parent-container {
+      position: absolute;
       height: 100vh;
       width: 100vw;
-   }
-   .header-div {
-      margin: 1vh 2vw;
-   }
-   .projects-header {
-      text-align: right;
-   }
-   .image-item {
-      position: relative;
-      height: 20vh;
-      width: 100vw;
-      overflow: hidden;
-   }
-   .image-item .image-caption {
-      position: absolute;
+      top: 0;
       bottom: 0;
       left: 0;
       right: 0;
-      margin: 0 3vw 1vh 3vw;
+   }
+
+   .content-container {
+      position: absolute;
+      height: 100vh;
+      width: 100vw;
+      margin: 0px;
+   }
+
+   /*-- Meter --*/
+
+   .meter {
+      width: 100vw;
+      height: 4vh;
+      position: absolute;
+      bottom: -1vh;
+   }
+
+   .meter-hidden {
+      display: none;
+   }
+
+   #meter-id > line,
+   polyline,
+   polygon,
+   ellipse,
+   path,
+   rect {
+      opacity: 1;
+   }
+
+   /*------- Top Containers -------*/
+
+   .top-content {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      height: 30vh;
+      width: 30vw;
+      display: none;
+   }
+
+   .loaded .top-content {
+      display: block;
+   }
+
+   .top-div {
+      position: absolute;
+      top: -45vh;
+      left: -45vw;
+      height: 125vh;
+      width: 125vw;
+   }
+
+   .loaded .top-div {
+      top: -68vh;
+      left: -68vw;
+   }
+
+   /*-- Navigation --*/
+
+   .navigation-container {
+      margin: 50px 0px 0px 50px;
+   }
+
+   .logo-item {
+      width: 20vw;
+      height: 20vh;
+      background-size: 175px 175px;
+   }
+
+   /*------- Middle Containers -------*/
+
+   .middle-content {
+      position: absolute;
+      height: 100vh;
+      width: 100vw;
+      top: 0vh;
+      left: 0vw;
+      overflow: hidden;
+   }
+
+   .middle-content-container {
+      position: absolute;
+      height: 100vh;
+      width: 100vw;
+      top: 0vh;
+      left: 0vw;
+   }
+
+   .logo-container {
+      display: none;
+   }
+
+   /*-- Homepage --*/
+
+   .home-container {
+      width: 100vw;
+      height: 100vh;
+      margin: 0px;
+   }
+
+   .home-typed {
+      position: relative;
+      margin: 20vh 0vw;
+   }
+
+   .home-typed h3 {
+      font-size: $subheadline;
+   }
+
+   .home-silhoutte {
+      position: absolute;
+      width: 100vw;
+      height: 40vh;
+      max-height: 45vh;
+      bottom: 0;
+   }
+
+   .home-silhoutte #scene {
+      position: relative;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+   }
+
+   .home-silhoutte #scene .layer {
+      width: 100vw;
+      height: 50vh;
+      left: 0px;
+      bottom: 0px;
+   }
+
+   .home-silhoutte .silhoutte {
+      position: absolute;
+      bottom: 0px;
+      max-width: 120vw;
+   }
+
+   .home-silhoutte #silhoutte-1 {
+      width: 110vw;
+      height: 30vh;
+      left: -5vw;
+      bottom: 18vh;
+      background-size: 110vw auto;
+   }
+
+   .home-silhoutte #silhoutte-2 {
+      width: 110vw;
+      height: 30vh;
+      left: -5vw;
+      bottom: 5vh;
+      background-size: 110vw auto;
+   }
+
+   .home-silhoutte #silhoutte-3 {
+      height: 50vh;
+      width: 30vw;
+      right: 5vw;
+      bottom: 5vh;
+      background-size: 20vw auto;
+   }
+
+   /*-- About page --*/
+
+   .about-container {
+      position: absolute;
+      height: 100vh;
+      width: 100vw;
+      margin: 10px 200px;
+   }
+
+   .about-image {
+      position: relative;
+      float: right;
+   }
+
+   .about-text {
+      width: 70vw;
+      margin: 15vh 5vw 10vh 5vw;
+   }
+
+   .about-text h1 {
+      margin-left: 250px;
+   }
+
+   .about-text .lW {
+      float: left;
+      clear: left;
+      height: 15px;
+   }
+
+   .about-text .rW {
+      float: right;
+      clear: right;
+      height: 15px;
+   }
+
+
+   /*-- Projects --*/
+
+   .gallery-container,
+   .desktop-gallery {
+      height: 100vh;
+      width: 100vw;
+   }
+
+   .projects-container {
+      position: absolute;
+      height: 100vh;
+      width: 100vw;
+      transform: translate3d(0px, 0px, 0px);
+   }
+
+   .blink-message {
+      position: absolute;
+      bottom: 10px;
+      left: 40vw;
+      animation: blinker 2s linear infinite;
+      z-index: 20;
+   }
+
+   @keyframes blinker {
+      50% {
+         opacity: 0;
+      }
+   }
+
+   .floats-gallery {
+      position: absolute;
+      height: 100vh;
+      width: 200vw;
+      padding: 0;
+   }
+
+   .projects-container>.floats-gallery .slanted {
+      transition: width 0.5s;
+      -webkit-transition: width 0.5s;
+      transition-timing-function: ease;
+      -webkit-transition-timing-function: ease;
+   }
+
+   .projects-container>.floats-gallery>.slanted {
+      float: left;
+      position: relative;
+      height: 100vh;
+      width: $projectWidthSmall;
+   }
+
+   .projects-container>.floats-gallery>.slanted+.slanted {
+      overflow: hidden;
+      width: $projectWidthLarge;
+      transform-origin: 0% 100%;
+      -ms-transform-origin: 0% 100%;
+      -webkit-transform-origin: 0% 100%;
+      transform: skewX(-45deg);
+      -ms-transform: skewX(-45deg);
+      -webkit-transform: skewX(-45deg);
+   }
+
+   .projects-container>.floats-gallery>.slanted>.unslanted {
+      height: 100vh;
+   }
+
+   .projects-container>.floats-gallery>.slanted>.unslanted>img {
+      position: absolute;
+      height: 100vh;
+   }
+
+   .projects-container>.floats-gallery>.slanted+.slanted>.unslanted {
+      transform-origin: 0% 100%;
+      -ms-transform-origin: 0% 100%;
+      -webkit-transform-origin: 0% 100%;
+      transform: skewX(45deg);
+      -ms-transform: skewX(45deg);
+      -webkit-transform: skewX(45deg);
+   }
+
+   .projects-container>.floats-gallery>.slanted:hover {
+      width: -webkit-calc(#{$projectWidthSmall} + 5vw);
+      width: -moz-calc(#{$projectWidthSmall} + 5vw);
+      width: calc(#{$projectWidthSmall} + 5vw);
+   }
+
+   .projects-container>.floats-gallery>.slanted+.slanted:hover {
+      width: -webkit-calc(#{$projectWidthLarge} + 5vw);
+      width: -moz-calc(#{$projectWidthLarge} + 5vw);
+      width: calc(#{$projectWidthLarge} + 5vw);
+   }
+
+   .project-container {
+      position: relative;
+      margin: 10px 200px;
+   }
+
+   .projects-scroll {
+      height: 100vh;
+      width: 100vw;
+   }
+
+
+   /*-- Three-projects --*/
+
+   #three-container,
+   #three-projects-container {
+      height: 100vh;
+      width: 100vw;
+   }
+
+
+   /*-- Coder --*/
+
+   .coder-container {
+      position: absolute;
+      height: 80vh;
+      width: 100vw;
+      bottom: 5vh;
+   }
+
+   .coding-box {
+      position: absolute;
+      height: 75vh;
+      width: 100vw;
+      bottom: 5vh;
+   }
+
+   .main {
+      position: absolute;
+      height: 75vh;
+      width: 100vw;
+      background: rgba(195, 195, 195, 0.8);
+   }
+
+   .holder {
+      position: absolute;
+      width: 100vw;
+      height: 70vh;
+      margin: 0 auto;
       background: rgba(255, 255, 255, 0.2);
    }
 
-   .image-item h3 {
-      text-transform: none;
+   #morseTape {
+      position: absolute;
+      height: 15vh;
+      width: 200vw;
+      bottom: 0vh;
+      display: block;
+      margin: auto auto;
+      background-color: black;
    }
 
+   #letter {
+      top: 10px;
+      left: 10px;
+      position: absolute;
+   }
+
+   #info {
+      position: absolute;
+      width: 100%;
+      color: #ffffff;
+      padding: 5px;
+      font-family: 'PierSans-Regular', arial, sans-serif;
+      font-size: 13px;
+      font-weight: bold;
+      text-align: center;
+   }
+
+
    /*------- Bottom Containers -------*/
+
    .bottom-content {
+      position: absolute;
       bottom: 0px;
       right: 0px;
       height: 30vh;
       width: 30vh;
+      z-index: 17;
+      display: none;
    }
+
+   .loaded .bottom-content {
+      display: block;
+   }
+
    .bottom-div {
+      position: absolute;
       bottom: -45vh;
       right: -45vw;
       height: 125vh;
-      width: 200vw;
+      width: 125vw;
+      background-color: $background;
+      transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+      transform-origin: 50% 50% 0;
+      box-shadow: 0px 0px 10px 1px #424242;
+      -webkit-box-shadow: 0px 0px 10px 1px #424242;
+      -moz-box-shadow: 0px 0px 1px 10px #424242;
+      z-index: 15;
    }
+
    .loaded .bottom-div {
-      bottom: -125vh;
-      right: -125vw;
+      bottom: -80vh;
+      right: -80vw;
    }
-   .mobile-social {
-      display: none;
+
+   .social-container {
+      position: absolute;
+      bottom: 8vh;
+      right: 0vw;
+   }
+
+   .small-icon-container {
+      transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+   }
+
+   .small-icon-container i {
+      margin: 1vh;
+      transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+   }
+
+   .small-icon-container i:hover {
+      color: $grey;
+   }
+
+   .arrows-scroll .fa {
+      margin-left: 8px;
+      margin-right: 8px;
+   }
+
+   .fa-45x {
+      font-size: 4.5em;
    }
 }
+
+

@@ -83,15 +83,16 @@ export default class LayoutComponent extends React.Component {
             <div className="top-div" id="top-div-id"></div>
             <div className="middle-content" id="slanted-container">
                <ProgressComponent load={this.state.loadProgress}/>
+               <div className="logo-container"><Link to="/"><div className="logo-item"></div></Link></div>
                <div className="middle-content-container">
-               <Switch>
-                <Route path="/" exact component={Home}></Route>
-                <Route path="/projects" exact render={(props) => (
-                  <Projects updateProject={this.handleProjectUpdate} updateStyle={this.handleProjectStyle} scrollMove={this.state.scrollProgress}/>)}
-                />
-                <Route path="/project/:projectID" component={Project}/>
-                <Route path="/coder" component={Coder}/>
-               </Switch>
+                 <Switch>
+                    <Route path="/" exact component={Home}></Route>
+                    <Route path="/projects" exact render={(props) => (
+                      <Projects updateProject={this.handleProjectUpdate} updateStyle={this.handleProjectStyle} scrollMove={this.state.scrollProgress}/>)}
+                    />
+                    <Route path="/project/:projectID" component={Project}/>
+                    <Route path="/coder" component={Coder}/>
+                 </Switch>
                </div>
             </div>
             <div className="bottom-content">

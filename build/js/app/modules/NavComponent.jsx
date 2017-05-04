@@ -79,15 +79,15 @@ export default class NavComponent extends React.Component {
 			<MediaQuery maxWidth={1023} className="mobile-navigation" component="div">
 				<i className="fa fa-bars fa-2x" aria-hidden="true" onClick={() => this.menuToggle()}></i>
 				<div className="mobile-menu" style={this.state.mobileStyle}>
-					<Col md={4}>
-						<Link to="/"><div className="logo-item"></div></Link>
-					</Col>
-					<Col md={4}>
-						<Link to="/projects" className="menu-item">Projects</Link>
-					</Col>
-					{/*<Col md={4}>
-						<Link to="/coder" className="menu-item">Coder</Link>
-					</Col>*/}
+					<Grid fluid>
+						<Col md={6}>
+							<Link to="/projects" className="menu-item">Projects</Link>
+						</Col>
+						<Clearfix />
+						<Col md={6}>
+							<Link to="/contact" className="menu-item">Contact</Link>
+						</Col>
+					</Grid>
 				</div>
 			</MediaQuery>
 	    	<MediaQuery minWidth={1024} className="desktop-navigation">
@@ -108,10 +108,10 @@ export default class NavComponent extends React.Component {
 								</div>
 							</div>
 						</Col>
-						{/*<Clearfix/>
+						<Clearfix />
 						<Col md={4}>
-							<Link to="/coder" className="menu-item">Coder</Link>
-						</Col>*/}
+							<Link to="/contact" className="menu-item">Contact</Link>
+						</Col>
 					</Row>
 				</Grid>
 	    	</MediaQuery>
