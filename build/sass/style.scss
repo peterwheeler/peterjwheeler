@@ -64,11 +64,11 @@ normal);
 
 /*--- Variables settings ---*/
 
-$headline: 32px;
-$subheadline: 28px;
-$subsubheadline: 24px;
-$menuLink: 22px;
-$submenuLink: 18px;
+$headline: 2rem;
+$subheadline: 1.75rem;
+$subsubheadline: 1.5rem;
+$menuLink: 1.25rem;
+$submenuLink: 1.15;
 $background: #fefefa;
 $black: #000;
 $grey: #c7c7c7;
@@ -87,6 +87,7 @@ body,
    background-color: $background;
    height: 100%;
    width: 100%;
+   font-size: 10px;
    cursor: default;
 }
 
@@ -100,6 +101,7 @@ i,
 span {
    font-family: 'Karla-Regular', sans-serif;
    color: $black;
+   font-weight: 400;
 }
 
 a,
@@ -122,17 +124,17 @@ ul {
 }
 
 h1 {
-   text-transform: uppercase;
+   // text-transform: uppercase;
    font-size: $headline;
 }
 
 h2 {
-   text-transform: uppercase;
+   // text-transform: uppercase;
    font-size: $subheadline;
 }
 
 h3 {
-   text-transform: uppercase;
+   // text-transform: uppercase;
    font-size: $subsubheadline;
 }
 
@@ -164,7 +166,6 @@ h3 {
 .menu-item {
    font-size: $menuLink;
    margin-bottom: 10px;
-   text-transform: uppercase;
    text-decoration: none;
 }
 
@@ -172,7 +173,6 @@ h3 {
    display: table-cell;
    font-size: $submenuLink;
    margin-bottom: 10px;
-   text-transform: uppercase;
    text-decoration: none;
 }
 
@@ -292,6 +292,14 @@ rect {
    opacity: 0;
 }
 
+.logo-item {
+   width: 10vw;
+   height: 15vh;
+   background-image: url(../images/signature.png);
+   background-size: 125px 125px;
+   background-repeat: no-repeat;
+}
+
 
 /*------- Middle Containers -------*/
 
@@ -320,14 +328,94 @@ rect {
    z-index: 14;
 }
 
-
 /*-- Homepage --*/
 
 .home-container {
-   position: relative;
+   width: 100vw;
+   height: 100vh;
    margin: 0px;
 }
 
+.home-typed {
+   position: relative;
+   margin: 20vh 0vw;
+}
+
+.home-typed h3 {
+   font-size: $subheadline;
+}
+
+.home-silhoutte {
+   position: absolute;
+   width: 100vw;
+   height: 40vh;
+   max-height: 45vh;
+   bottom: 0;
+}
+
+.home-silhoutte #scene {
+   position: relative;
+   overflow: hidden;
+   width: 100vw;
+   height: 100vh;
+   margin: 0;
+   padding: 0;
+}
+
+.home-silhoutte #scene .layer {
+   // position: absolute !important;
+   width: 100vw;
+   height: 50vh;
+   left: 0px;
+   bottom: 0px;
+}
+
+.home-silhoutte .silhoutte {
+   position: absolute;
+   bottom: 0px;
+   max-width: 120vw;
+}
+
+.home-silhoutte #silhoutte-1 {
+   width: 110vw;
+   height: 30vh;
+   left: -5vw;
+   bottom: 18vh;
+   background-image: url("../images/silhoutte-dev.png");
+   background-size: 110vw auto;
+   background-repeat: no-repeat;
+}
+
+.home-silhoutte #silhoutte-2 {
+   width: 110vw;
+   height: 30vh;
+   left: -5vw;
+   bottom: 5vh;
+   background-image: url("../images/silhoutte-arch.png");
+   background-size: 110vw auto;
+   background-repeat: no-repeat;
+}
+
+.home-silhoutte #silhoutte-3 {
+   height: 50vh;
+   width: 30vw;
+   right: 5vw;
+   bottom: 5vh;
+   background-image: url("../images/avatar_flipped.png");
+   background-size: 20vw auto;
+   background-repeat: no-repeat;
+}
+
+.main-silhoutte {
+   position: absolute;
+   bottom: 0;
+   right: 0;
+   width: 10vw;
+   height: 20vh;
+   background-image: url("../images/avatar_flipped.png");
+   background-size: 100px auto;
+   background-repeat: no-repeat;
+}
 
 /*-- About page --*/
 
@@ -609,6 +697,7 @@ rect {
 /*---------------------- Media Queries ----------------------*/
 
 @media (max-width: 1023px) {
+
    /*------- Top Containers -------*/
 
    /*-- Navigation --*/

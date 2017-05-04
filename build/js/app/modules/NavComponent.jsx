@@ -80,7 +80,7 @@ export default class NavComponent extends React.Component {
 				<i className="fa fa-bars fa-2x" aria-hidden="true" onClick={() => this.menuToggle()}></i>
 				<div className="mobile-menu" style={this.state.mobileStyle}>
 					<Col md={4}>
-						<Link to="/"><SVGComponent load={this.props.load}/></Link>
+						<Link to="/"><div className="logo-item"></div></Link>
 					</Col>
 					<Col md={4}>
 						<Link to="/projects" className="menu-item">Projects</Link>
@@ -94,7 +94,7 @@ export default class NavComponent extends React.Component {
 				<Grid fluid>
 					<Row className="show-grid">
 						<Col md={4}>
-							<Link to="/"><SVGComponent load={this.props.load}/></Link>
+							<Link to="/"><div className="logo-item"></div></Link>
 						</Col>
 						<Clearfix/>
 						<Col md={4}>

@@ -1,5 +1,8 @@
 import React from 'react';
-import { HomeContainer, HomeMount, HomeRender } from 'C:/Users/pw8g08/hubiC/webroot/htdocs/literatim/build/js/threejs/svgCloud.jsx';
+import TypedComponent from '../modules/TypedComponent.jsx';
+import ParallaxComponent from '../modules/ParallaxComponent.jsx';
+
+
 
 export default class Home extends React.Component {
 	constructor(props, context) {
@@ -7,14 +10,15 @@ export default class Home extends React.Component {
 	};
 
 	componentDidMount() {
-		HomeRender();
-		var canvas = HomeMount();
-		document.getElementById('three-container').appendChild(canvas); 
+		// HomeRender();
+		// var canvas = HomeMount();
+		// document.getElementById('three-container').appendChild(canvas); 
 	}
 	render() {
 	return (
 	  	<div className="home-container">
-			<HomeContainer />
+			<TypedComponent />
+			<ParallaxComponent />
 		</div>
 	);
 	}
