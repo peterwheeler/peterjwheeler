@@ -33,13 +33,13 @@ export default class NavComponent extends React.Component {
 	return (
 		<Grid>
 			<Row className="vertical-align">
-				<Col xs={6} className="logo-container">
+				<Col xs={5} sm={8} className="logo-container">
 					<Link to="/"><div className="logo-item"></div></Link>
 				</Col>
-				<Col xs={3} className="pull-bottom">
+				<Col xs={3} sm={2} className="pull-bottom">
 					<Link to="/projects" className="menu-item">Projects</Link>
 				</Col>
-				<Col xs={3} className="pull-bottom">
+				<Col xs={3} sm={2} className="pull-bottom">
 					<Link to="/contact" className="menu-item">Contact</Link>
 				</Col>
 			</Row>

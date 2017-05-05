@@ -8,6 +8,7 @@ import NavComponent from "./NavComponent.jsx";
 import FooterComponent from "./FooterComponent.jsx";
 import SocialComponent from "./SocialComponent.jsx";
 import ProgressComponent from "./ProgressComponent.jsx";
+import ParallaxComponent from '../modules/ParallaxComponent.jsx';
 
 import Home from "../routes/Home.jsx";
 import Projects from "../routes/Projects.jsx";
@@ -93,6 +94,9 @@ export default class LayoutComponent extends React.Component {
                     <Route path="/coder" component={Coder}/>
                  </Switch>
                </div>
+            </div>
+            <div className="bottom-content">
+              <ParallaxComponent />
             </div>
          </div>
       </div>
