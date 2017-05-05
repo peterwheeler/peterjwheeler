@@ -80,10 +80,8 @@ export default class LayoutComponent extends React.Component {
                   />
                </div>
             </div>
-            <div className="top-div" id="top-div-id"></div>
             <div className="middle-content" id="slanted-container">
                <ProgressComponent load={this.state.loadProgress}/>
-               <div className="logo-container"><Link to="/"><div className="logo-item"></div></Link></div>
                <div className="middle-content-container">
                  <Switch>
                     <Route path="/" exact component={Home}></Route>
@@ -96,10 +94,6 @@ export default class LayoutComponent extends React.Component {
                  </Switch>
                </div>
             </div>
-            <div className="bottom-content">
-               <SocialComponent updateView={this.state.viewUpdate} updateScroll={this.scrollUpdate}/>
-            </div>
-            <div className="bottom-div" id="bottom-div-id"></div>
          </div>
       </div>
       )

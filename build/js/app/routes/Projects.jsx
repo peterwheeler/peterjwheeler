@@ -1,10 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Grid, Row, Col, Clearfix, Image} from "react-bootstrap";
+import { Grid, Row, Col, Clearfix, Image, Thumbnail} from "react-bootstrap";
 import HorizontalScroll from "react-scroll-horizontal";
-import MediaQuery from "react-responsive";
-
-// import HorizontalScroll from "C:/Users/pw8g08/hubiC/webroot/htdocs/literatim/build/js/react-scroll-horizontal/react-scroll-horizontal.js"
 
 export default class Projects extends React.Component {
 	constructor(props) {
@@ -40,49 +37,51 @@ export default class Projects extends React.Component {
 			"height": "100vh"
 		};
 	    return (
-	    	<div className="gallery-container">
+	    	<div className="projects-container">
 				<Grid fluid>
-					<Row className="show-grid header-div">
-						<h1 className="projects-header">Projects</h1>
-					</Row>
 				    <Row className="show-grid">
-					    <Col xs={12} md={6} lg={4}>
+					    <Col xs={12} sm={6} md={6} lg={4}>
 					    	<Link className="menu-item" to={{pathname: "/project/portus", search: "id=0"}}>
 						    	<div className="image-item">
+						    	    <Image src={'/images/image-0.png'} alt="Portus" responsive/>
 						    	    <h3 className="image-caption">Portus</h3>
-									<Image src={'/images/image-0.png'} alt="Portus" style={{"height" : "auto", "width": "90vw"}}/>
+						    	     <p>Creates a divider wrapping an image and other children elements.</p>
 								</div>
 							</Link>
 						</Col>
-						<Col xs={12} md={6} lg={4}>
+						<Col xs={12} sm={6} md={6} lg={4}>
 					      	<Link className="menu-item" to={{pathname: "/project/storytour", search: "id=1"}}>
 						      	<div className="image-item">
-						      		<h3 className="image-caption">StoryTour</h3>
-							  		<Image src={'/images/image-1.png'} alt="Storytour" style={{"height" : "auto", "width": "90vw"}}/>
+							  		<Image src={'/images/image-1.png'} alt="Storytour" responsive/>
+							  		<h3 className="image-caption">StoryTour</h3>
+							  		 <p>Creates a divider wrapping an image and other children elements.</p>
 							  	</div>
 						  	</Link>
 						</Col>
-						<Col xs={12} md={6} lg={4}>
+						<Col xs={12} sm={6} md={6} lg={4}>
 					      	<Link className="menu-item" to={{pathname: "/project/futurelearn", search: "id=2"}}>
 						      	<div className="image-item">
-						      		<h3 className="image-caption">FutureLearn</h3>
-							  		<Image src={'/images/image-2.png'} alt="Futurelearn" style={{"height" : "auto", "width": "90vw"}}/>
+							  		<Image src={'/images/image-2.png'} alt="Futurelearn" responsive/>
+							  		<h3 className="image-caption">FutureLearn</h3>
+							  		 <p>Description</p>
 							  	</div>
 						  	</Link>
 					  	</Col>
-					  	<Col xs={12} md={6} lg={4}>
+					  	<Col xs={12} sm={6} md={6} lg={4}>
 					      	<Link className="menu-item" to={{pathname: "/project/soton-website", search: "id=3"}}>
 						      	<div className="image-item">
-						      		<h3 className="image-caption">Websites</h3>
-								  	<Image src={'/images/image-3.png'} alt="Websites" style={{"height" : "auto", "width": "90vw"}}/>
+								  	<Image src={'/images/image-3.png'} alt="Websites" responsive/>
+								  	<h3 className="image-caption">Websites</h3>
+								  	 <p>Description</p>
 								</div>
 							</Link>
 						</Col>
-						<Col xs={12} md={6} lg={4}>
+						<Col xs={12} sm={6} md={6} lg={4}>
 					      	<Link className="menu-item" to={{pathname: "/project/soton-blog", search: "id=4"}}>
 						      	<div className="image-item">
-						      		<h3 className="image-caption">Blogs</h3>
-								  	<Image src={'/images/image-4.png'} alt="Blogs" style={{"height" : "auto", "width": "90vw"}}/>
+								  	<Image src={'/images/image-4.png'} alt="Blogs" responsive/>
+								  	<h3 className="image-caption">Blogs</h3>
+								  	 <p>Description</p>
 								</div>
 							</Link>
 						</Col>

@@ -63,24 +63,23 @@ normal);
 
 
 /*--- Variables settings ---*/
-$mobile-sm-font: 10px;
-$mobile-smmed-font: 12px;
-$mobile-med-font: 14px;
-$mobile-lg-font: 18px;
-$mobile-xlg-font: 20px;
-$headline: 2rem;
-$subheadline: 1.75rem;
-$subsubheadline: 1.5rem;
-$mobilemenuLink: 1.5rem;
-$menuLink: 1.25rem;
-$submenuLink: 1.15rem;
 $background: #fefefa;
 $black: #000;
 $grey: #c7c7c7;
-$blackRGB: rgba(0,
-0,
-0,
-0.15);
+$blackRGB: rgba(0, 0, 0, 0.15);
+
+$sm-font: 10px;
+$smmed-font: 12px;
+$med-font: 14px;
+$lg-font: 18px;
+$xlg-font: 20px;
+$headline: 2rem;
+$subheadline: 1.75rem;
+$subsubheadline: 1.5rem;
+$paragraph: 1rem;
+$menuLink: 1.75rem;
+$submenuLink: 1.15rem;
+
 $projectWidthLarge: 33.33vw;
 $projectWidthSmall: 16.66vw;
 
@@ -92,7 +91,7 @@ body,
    background-color: $background;
    height: 100%;
    width: 100%;
-   font-size: $mobile-sm-font;
+   font-size: $sm-font;
    cursor: default;
 }
 
@@ -129,18 +128,19 @@ ul {
 }
 
 h1 {
-   // text-transform: uppercase;
    font-size: $headline;
 }
 
 h2 {
-   // text-transform: uppercase;
    font-size: $subheadline;
 }
 
 h3 {
-   // text-transform: uppercase;
    font-size: $subsubheadline;
+}
+
+p {
+   font-size: $paragraph;
 }
 
 .menu-container {
@@ -169,7 +169,7 @@ h3 {
 }
 
 .menu-item {
-   font-size: $mobilemenuLink;
+   font-size: $menuLink;
    margin-bottom: 10px;
    text-decoration: none;
 }
@@ -212,7 +212,6 @@ h3 {
    z-index: 12;
 }
 
-
 /*-- Meter --*/
 
 .meter {
@@ -243,8 +242,8 @@ rect {
    position: absolute;
    top: 0px;
    left: 0px;
-   height: 25vh;
-   width: 35vw;
+   height: 20vh;
+   width: 100vw;
    z-index: 17;
    display: none;
 }
@@ -278,61 +277,48 @@ rect {
 /*-- Navigation --*/
 
 .navigation-container {
-   margin: 2vh 0px 0px 5vw;
+   margin: 2vh;
 }
 
-.logo-item {
-   width: 10vw;
-   height: 15vh;
+.logo-container {
+   padding: 0px;
+}
+
+.logo-container .logo-item {
+   width: 100%;
+   height: 20vw;
+   margin-left: 2vh;
    background-image: url(../images/signature.png);
-   background-size: 125px 125px;
+   background-size: 125px auto;
    background-repeat: no-repeat;
 }
 
-.mobile-menu {
-   width: 10vw;
-   height: 10vh;
+.vertical-align {
+   display: flex;
+   align-items: baseline;
 }
 
-.mobile-navigation {
-   height: 30vh;
-   width: 30vw;
+.pull-bottom {
+   padding-bottom: 1vh;
 }
+
 
 /*------- Middle Containers -------*/
 
 .middle-content {
    position: absolute;
-   height: 100vh;
    width: 100vw;
+   height: 80vh;
+   margin-top: 20vh;
    top: 0vh;
    left: 0vw;
-   overflow: hidden;
    z-index: 14;
    background: $background;
    color: #eee;
 }
 
 .middle-content-container {
-   position: absolute;
-   height: 100vh;
-   width: 100vw;
-   top: 0vh;
-   left: 0vw;
-   z-index: 14;
-}
-
-.logo-container {
-   position: absolute;
-   right: 3vh;
-}
-
-.logo-container .logo-item {
-   width: 35vw;
-   height: 20vh;
-   background-image: url(../images/signature.png);
-   background-size: 100px 100px;
-   background-repeat: no-repeat;
+   overflow: hidden;
 }
 
 /*-- Homepage --*/
@@ -408,65 +394,33 @@ rect {
    background-repeat: no-repeat;
 }
 
-/*-- About page --*/
-
-.about-container {
-   position: absolute;
-   height: 100vh;
-   width: 100vw;
-   margin: 10px 200px;
-}
-
-.about-image {
-   position: relative;
-   float: right;
-}
-
-.about-text {
-   width: 70vw;
-   margin: 15vh 5vw 10vh 5vw;
-}
-
-.about-text h1 {
-   margin-left: 250px;
-}
-
-.about-text .lW {
-   float: left;
-   clear: left;
-   height: 15px;
-}
-
-.about-text .rW {
-   float: right;
-   clear: right;
-   height: 15px;
-}
-
-
 /*-- Projects --*/
 
-.gallery-container,
-.desktop-gallery {
-   height: 100vh;
-   width: 100vw;
-}
-
 .projects-container {
-   position: absolute;
-   height: 100vh;
-   width: 100vw;
-   transform: translate3d(0px, 0px, 0px);
+   margin-top: 2vh;
 }
 
-.image-item img {
+.image-item h3 {
+   margin: 1vh 0vw 0vh 0vw;
+}
 
+.image-item p {
+   margin-bottom: 2vh;
 }
 
 /*-- Contact --*/
 
 .contact-container {
    margin-top: 30vh;
+}
+
+.contact-item {
+   font-size: $subheadline;
+   margin-bottom: 5vh;
+}
+
+.contact-item i {
+   margin-right: 5vw;
 }
 
 /*-- Coder --*/
@@ -609,15 +563,12 @@ rect {
    html,
    body,
    #app {
-      font-size: $mobile-smmed-font;
-   }
-
-   .logo-container {
-      right: 0vh;
+      font-size: $smmed-font;
    }
 
    .logo-container .logo-item {
-      background-size: 110px 110px;
+      height: 24vw;
+      background-size: 160px auto;
    }
 
    .home-typed {
@@ -653,15 +604,11 @@ rect {
    html,
    body,
    #app {
-      font-size: $mobile-med-font;
-   }
-
-   .logo-container {
-      right: 0vh;
+      font-size: $med-font;
    }
 
    .logo-container .logo-item {
-      background-size: 130px 130px;
+      background-size: 180px auto;
    }
 
    .home-typed {
@@ -697,28 +644,21 @@ rect {
    html,
    body,
    #app {
-      font-size: $mobile-lg-font;
+      font-size: $lg-font;
    }
    /*------- Top Containers -------*/
-   .top-content {
-      top: 0px;
-      left: 0px;
-      height: 20vh;
-      width: 20vw;
+
+   .navigation-container {
+      margin: 4vh 2vw 0vh 2vw;
    }
-   .top-div {
-      top: -45vh;
-      left: -45vw;
-      height: 125vh;
-      width: 200vw;
-   }
-   .loaded .top-div {
-      top: -120vh;
-      left: -120vw;
+
+   .logo-container {
+      padding-left: 2vh;
    }
 
    .logo-container .logo-item {
-      background-size: 200px 200px;
+      height: 18vw;
+      background-size: 260px auto;
    }
    /*------- Middle Containers -------*/
 
@@ -727,25 +667,13 @@ rect {
       height: 100vh;
       width: 100vw;
    }
+
    .header-div {
       margin: 1vh 2vw;
    }
+
    .projects-header {
       text-align: right;
-   }
-   .image-item {
-      position: relative;
-      height: 20vh;
-      width: 100vw;
-      overflow: hidden;
-   }
-   .image-item .image-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      margin: 0 3vw 1vh 3vw;
-      background: rgba(255, 255, 255, 0.2);
    }
 
    .image-item h3 {
@@ -799,7 +727,7 @@ rect {
    html,
    body,
    #app {
-      font-size: $mobile-xlg-font;
+      font-size: $xlg-font;
    }
 
    /*------- Top Containers -------*/
@@ -807,30 +735,17 @@ rect {
    /*-- Navigation --*/
 
    .navigation-container {
-      margin: 10px 0px 0px 15px;
+      margin: 2vh 2vw;
    }
 
-   .top-content {
+   .loaded .top-content {
       top: 0px;
       left: 0px;
-      height: 30vh;
-      width: 30vw;
    }
 
-   .top-div {
-      top: -45vh;
-      left: -45vw;
-      height: 125vh;
-      width: 200vw;
-   }
-
-   .loaded .top-div {
-      top: -120vh;
-      left: -120vw;
-   }
-
-   .desktop-navigation .logo-item {
-      display: none;
+   .logo-container .logo-item {
+      height: 18vw;
+      background-size: 300px auto;
    }
 
    /*------- Middle Containers -------*/
@@ -838,11 +753,6 @@ rect {
    .loaded .middle-content {
       height: 100vh;
       width: 100vw;
-   }
-
-   .logo-container .logo-item {
-      width: 25vw;
-      height: 20vh;
    }
 
    /*-- Projects --*/
@@ -854,26 +764,6 @@ rect {
 
    .header-div {
       margin: 1vh 2vw;
-   }
-
-   .projects-header {
-      text-align: right;
-   }
-
-   .image-item {
-      position: relative;
-      height: 20vh;
-      width: 100vw;
-      overflow: hidden;
-   }
-
-   .image-item .image-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      margin: 0 3vw 1vh 3vw;
-      background: rgba(255, 255, 255, 0.2);
    }
 
    .home-silhoutte #silhoutte-1 {
@@ -942,6 +832,11 @@ rect {
 }
 
 @media (min-width: 1280px) {
+
+   .logo-container .logo-item {
+      height: 18vw;
+      background-size: 300px auto;
+   }
 
 }
 
@@ -1023,10 +918,9 @@ rect {
       margin: 50px 0px 0px 50px;
    }
 
-   .logo-item {
-      width: 20vw;
-      height: 20vh;
-      background-size: 175px 175px;
+   .logo-container .logo-item {
+      height: 15vw;
+      background-size: 400px auto;
    }
 
    /*------- Middle Containers -------*/
@@ -1046,10 +940,6 @@ rect {
       width: 100vw;
       top: 0vh;
       left: 0vw;
-   }
-
-   .logo-container {
-      display: none;
    }
 
    /*-- Homepage --*/
