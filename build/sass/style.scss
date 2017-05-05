@@ -459,101 +459,15 @@ rect {
    transform: translate3d(0px, 0px, 0px);
 }
 
-.blink-message {
-   position: absolute;
-   bottom: 10px;
-   left: 40vw;
-   animation: blinker 2s linear infinite;
-   z-index: 20;
+.image-item img {
+
 }
 
-@keyframes blinker {
-   50% {
-      opacity: 0;
-   }
+/*-- Contact --*/
+
+.contact-container {
+   margin-top: 30vh;
 }
-
-.floats-gallery {
-   position: absolute;
-   height: 100vh;
-   width: 200vw;
-   padding: 0;
-}
-
-.projects-container>.floats-gallery .slanted {
-   transition: width 0.5s;
-   -webkit-transition: width 0.5s;
-   transition-timing-function: ease;
-   -webkit-transition-timing-function: ease;
-}
-
-.projects-container>.floats-gallery>.slanted {
-   float: left;
-   position: relative;
-   height: 100vh;
-   width: $projectWidthSmall;
-}
-
-.projects-container>.floats-gallery>.slanted+.slanted {
-   overflow: hidden;
-   width: $projectWidthLarge;
-   transform-origin: 0% 100%;
-   -ms-transform-origin: 0% 100%;
-   -webkit-transform-origin: 0% 100%;
-   transform: skewX(-45deg);
-   -ms-transform: skewX(-45deg);
-   -webkit-transform: skewX(-45deg);
-}
-
-.projects-container>.floats-gallery>.slanted>.unslanted {
-   height: 100vh;
-}
-
-.projects-container>.floats-gallery>.slanted>.unslanted>img {
-   position: absolute;
-   height: 100vh;
-}
-
-.projects-container>.floats-gallery>.slanted+.slanted>.unslanted {
-   transform-origin: 0% 100%;
-   -ms-transform-origin: 0% 100%;
-   -webkit-transform-origin: 0% 100%;
-   transform: skewX(45deg);
-   -ms-transform: skewX(45deg);
-   -webkit-transform: skewX(45deg);
-}
-
-.projects-container>.floats-gallery>.slanted:hover {
-   width: -webkit-calc(#{$projectWidthSmall} + 5vw);
-   width: -moz-calc(#{$projectWidthSmall} + 5vw);
-   width: calc(#{$projectWidthSmall} + 5vw);
-}
-
-.projects-container>.floats-gallery>.slanted+.slanted:hover {
-   width: -webkit-calc(#{$projectWidthLarge} + 5vw);
-   width: -moz-calc(#{$projectWidthLarge} + 5vw);
-   width: calc(#{$projectWidthLarge} + 5vw);
-}
-
-.project-container {
-   position: relative;
-   margin: 10px 200px;
-}
-
-.projects-scroll {
-   height: 100vh;
-   width: 100vw;
-}
-
-
-/*-- Three-projects --*/
-
-#three-container,
-#three-projects-container {
-   height: 100vh;
-   width: 100vw;
-}
-
 
 /*-- Coder --*/
 

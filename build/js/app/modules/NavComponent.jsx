@@ -19,6 +19,7 @@ export default class NavComponent extends React.Component {
 		    mobileBottomContainer: "",
 		    mobileSocialContainer: ""
 	    };
+	    this.calculatePixel = this.calculatePixel.bind(this);
 		this.menuToggle = this.menuToggle.bind(this);
 	}
 
@@ -33,7 +34,7 @@ export default class NavComponent extends React.Component {
 	menuToggle() {
 		if(this.state.mobileOpen === false) {
 			TweenLite.to(this.state.mobileTopContainer, 0.25, {
-				top:"-100vh",
+				top: this.calculatePixel(this.state.mobileTopContainer, "top", false),
 				ease:Linear.easeNone,
 				onComplete: function(){
 								this.setState({
@@ -45,7 +46,7 @@ export default class NavComponent extends React.Component {
 							}.bind(this)
 			}),
 			TweenLite.to(this.state.mobileBottomContainer, 0.25, {
-				bottom:"-110vh", 
+				bottom: this.calculatePixel(this.state.mobileBottomContainer, "bottom", false),
 				ease:Linear.easeNone,
 				onComplete: function(){
 								this.state.mobileSocialContainer.style.display = "block"
@@ -53,7 +54,7 @@ export default class NavComponent extends React.Component {
 			});
 		} else if (this.state.mobileOpen === true)
 			TweenLite.to(this.state.mobileTopContainer, 0.25, {
-				top:"-125vh",
+				top: this.calculatePixel(this.state.mobileTopContainer, "top", true),
 				ease:Linear.easeNone,
 				onStart: function(){
 								this.setState({
@@ -65,12 +66,23 @@ export default class NavComponent extends React.Component {
 							}.bind(this)
 			}),
 			TweenLite.to(this.state.mobileBottomContainer, 0.25, {
-				bottom:"-125vh",
+				bottom: this.calculatePixel(this.state.mobileBottomContainer, "bottom", true),
 				ease:Linear.easeNone,
 				onStart: function(){
 								this.state.mobileSocialContainer.style.display = "none"
 							}.bind(this)
 			});
+	}
+
+	calculatePixel(el, pos, open) {
+		var currentPos = Number(window.getComputedStyle(el, null).getPropertyValue(pos).split("px")[0]);
+		if(open === true){
+			var additionPos = currentPos - 100;
+		} else {
+			var additionPos = currentPos + 100;
+		}
+		var newPos = additionPos + "px";
+		return newPos;
 	}
 
 	render() {

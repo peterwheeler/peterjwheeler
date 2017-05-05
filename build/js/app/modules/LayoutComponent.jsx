@@ -10,9 +10,9 @@ import SocialComponent from "./SocialComponent.jsx";
 import ProgressComponent from "./ProgressComponent.jsx";
 
 import Home from "../routes/Home.jsx";
-import About from "../routes/About.jsx";
 import Projects from "../routes/Projects.jsx";
 import Project from "../routes/projects/Project.jsx";
+import Contact from "../routes/Contact.jsx";
 import Coder from "../routes/Coder.jsx";
 
 export default class LayoutComponent extends React.Component {
@@ -91,6 +91,7 @@ export default class LayoutComponent extends React.Component {
                       <Projects updateProject={this.handleProjectUpdate} updateStyle={this.handleProjectStyle} scrollMove={this.state.scrollProgress}/>)}
                     />
                     <Route path="/project/:projectID" component={Project}/>
+                    <Route path="/contact" component={Contact}/>
                     <Route path="/coder" component={Coder}/>
                  </Switch>
                </div>
