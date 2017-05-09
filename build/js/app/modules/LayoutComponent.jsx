@@ -6,13 +6,18 @@ import Breadcrumbs from "react-breadcrumbs";
 import BreadComponent from "./BreadComponent.jsx";
 import NavComponent from "./NavComponent.jsx";
 import FooterComponent from "./FooterComponent.jsx";
-import SocialComponent from "./SocialComponent.jsx";
 import ProgressComponent from "./ProgressComponent.jsx";
-import ParallaxComponent from '../modules/ParallaxComponent.jsx';
+import ParallaxComponent from './ParallaxComponent.jsx';
 
 import Home from "../routes/Home.jsx";
-import Projects from "../routes/Projects.jsx";
-import Project from "../routes/projects/Project.jsx";
+import Portfolio from "../routes/Portfolio.jsx";
+import Juxtapose from "../routes/portfolio/Juxtapose.jsx";
+import Storytour from "../routes/portfolio/Storytour.jsx";
+import Portus from "../routes/portfolio/Portus.jsx";
+import FutureLearn from "../routes/portfolio/FutureLearn.jsx";
+import WSInstitute from "../routes/portfolio/WSInstitute.jsx";
+import Websites from "../routes/portfolio/Websites.jsx";
+import Blogs from "../routes/portfolio/Blogs.jsx";
 import Contact from "../routes/Contact.jsx";
 import Coder from "../routes/Coder.jsx";
 
@@ -81,25 +86,37 @@ export default class LayoutComponent extends React.Component {
                   />
                </div>
             </div>
-            <div className="middle-content" id="slanted-container">
+            <div className="middle-content">
                <ProgressComponent load={this.state.loadProgress}/>
                <div className="middle-content-container">
                  <Switch>
                     <Route path="/" exact component={Home}></Route>
-                    <Route path="/projects" exact render={(props) => (
-                      <Projects updateProject={this.handleProjectUpdate} updateStyle={this.handleProjectStyle} scrollMove={this.state.scrollProgress}/>)}
+                    <Route path="/portfolio" exact render={(props) => (
+                      <Portfolio/>)}
                     />
-                    <Route path="/project/:projectID" component={Project}/>
+                    <Route path="/portfolio/juxtapose" component={Juxtapose}/>
+                    <Route path="/portfolio/storytour" component={Storytour}/>
+                    <Route path="/portfolio/portus" component={Portus}/>
+                    <Route path="/portfolio/futureLearn" component={FutureLearn}/>
+                    <Route path="/portfolio/websites" component={Websites}/>
+                    <Route path="/portfolio/wsi-institute" component={WSInstitute}/>
+                    <Route path="/portfolio/wordpress-blogs" component={Blogs}/>
                     <Route path="/contact" component={Contact}/>
                     <Route path="/coder" component={Coder}/>
                  </Switch>
                </div>
+               <FooterComponent />
             </div>
-            <div className="bottom-content">
-              <ParallaxComponent />
-            </div>
+           {/*<div className="bottom-content">
+               <ParallaxComponent />
+
+            </div>*/}
          </div>
       </div>
       )
     }
+}
+
+if (module.hot) {
+  module.hot.accept();
 }

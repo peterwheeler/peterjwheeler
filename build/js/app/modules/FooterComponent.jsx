@@ -3,16 +3,29 @@ import { Link } from "react-router";
 import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
-export default class FooterComponent extends React.Component {
-  render() {
-    return (
-	    	<Grid fluid>
-			        <Row className="show-grid">
-				        <Col xs={12} sm={3} md={2} lg={2} smOffset={9} mdOffset={8}>
-					    	<div className="footerNav">React Router Footer!</div>
-				    	</Col>
-			    	</Row>
-	    	</Grid>
-    	);
-  }
+export default class Footer extends React.Component {
+	constructor(props) {
+	    super(props);
+	}
+
+  	render() {
+  		return (
+	  		<footer className="footer">
+	  			<Grid fluid>
+					<Row>
+						<Col xs={10} xsOffset={1} md={8} mdOffset={1} className="footer-left">
+							<i className="fa fa-copyright" aria-hidden="true"></i><span>Peter Wheeler</span>
+						</Col>
+						<Col xs={10} xsOffset={1} md={2} mdOffset={0} className="footer-right">
+							<p>Built with <a href="https://facebook.github.io/react/">React</a></p>
+						</Col>
+					</Row>
+				</Grid>
+			</footer>
+		)
+  	}
+}
+
+if (module.hot) {
+  module.hot.accept();
 }
