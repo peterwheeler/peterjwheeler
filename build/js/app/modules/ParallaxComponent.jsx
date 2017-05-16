@@ -42,6 +42,12 @@ export default class ParallaxComponent extends React.Component {
           <li className="layer" data-depth="0.40">
             <div className="silhoutte" id="silhoutte-4"></div>
           </li>
+          <li className="layer" data-depth="0.40">
+            <div className="silhoutte" id="silhoutte-5"></div>
+          </li>
+          <li className="layer" data-depth="0.40">
+            <div className="silhoutte" id="silhoutte-6"></div>
+          </li>
         </ul>
       </div>
     	);

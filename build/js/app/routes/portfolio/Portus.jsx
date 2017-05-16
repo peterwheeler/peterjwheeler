@@ -15,7 +15,7 @@ export default class Portus extends React.Component {
 				<Grid fluid>
 					<Row>
 						<Col xs={10} xsOffset={1} md={6} mdOffset={0} mdPush={5} className="project-image">
-							<Image src="../images/image-0.png" responsive />
+							<Image src="../images/portus/image-1.png" responsive />
 						</Col>
 						<Col xs={10} xsOffset={1} md={4} mdOffset={1} mdPull={6} className="project-headline">
 							<h1>Portus Tour</h1>
@@ -33,7 +33,7 @@ export default class Portus extends React.Component {
 					</Row>
 					<Row className="project-gallery">
 						<Col xs={10} xsOffset={1} md={6} mdOffset={0} mdPush={5}>
-							<Image src="../images/image-0.png" responsive />
+							<Image src="../images/portus/wireframe-1.png" responsive />
 						</Col>
 						<Col xs={10} xsOffset={1} md={4} mdOffset={1} mdPull={6}>
 							<p>Nullam sapien augue, gravida nec dolor ac, vestibulum pulvinar massa. Curabitur ac justo nisl.<br/><br/>Fusce dapibus, libero vel fringilla dictum, magna tellus pellentesque nulla, feugiat sagittis dolor turpis nec tellus. Duis bibendum lacus tellus, et malesuada turpis bibendum vitae.</p>

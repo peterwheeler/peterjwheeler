@@ -18,11 +18,11 @@ export default class Portus extends React.Component {
 							<Image src="../images/acrg/image-1.png" responsive />
 						</Col>
 						<Col xs={10} xsOffset={1} md={4} mdOffset={1} mdPull={6} className="project-headline">
-							<h1>ACRG WordPress Blog</h1>
+							<h1>Archaeology Department WordPress Blog</h1>
 							<h3 className="light-text">Client: <i>University of Southampton</i></h3>
 							<div className="divider"></div>
 							<p>To support the work of the Futurelearn course I was commissioned with creating an interactive story telling application. The main purpose of this was to provide users with key information about the archaeological site of Portus, for which the online course was focused on.</p>
-							<h3 className="link"><a href="http://acrg.soton.ac.uk/">View site</a></h3>
+							<h3 className="link"><a href="https://generic.wordpress.soton.ac.uk/archaeology/">View site</a></h3>
 						</Col>
 					</Row>
 					<Row>

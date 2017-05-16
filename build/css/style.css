@@ -127,7 +127,7 @@ rect {
   left: 0px;
   height: 20vh;
   width: 100vw;
-  z-index: 17;
+  z-index: 14;
   display: none; }
 
 .loaded .top-content {
@@ -153,7 +153,7 @@ rect {
 .logo-container .logo-item {
   height: 10vh;
   margin-left: 2vh;
-  background-image: url(../images/signature.png);
+  background-image: url(../images/signature.svg);
   background-size: auto 10vh;
   background-repeat: no-repeat; }
 
@@ -168,28 +168,138 @@ rect {
 .middle-content {
   position: absolute;
   width: 100vw;
-  height: 50vh;
   top: 20vh;
   left: 0px;
-  z-index: 14;
+  z-index: 15;
   background: #fefefa;
   color: #eee; }
 
 .middle-content-container {
   position: relative;
+  min-height: 45vh;
   overflow: hidden; }
 
 /*-- Homepage --*/
 .home-container {
   position: relative;
+  width: 100vw;
+  height: 45vh;
   margin: 0; }
 
-.home-typed {
+.home-fade {
   position: relative;
   margin: 5vh 0vw; }
 
-.home-typed h3 {
+.home-fade h3 {
   font-size: 1.5rem; }
+
+.home-text {
+  margin: 2vh 1vw; }
+
+.fade-1 {
+  opacity: 0;
+  animation: 1s linear 1s fadeInDown;
+  animation-fill-mode: forwards;
+  /*when the spec is finished*/
+  -webkit-animation-fill-mode: forwards;
+  /*Chrome 16+, Safari 4+*/
+  -moz-animation-fill-mode: forwards;
+  /*FF 5+*/
+  -o-animation-fill-mode: forwards;
+  /*Not implemented yet*/
+  -ms-animation-fill-mode: forwards;
+  /*IE 10+*/ }
+
+.fade-2 {
+  opacity: 0;
+  animation: 1s linear 2.5s fadeInDown;
+  animation-fill-mode: forwards;
+  /*when the spec is finished*/
+  -webkit-animation-fill-mode: forwards;
+  /*Chrome 16+, Safari 4+*/
+  -moz-animation-fill-mode: forwards;
+  /*FF 5+*/
+  -o-animation-fill-mode: forwards;
+  /*Not implemented yet*/
+  -ms-animation-fill-mode: forwards;
+  /*IE 10+*/ }
+
+.fade-3 {
+  opacity: 0;
+  animation: 1s linear 4s fadeInDown;
+  animation-fill-mode: forwards;
+  /*when the spec is finished*/
+  -webkit-animation-fill-mode: forwards;
+  /*Chrome 16+, Safari 4+*/
+  -moz-animation-fill-mode: forwards;
+  /*FF 5+*/
+  -o-animation-fill-mode: forwards;
+  /*Not implemented yet*/
+  -ms-animation-fill-mode: forwards;
+  /*IE 10+*/ }
+
+.fade-4 {
+  opacity: 0;
+  animation: 1s linear 5.5s fadeInDown;
+  animation-fill-mode: forwards;
+  /*when the spec is finished*/
+  -webkit-animation-fill-mode: forwards;
+  /*Chrome 16+, Safari 4+*/
+  -moz-animation-fill-mode: forwards;
+  /*FF 5+*/
+  -o-animation-fill-mode: forwards;
+  /*Not implemented yet*/
+  -ms-animation-fill-mode: forwards;
+  /*IE 10+*/ }
+
+@keyframes fadein {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0); }
+  to {
+    opacity: 1;
+    transform: none; } }
+
+.pulse:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #353535;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s; }
+
+.pulse:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1); }
+
+@keyframes line {
+  from {
+    visibility: hidden;
+    transform: scaleX(0); }
+  to {
+    visibility: visible;
+    transform: scaleX(1); } }
+
+@keyframes pulsing {
+  from {
+    transform: scale3d(1, 1, 1); }
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05); }
+  to {
+    transform: scale3d(1, 1, 1); } }
 
 /*-- Projects --*/
 .projects-container {
@@ -201,12 +311,20 @@ rect {
 .image-item p {
   margin-bottom: 2vh; }
 
+.image-item img {
+  border: #DDD solid 1px;
+  box-shadow: 2px 2px 2px #DDD; }
+
 /*-- Project --*/
 .project-container {
   margin: 6vh 4vw; }
 
 .project-headline, .project-details, .project-gallery {
   margin-bottom: 6vh; }
+
+.project-image img {
+  border: #DDD solid 1px;
+  box-shadow: 2px 2px 2px #DDD; }
 
 .project-headline .link {
   margin-top: 6vh; }
@@ -234,6 +352,7 @@ rect {
 
 /*-- Contact --*/
 .contact-container {
+  height: 40vh;
   margin-top: 5vh; }
 
 .contact-headline {
@@ -253,7 +372,7 @@ rect {
   height: 30vh;
   bottom: 0px;
   left: 0px;
-  z-index: 17;
+  z-index: 14;
   display: none; }
 
 .loaded .bottom-content {
@@ -262,7 +381,7 @@ rect {
 .home-silhoutte {
   position: relative;
   width: 100vw;
-  height: 30vh; }
+  height: 25vh; }
 
 .home-silhoutte #scene {
   margin: 0;
@@ -281,25 +400,28 @@ rect {
   background-repeat: repeat-x; }
 
 .home-silhoutte #silhoutte-1 {
-  background-image: url("../images/silhouttes/silhoutte-1.png"); }
+  background-image: url("../images/silhouttes/silhoutte-1-1.png"); }
 
 .home-silhoutte #silhoutte-2 {
-  background-image: url("../images/silhouttes/silhoutte-2.png"); }
+  background-image: url("../images/silhouttes/silhoutte-2-1.png"); }
 
 .home-silhoutte #silhoutte-3 {
-  background-image: url("../images/silhouttes/silhoutte-3.png"); }
+  background-image: url("../images/silhouttes/silhoutte-3-1.png"); }
 
 .home-silhoutte #silhoutte-4 {
-  background-image: url("../images/silhouttes/silhoutte-4.png"); }
+  background-image: url("../images/silhouttes/silhoutte-4-1.png"); }
+
+.home-silhoutte #silhoutte-5 {
+  background-image: url("../images/silhouttes/silhoutte-5-1.png"); }
+
+.home-silhoutte #silhoutte-6 {
+  background-image: url("../images/silhouttes/silhoutte-6-1.png"); }
 
 .footer {
   position: relative;
   width: 100vw;
-  height: 15vh;
+  height: 5vh;
   background-color: #353535; }
-
-.footer .footer-left, .footer-right {
-  margin-top: 6vh; }
 
 .footer h3, .footer p, .footer i, .footer a, .footer span {
   color: #fefefa; }
@@ -352,8 +474,13 @@ rect {
   /*------- Middle Container -------*/
   /*-- Projects --*/
   .projects-container {
-    margin: 2vh 8vw; }
+    margin: 8vh 8vw; }
   /*------- Bottom Container -------*/ }
+
+@media (min-width: 992px) {
+  /*------- Bottom Container -------*/
+  .footer .footer-left, .footer-right {
+    margin-top: 1vh; } }
 
 @media (min-width: 1024px) {
   html,
@@ -401,7 +528,6 @@ rect {
   /*-- Homepage --*/
   .home-container {
     width: 100vw;
-    height: 100vh;
     margin: 0px; }
   .home-typed {
     position: relative;

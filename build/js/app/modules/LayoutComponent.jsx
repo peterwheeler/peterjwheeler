@@ -14,10 +14,10 @@ import Portfolio from "../routes/Portfolio.jsx";
 import Juxtapose from "../routes/portfolio/Juxtapose.jsx";
 import Storytour from "../routes/portfolio/Storytour.jsx";
 import Portus from "../routes/portfolio/Portus.jsx";
-import FutureLearn from "../routes/portfolio/FutureLearn.jsx";
+import Lifelong from "../routes/portfolio/Lifelong.jsx";
 import WSInstitute from "../routes/portfolio/WSInstitute.jsx";
-import Websites from "../routes/portfolio/Websites.jsx";
-import Blogs from "../routes/portfolio/Blogs.jsx";
+import Archaeology from "../routes/portfolio/Archaeology.jsx";
+import ACRG from "../routes/portfolio/ACRG.jsx";
 import Contact from "../routes/Contact.jsx";
 import Coder from "../routes/Coder.jsx";
 
@@ -67,11 +67,30 @@ export default class LayoutComponent extends React.Component {
   }
 
   render() {
-    const routes = this.props.routes;
-    const params = this.props.params;
-    const containerStyle = {
-      height: "50%"
-    };
+    const portfolioRoutes = [{
+      path: '/portfolio',
+      component: Portfolio,
+      routes: [
+        {
+            path: '/juxtapose',
+            component: Juxtapose
+        },{
+            path: '/portus',
+            component: Portus
+        },{
+            path: '/lifelong',
+            component: Lifelong
+        },{
+            path: '/wsi-institute',
+            component: WSInstitute
+        },{
+            path: '/archaeology-wordpress',
+            component: Archaeology
+        },{
+            path: '/acrg-wordpress',
+            component: ACRG
+        }]
+      }]
     return (
       <div className="parent-container">
          <div className="content-container">
@@ -97,19 +116,19 @@ export default class LayoutComponent extends React.Component {
                     <Route path="/portfolio/juxtapose" component={Juxtapose}/>
                     <Route path="/portfolio/storytour" component={Storytour}/>
                     <Route path="/portfolio/portus" component={Portus}/>
-                    <Route path="/portfolio/futureLearn" component={FutureLearn}/>
-                    <Route path="/portfolio/websites" component={Websites}/>
+                    <Route path="/portfolio/lifelong" component={Lifelong}/>
                     <Route path="/portfolio/wsi-institute" component={WSInstitute}/>
-                    <Route path="/portfolio/wordpress-blogs" component={Blogs}/>
+                    <Route path="/portfolio/archaeology" component={Archaeology}/>
+                    <Route path="/portfolio/acrg-wordpress" component={ACRG}/>
                     <Route path="/contact" component={Contact}/>
                     <Route path="/coder" component={Coder}/>
                  </Switch>
                </div>
+               <ParallaxComponent />
                <FooterComponent />
             </div>
            {/*<div className="bottom-content">
                <ParallaxComponent />
-
             </div>*/}
          </div>
       </div>

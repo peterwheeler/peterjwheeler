@@ -15,14 +15,14 @@ export default class Portus extends React.Component {
 				<Grid fluid>
 					<Row>
 						<Col xs={10} xsOffset={1} md={6} mdOffset={0} mdPush={5} className="project-image">
-							<Image src="../images/acrg/image-1.png" responsive />
+							<Image src="../images/lifelong/image-1.png" responsive />
 						</Col>
 						<Col xs={10} xsOffset={1} md={4} mdOffset={1} mdPull={6} className="project-headline">
-							<h1>ACRG WordPress Blog</h1>
+							<h1>Lifelong Learning</h1>
 							<h3 className="light-text">Client: <i>University of Southampton</i></h3>
 							<div className="divider"></div>
 							<p>To support the work of the Futurelearn course I was commissioned with creating an interactive story telling application. The main purpose of this was to provide users with key information about the archaeological site of Portus, for which the online course was focused on.</p>
-							<h3 className="link"><a href="http://acrg.soton.ac.uk/">View site</a></h3>
+							<h3 className="link"><a href="http://www.southampton.ac.uk/lifelong/">View site</a></h3>
 						</Col>
 					</Row>
 					<Row>
@@ -33,17 +33,25 @@ export default class Portus extends React.Component {
 					</Row>
 					<Row className="project-gallery">
 						<Col xs={10} xsOffset={1} md={6} mdOffset={0} mdPush={5}>
-							<Image src="../images/acrg/image-2.png" responsive />
+							<Image src="../images/lifelong/wireframe-1.png" responsive />
 						</Col>
 						<Col xs={10} xsOffset={1} md={4} mdOffset={1} mdPull={6}>
 							<p>Nullam sapien augue, gravida nec dolor ac, vestibulum pulvinar massa. Curabitur ac justo nisl.<br/><br/>Fusce dapibus, libero vel fringilla dictum, magna tellus pellentesque nulla, feugiat sagittis dolor turpis nec tellus. Duis bibendum lacus tellus, et malesuada turpis bibendum vitae.</p>
 						</Col>
 					</Row>
 					<Row className="project-gallery">
-						<Col xs={10} xsOffset={1} md={6} mdOffset={1}>
-							<Image src="../images/acrg/image-2.png" responsive />
+						<Col xs={10} xsOffset={1} md={5} mdOffset={1}>
+							<Image src="../images/lifelong/image-2.png" responsive />
 						</Col>
-						<Col xs={10} xsOffset={1} md={4} mdOffset={0}>
+						<Col xs={10} xsOffset={1} md={5} mdOffset={0}>
+							<p>Nullam sapien augue, gravida nec dolor ac, vestibulum pulvinar massa. Curabitur ac justo nisl.<br/><br/>Fusce dapibus, libero vel fringilla dictum, magna tellus pellentesque nulla, feugiat sagittis dolor turpis nec tellus. Duis bibendum lacus tellus, et malesuada turpis bibendum vitae.</p>
+						</Col>
+					</Row>
+					<Row className="project-gallery">
+						<Col xs={10} xsOffset={1} md={6} mdOffset={0} mdPush={5}>
+							<Image src="../images/lifelong/image-3.png" responsive />
+						</Col>
+						<Col xs={10} xsOffset={1} md={4} mdOffset={1} mdPull={6}>
 							<p>Nullam sapien augue, gravida nec dolor ac, vestibulum pulvinar massa. Curabitur ac justo nisl.<br/><br/>Fusce dapibus, libero vel fringilla dictum, magna tellus pellentesque nulla, feugiat sagittis dolor turpis nec tellus. Duis bibendum lacus tellus, et malesuada turpis bibendum vitae.</p>
 						</Col>
 					</Row>

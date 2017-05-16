@@ -37,7 +37,7 @@ export default class NavComponent extends React.Component {
 					<Link to="/"><div className="logo-item"></div></Link>
 				</Col>
 				<Col xs={3} sm={2} className="pull-bottom">
-					<Link to="/portfolio" className="menu-item">Portfolio</Link>
+					<Link to="/portfolio" className="menu-item pulse">Portfolio</Link>
 				</Col>
 				<Col xs={3} sm={2} className="pull-bottom">
 					<Link to="/contact" className="menu-item">Contact</Link>
