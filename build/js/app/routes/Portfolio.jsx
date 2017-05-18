@@ -1,101 +1,110 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Grid, Row, Col, Clearfix, Image, Thumbnail} from "react-bootstrap";
-import HorizontalScroll from "react-scroll-horizontal";
+import { PortfolioList, FilterBar } from "../components/PortfolioCreator.jsx";
 
 export default class Portfolio extends React.Component {
 	constructor(props) {
 	    super(props);
 
-	    this.state = {hoverLink: ""};
+	    this.state = {
+	      checkedContentEditing: true,
+	      checkedWebDevelopment: true,
+	      checkedProjects: true
+	    };
 
-		this.handleHover = this.handleHover.bind(this);
-		this.handleOut = this.handleOut.bind(this);
+		this.checkOnContentEditing = this.checkOnContentEditing.bind(this);
+		this.checkOnWebDevelopment = this.checkOnWebDevelopment.bind(this);
+		this.checkOnProjects = this.checkOnProjects.bind(this);
+  	}
+
+
+	checkOnContentEditing(showContentEditing) {
+	    this.setState({
+	      checkedContentEditing: showContentEditing
+	    })
 	}
 
-	handleHover(evt) {
-	    const style = {
-			display: "table-cell"
-		};
-	    this.props.updateStyle(style)
-		var url = evt.currentTarget.href;
-		var href = url.split("/projects")[1];
-	    var evtValues = {"href": "/project" + href, "name": evt.target.alt};
-	    this.props.updateProject(evtValues)
+	checkOnWebDevelopment(showWebDevelopment){
+	    this.setState({
+	      checkedWebDevelopment: showWebDevelopment
+	    })
 	}
 
-	handleOut() {
-		const style = {
-			display: "none"
-		};
-	    this.props.updateStyle(style)
+	checkOnProjects(showProjects) {
+	    this.setState({
+	      checkedProjects: showProjects
+	    })
 	}
 
   	render() {
-  		const myScrollbar = {
-			"width": "100vw",
-			"height": "100vh"
-		};
+  		const projects = [
+	  		{	
+	  			id: 3,
+	  			category: "Project",
+	  			path: "/portfolio/juxtapose",
+	  			image: "/images/juxtapose/image-1.png",
+	  			caption: "Multiselect Juxtapose",
+	  			description: "Interactive image comparison toolkit."
+	  		},
+	  		{
+	  			id: 2,
+	  			category: "Web Development",
+	  			path: "/portfolio/portus",
+	  			image: "/images/portus/image-1.png",
+	  			caption: "Portus",
+	  			description: "Interactive maps and tour of the archaeological site of Portus."
+	  		},
+	  		{	
+	  			id: 2,
+	  			category: "Web Development",
+	  			path: "/portfolio/lifelong",
+	  			image: "/images/lifelong/image-1.png",
+	  			caption: "Lifelong Learning",
+	  			description: "Website redesign for the Lifelong Learning centre at the University of Southampton."
+	  		},
+	  		{
+	  			id: 2,
+	  			category: "Web Development",
+	  			path: "/portfolio/ws-institute",
+	  			image: "/images/wsi/image-1.png",
+	  			caption: "Web Science Institute",
+	  			description: "Creation of a new website for the WSI at the University of Southampton."
+	  		},
+	  		{
+	  			id: 1,
+	  			category: "Content Editing",
+	  			path: "/portfolio/archaeology-wordpress",
+	  			image: "/images/archaeology/image-1.png",
+	  			caption: "Archaeology department blog",
+	  			description: "WordPress blog following the research of the archaeological department at the University of Southampton."
+	  		},
+	  		{
+	  			id: 1,
+	  			category: "Content Editing",
+	  			path: "/portfolio/acrg-wordpress",
+	  			image: "/images/acrg/image-1.png",
+	  			caption: "ACRG blog",
+	  			description: "WordPress blog belonging to the Archaeological Computing Research Group."
+	  		}
+  		]
+
 	    return (
-	    	<div className="projects-container">
-				<Grid fluid>
-				    <Row className="show-grid">
-				    	<Col xs={12} sm={6} md={6} lg={4}>
-					    	<Link className="menu-item" to={{pathname: "/portfolio/juxtapose", search: "id=0"}}>
-						    	<div className="image-item">
-						    	    <Image src={'/images/juxtapose/image-1.png'} alt="Juxtapose" responsive/>
-						    	    <h3 className="image-caption">Multiselect Juxtapose</h3>
-						    	     <p>Interactive image comparison toolkit.</p>
-								</div>
-							</Link>
-						</Col>
-					    <Col xs={12} sm={6} md={6} lg={4}>
-					    	<Link className="menu-item" to={{pathname: "/portfolio/portus", search: "id=0"}}>
-						    	<div className="image-item">
-						    	    <Image src={'/images/portus/image-1.png'} alt="Portus" responsive/>
-						    	    <h3 className="image-caption">Portus</h3>
-						    	     <p>Interactive maps and tour of the archaeological site of Portus.</p>
-								</div>
-							</Link>
-						</Col>
-						<Col xs={12} sm={6} md={6} lg={4}>
-					      	<Link className="menu-item" to={{pathname: "/portfolio/lifelong", search: "id=4"}}>
-						      	<div className="image-item">
-								  	<Image src={'/images/lifelong/image-1.png'} alt="Lifelong Learning" responsive/>
-								  	<h3 className="image-caption">Lifelong Learning</h3>
-								  	 <p>Website redesign for the Lifelong Learning centre at the University of Southampton.</p>
-								</div>
-							</Link>
-						</Col>
-						<Col xs={12} sm={6} md={6} lg={4}>
-					      	<Link className="menu-item" to={{pathname: "/portfolio/wsi-institute", search: "id=4"}}>
-						      	<div className="image-item">
-								  	<Image src={'/images/wsi/image-1.png'} alt="Web Science Institute" responsive/>
-								  	<h3 className="image-caption">Web Science Institute</h3>
-								  	 <p>Creation of a new website for the WSI at the University of Southampton.</p>
-								</div>
-							</Link>
-						</Col>
-						<Col xs={12} sm={6} md={6} lg={4}>
-					      	<Link className="menu-item" to={{pathname: "/portfolio/archaeology", search: "id=4"}}>
-						      	<div className="image-item">
-								  	<Image src={'/images/archaeology/image-1.png'} alt="Blogs" responsive/>
-								  	<h3 className="image-caption">Archaeology department blog</h3>
-								  	 <p>WordPress blog following the research of the archaeological department at the University of Southampton.</p>
-								</div>
-							</Link>
-						</Col>
-						<Col xs={12} sm={6} md={6} lg={4}>
-					      	<Link className="menu-item" to={{pathname: "/portfolio/acrg-wordpress", search: "id=4"}}>
-						      	<div className="image-item">
-								  	<Image src={'/images/acrg/image-1.png'} alt="Blogs" responsive/>
-								  	<h3 className="image-caption">ACRG blog</h3>
-								  	 <p>WordPress blog belonging to the Archaeological Computing Research Group.</p>
-								</div>
-							</Link>
-						</Col>
-				    </Row>
-				</Grid>
+			<div className="projects-container">
+	    		<FilterBar
+	    			checkedContentEditing={this.state.checkedContentEditing}
+	    			checkedWebDevelopment={this.state.checkedWebDevelopment}
+	    			checkedProjects={this.state.checkedProjects}
+	    			includeContentEditing={this.checkOnContentEditing}
+	    			includeWebDevelopment={this.checkOnWebDevelopment}
+	    			includeProjects={this.checkOnProjects}
+	    		/>
+	    		<PortfolioList
+	    			projects={projects}
+	    			checkedContentEditing={this.state.checkedContentEditing}
+	    			checkedWebDevelopment={this.state.checkedWebDevelopment}
+	    			checkedProjects={this.state.checkedProjects}
+	    		/>
 			</div>
 	    );
 	}

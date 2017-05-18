@@ -78,6 +78,7 @@ $headline: 1.75rem;
 $subheadline: 1.5rem;
 $subsubheadline: 1.25rem;
 $paragraph: 1rem;
+$subparagraph: 0.75rem;
 $menuLink: 1.5rem;
 $submenuLink: 1.15rem;
 
@@ -287,8 +288,7 @@ p {
       -webkit-animation-fill-mode: forwards; /*Chrome 16+, Safari 4+*/
       -moz-animation-fill-mode: forwards; /*FF 5+*/
       -o-animation-fill-mode: forwards; /*Not implemented yet*/
-      -ms-animation-fill-mode: forwards; /*IE 10+*/
-   
+      -ms-animation-fill-mode: forwards; /*IE 10+*/ 
 }
 
 .fade-2 {
@@ -343,25 +343,25 @@ p {
   }
 }
 
-.pulse:before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: $lightblack;
-  visibility: hidden;
-  -webkit-transform: scaleX(0);
-  transform: scaleX(0);
-  -webkit-transition: all 0.3s ease-in-out 0s;
-  transition: all 0.3s ease-in-out 0s;
+.pulse {
+   display: inline-block;
 }
 
-.pulse:hover:before {
-   visibility: visible;
-  -webkit-transform: scaleX(1);
-  transform: scaleX(1);
+.pulse:after {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 2px;
+    background: $lightblack;
+    transition: width .3s;
+}
+
+.pulse:hover:after {
+    width: 100%;
+}
+
+.pulse-active:after {
+   width: 100%;
 }
 
 @keyframes line {
@@ -393,7 +393,33 @@ p {
 /*-- Projects --*/
 
 .projects-container {
-   margin: 6vh 4vw;
+   margin: 4vh 4vw;
+}
+
+.update-container {
+   margin: 2vh 4vw;
+}
+
+.filter-form {
+
+}
+
+.image-item {
+   overflow: hidden;
+}
+
+.corner-ribbon {
+   position: absolute;
+   top: 175px;
+   margin: 0;
+   padding: 0 1vw;
+   background: rgba(0, 0, 0, 0.75);
+   text-align: center;
+   font-size: $subparagraph;
+   color: #f0f0f0;
+   // transform: rotate(-45deg);
+   // -webkit-transform: rotate(-45deg);
+   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
 
 .image-item h3 {
@@ -412,15 +438,20 @@ p {
 /*-- Project --*/
 
 .project-container {
-   margin: 6vh 4vw;
+   margin: 4vh 4vw;
+}
+
+.update-container .page-arrow {
+   font-size: $headline;
+   margin: 0 0.5vw;
 }
 
 .project-headline, .project-details, .project-gallery {
    margin-bottom: 6vh;
 }
 
-.project-headline .light-text {
-
+.project-headline .light-text i {
+   cursor: default;
 }
 
 .project-image img {
@@ -544,6 +575,14 @@ p {
    background-image: url("../images/silhouttes/silhoutte-6-1.png");
 }
 
+.home-silhoutte #silhoutte-7 { 
+   background-image: url("../images/silhouttes/silhoutte-7-1.png");
+}
+
+.home-silhoutte #silhoutte-8 { 
+   background-image: url("../images/silhouttes/silhoutte-8-1.png");
+}
+
 .footer {
   position: relative;
   width: 100vw;
@@ -561,6 +600,11 @@ p {
 
 .footer span {
    margin-left: 1vw;
+}
+
+.footer .scroll-arrow {
+   font-size: $headline;
+   color: $black;
 }
 
 /*---------------------- Media Queries ----------------------*/
@@ -639,7 +683,11 @@ p {
 
    /*-- Projects --*/
    .projects-container {
-      margin: 8vh 8vw;
+      margin: 6vh 8vw;
+   }
+
+   .update-container {
+      margin: 2vh 8vw;
    }
 
    /*------- Bottom Container -------*/
@@ -687,7 +735,11 @@ p {
    /*-- Project --*/
 
    .project-container {
-      margin: 10vh 4vw;
+      margin: 6vh 4vw;
+   }
+
+   .update-container {
+      margin: 4vh 4vw;
    }
 
    /*------- Bottom Containers -------*/

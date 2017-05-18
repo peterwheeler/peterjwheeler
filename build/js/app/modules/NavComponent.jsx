@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Grid, Row, Col, Clearfix } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import MediaQuery from "react-responsive";
@@ -37,10 +37,10 @@ export default class NavComponent extends React.Component {
 					<Link to="/"><div className="logo-item"></div></Link>
 				</Col>
 				<Col xs={3} sm={2} className="pull-bottom">
-					<Link to="/portfolio" className="menu-item pulse">Portfolio</Link>
+					<NavLink to="/portfolio" className="menu-item pulse" activeClassName="pulse-active">Portfolio</NavLink>
 				</Col>
 				<Col xs={3} sm={2} className="pull-bottom">
-					<Link to="/contact" className="menu-item">Contact</Link>
+					<NavLink to="/contact" className="menu-item pulse" activeClassName="pulse-active">Contact</NavLink>
 				</Col>
 			</Row>
 		</Grid>

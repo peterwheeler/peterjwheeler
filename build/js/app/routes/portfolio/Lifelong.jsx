@@ -1,17 +1,17 @@
 import React from 'react';
-import queryString from 'query-string';
+import { Link } from "react-router-dom";
 import { Grid, Row, Col, Clearfix, Image } from "react-bootstrap";
 
-export default class Portus extends React.Component {
-	constructor(props, context) {
-	    super(props, context);
-	};
-	componentDidMount() {
-		const parsed = queryString.parse(this.props.location.search);
+import PortfolioChanger from "../../components/PortfolioChanger.jsx";
+
+export default class Lifelong extends React.Component {
+	constructor(props) {
+	    super(props);
 	};
 	render() {
 		return (
 			<div className="project-container">
+				<PortfolioChanger previousPage={"portus"} nextPage={"ws-institute"} />
 				<Grid fluid>
 					<Row>
 						<Col xs={10} xsOffset={1} md={6} mdOffset={0} mdPush={5} className="project-image">
@@ -21,37 +21,37 @@ export default class Portus extends React.Component {
 							<h1>Lifelong Learning</h1>
 							<h3 className="light-text">Client: <i>University of Southampton</i></h3>
 							<div className="divider"></div>
-							<p>To support the work of the Futurelearn course I was commissioned with creating an interactive story telling application. The main purpose of this was to provide users with key information about the archaeological site of Portus, for which the online course was focused on.</p>
+							<p>The academic coordination of Lifelong Learning provide a distinctive educational offer to the general public that reflects the strength of research carried out at the University of Southampton. They deliver excellent courses and events to staff, students and members of the local community.<br/><br/>With the growth in the number of their yearly courses I was requested by Lifelong Learning to carry out a revamp of the entire site.</p>
 							<h3 className="link"><a href="http://www.southampton.ac.uk/lifelong/">View site</a></h3>
 						</Col>
 					</Row>
 					<Row>
 						<Col xs={10} xsOffset={1} md={8} mdOffset={2} className="project-details">
 							<h2>Details</h2>
-							<p>The key elements of the storytelling were the periodic changes that have been recorded across the archaeological site. The historic periods were identified and the key areas of interest pinpointed. Research into available toolkits highlighted StoryMap by Knightlabs as a good starting point. I wireframed a variety of options, eventually settling on a clear, open interaction with side menus allowing for changes to the period and map elements.</p>
+							<p>Again the website was to be designed using the University of Southampton CMS – sitepublisher. After carrying out initial meetings with Lifelong Learning staff I proceeded to wireframe example pages with the common components found in the CMS. The key aspects of this project that were considered were the categorisation and clear presentation of all available courses. Also in consideration was providing clear and accurate information about the price, availability and timing of each course.</p>
 						</Col>
 					</Row>
 					<Row className="project-gallery">
-						<Col xs={10} xsOffset={1} md={6} mdOffset={0} mdPush={5}>
+						<Col xs={10} xsOffset={1} md={6} mdOffset={3} className="project-image">
 							<Image src="../images/lifelong/wireframe-1.png" responsive />
 						</Col>
-						<Col xs={10} xsOffset={1} md={4} mdOffset={1} mdPull={6}>
+						<Col xs={10} xsOffset={1} md={8} mdOffset={2}>
 							<p>Nullam sapien augue, gravida nec dolor ac, vestibulum pulvinar massa. Curabitur ac justo nisl.<br/><br/>Fusce dapibus, libero vel fringilla dictum, magna tellus pellentesque nulla, feugiat sagittis dolor turpis nec tellus. Duis bibendum lacus tellus, et malesuada turpis bibendum vitae.</p>
 						</Col>
 					</Row>
 					<Row className="project-gallery">
-						<Col xs={10} xsOffset={1} md={5} mdOffset={1}>
+						<Col xs={10} xsOffset={1} md={6} mdOffset={3} className="project-image">
 							<Image src="../images/lifelong/image-2.png" responsive />
 						</Col>
-						<Col xs={10} xsOffset={1} md={5} mdOffset={0}>
+						<Col xs={10} xsOffset={1} md={8} mdOffset={2}>
 							<p>Nullam sapien augue, gravida nec dolor ac, vestibulum pulvinar massa. Curabitur ac justo nisl.<br/><br/>Fusce dapibus, libero vel fringilla dictum, magna tellus pellentesque nulla, feugiat sagittis dolor turpis nec tellus. Duis bibendum lacus tellus, et malesuada turpis bibendum vitae.</p>
 						</Col>
 					</Row>
 					<Row className="project-gallery">
-						<Col xs={10} xsOffset={1} md={6} mdOffset={0} mdPush={5}>
+						<Col xs={10} xsOffset={1} md={6} mdOffset={3} className="project-image">
 							<Image src="../images/lifelong/image-3.png" responsive />
 						</Col>
-						<Col xs={10} xsOffset={1} md={4} mdOffset={1} mdPull={6}>
+						<Col xs={10} xsOffset={1} md={8} mdOffset={2}>
 							<p>Nullam sapien augue, gravida nec dolor ac, vestibulum pulvinar massa. Curabitur ac justo nisl.<br/><br/>Fusce dapibus, libero vel fringilla dictum, magna tellus pellentesque nulla, feugiat sagittis dolor turpis nec tellus. Duis bibendum lacus tellus, et malesuada turpis bibendum vitae.</p>
 						</Col>
 					</Row>
@@ -62,7 +62,7 @@ export default class Portus extends React.Component {
 						</Col>
 					</Row>
 				</Grid>
-			</div>
+		</div>
 		);
 	};
 }

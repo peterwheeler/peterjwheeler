@@ -1,17 +1,17 @@
 import React from 'react';
-import queryString from 'query-string';
+import { Link } from "react-router-dom";
 import { Grid, Row, Col, Clearfix, Image } from "react-bootstrap";
 
+import PortfolioChanger from "../../components/PortfolioChanger.jsx";
+
 export default class Portus extends React.Component {
-	constructor(props, context) {
-	    super(props, context);
-	};
-	componentDidMount() {
-		const parsed = queryString.parse(this.props.location.search);
+	constructor(props) {
+	    super(props);
 	};
 	render() {
 		return (
 			<div className="project-container">
+				<PortfolioChanger previousPage={"juxtapose"} nextPage={"lifelong"} />
 				<Grid fluid>
 					<Row>
 						<Col xs={10} xsOffset={1} md={6} mdOffset={0} mdPush={5} className="project-image">
@@ -32,18 +32,37 @@ export default class Portus extends React.Component {
 						</Col>
 					</Row>
 					<Row className="project-gallery">
-						<Col xs={10} xsOffset={1} md={6} mdOffset={0} mdPush={5}>
+						<Col xs={10} xsOffset={1} md={6} mdOffset={3} className="project-image">
 							<Image src="../images/portus/wireframe-1.png" responsive />
 						</Col>
-						<Col xs={10} xsOffset={1} md={4} mdOffset={1} mdPull={6}>
+						<Col xs={10} xsOffset={1} md={8} mdOffset={2}>
 							<p>Nullam sapien augue, gravida nec dolor ac, vestibulum pulvinar massa. Curabitur ac justo nisl.<br/><br/>Fusce dapibus, libero vel fringilla dictum, magna tellus pellentesque nulla, feugiat sagittis dolor turpis nec tellus. Duis bibendum lacus tellus, et malesuada turpis bibendum vitae.</p>
 						</Col>
 					</Row>
 					<Row className="project-gallery">
-						<Col xs={10} xsOffset={1} md={6} mdOffset={1}>
-							<Image src="../images/image-1.png" responsive />
+						<Col xs={10} xsOffset={1} md={6} mdOffset={3} className="project-image">
+							<Image src="../images/portus/image-4.png" responsive />
 						</Col>
-						<Col xs={10} xsOffset={1} md={4} mdOffset={0}>
+						<Col xs={10} xsOffset={1} md={8} mdOffset={2}>
+							<p>Nullam sapien augue, gravida nec dolor ac, vestibulum pulvinar massa. Curabitur ac justo nisl.<br/><br/>Fusce dapibus, libero vel fringilla dictum, magna tellus pellentesque nulla, feugiat sagittis dolor turpis nec tellus. Duis bibendum lacus tellus, et malesuada turpis bibendum vitae.</p>
+						</Col>
+					</Row>
+					<Row className="project-gallery">
+						<Col xs={10} xsOffset={1} md={6} mdOffset={3} className="project-image">
+							<Image src="../images/portus/image-3.png" responsive />
+						</Col>
+						<Col xs={10} xsOffset={1} md={8} mdOffset={2}>
+							<p>Nullam sapien augue, gravida nec dolor ac, vestibulum pulvinar massa. Curabitur ac justo nisl.<br/><br/>Fusce dapibus, libero vel fringilla dictum, magna tellus pellentesque nulla, feugiat sagittis dolor turpis nec tellus. Duis bibendum lacus tellus, et malesuada turpis bibendum vitae.</p>
+						</Col>
+					</Row>
+					<Row className="project-gallery">
+						<Col xs={10} xsOffset={1} md={3} mdOffset={3} className="project-image">
+							<Image src="../images/portus/image-5.png" responsive />
+						</Col>
+						<Col xs={10} xsOffset={1} md={3} mdOffset={0} className="project-image">
+							<Image src="../images/portus/image-6.png" responsive />
+						</Col>
+						<Col xs={10} xsOffset={1} md={8} mdOffset={2}>
 							<p>Nullam sapien augue, gravida nec dolor ac, vestibulum pulvinar massa. Curabitur ac justo nisl.<br/><br/>Fusce dapibus, libero vel fringilla dictum, magna tellus pellentesque nulla, feugiat sagittis dolor turpis nec tellus. Duis bibendum lacus tellus, et malesuada turpis bibendum vitae.</p>
 						</Col>
 					</Row>
@@ -54,7 +73,7 @@ export default class Portus extends React.Component {
 						</Col>
 					</Row>
 				</Grid>
-			</div>
+		</div>
 		);
 	};
 }

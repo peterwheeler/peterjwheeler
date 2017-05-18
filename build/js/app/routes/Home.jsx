@@ -9,9 +9,6 @@ export default class Home extends React.Component {
 	};
 
 	componentDidMount() {
-		// HomeRender();
-		// var canvas = HomeMount();
-		// document.getElementById('three-container').appendChild(canvas); 
 	}
 	render() {
 	return (

@@ -1,46 +1,60 @@
 import React from 'react';
-import queryString from 'query-string';
+import { Link } from "react-router-dom";
 import { Grid, Row, Col, Clearfix, Image } from "react-bootstrap";
 
+import PortfolioChanger from "../../components/PortfolioChanger.jsx";
+
 export default class Juxtapose extends React.Component {
-	constructor(props, context) {
-	    super(props, context);
-	};
-	componentDidMount() {
-		const parsed = queryString.parse(this.props.location.search);
+	constructor(props) {
+	    super(props);
 	};
 	render() {
 		return (
 			<div className="project-container">
+				<PortfolioChanger nextPage={"portus"} />
 				<Grid fluid>
 					<Row>
-						<Col xs={10} xsOffset={1} md={4} mdOffset={1} className="project-headline">
+						<Col xs={10} xsOffset={1} md={6} mdOffset={0} mdPush={5} className="project-image">
+							<Image src="../images/juxtapose/image-1.png" responsive />
+						</Col>
+						<Col xs={10} xsOffset={1} md={4} mdOffset={1} mdPull={6} className="project-headline">
 							<h1>Multi-select Juxtapose</h1>
-							<h3>Client: <i className="light-text">University of Southampton</i></h3>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor tortor id sem eleifend vehicula. Nullam magna velit, hendrerit ultricies viverra quis, cursus ut risus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.</p>
-							<a className="" href="https://tour.portusproject.org">Visit site</a>
+							<h3 className="light-text">Client: <i>Personal</i></h3>
+							<div className="divider"></div>
+							<p>JuxtaposeJS is an elegant site designed in response to user’s desire to better under maps produced as part of the Futurelearn course. Its principal function is to allow the sliding comparison of imagery content – in this case map graphics.</p>
+							<h3 className="link"><a href="https://tour.portusproject.org">View site</a></h3>
 						</Col>
-						<Col xs={10} xsOffset={1} md={5} mdOffset={1} className="project-image">
-							<Image src="../images/image-0.png" responsive />
-						</Col>
-						<Clearfix />
-						<Col xs={10} xsOffset={1} md={10} mdOffset={1} className="project-details">
+					</Row>
+					<Row>
+						<Col xs={10} xsOffset={1} md={8} mdOffset={2} className="project-details">
 							<h2>Details</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor tortor id sem eleifend vehicula. Nullam magna velit, hendrerit ultricies viverra quis, cursus ut risus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin vel porta magna. Aenean et sem sollicitudin, ornare erat nec, tristique ligula. Aenean non rutrum tellus. Nullam sapien augue, gravida nec dolor ac, vestibulum pulvinar massa. Curabitur ac justo nisl.<br/><br/>Fusce dapibus, libero vel fringilla dictum, magna tellus pellentesque nulla, feugiat sagittis dolor turpis nec tellus. Duis bibendum lacus tellus, et malesuada turpis bibendum vitae. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam quis tristique tellus. Aliquam malesuada, arcu vitae mollis fermentum, quam felis pulvinar lacus, non faucibus velit purus id dolor. Sed semper arcu sit amet tristique volutpat. Curabitur ac interdum risus. Donec et eleifend neque. Maecenas quis turpis ac diam suscipit dapibus. Nunc in tristique eros. Quisque suscipit vehicula quam sed luctus. Etiam eleifend hendrerit lacus, quis congue ipsum faucibus nec. Fusce nec maximus elit. Cras non augue sem.</p>
+							<p>After analysis and consideration of the user reviews, it was established that a single purpose page would be the best solution to the feedback. Producing a wireframe allowed me to envisage a simple layout that achieved this purpose. Navigation and menu content was kept to a minimum, enabling the maps and the interactive function to keep centre focus.</p>
 						</Col>
-						<Col xs={10} xsOffset={1} md={10} mdOffset={1} className="project-gallery">
-							<h2>Gallery</h2>
-							<div className="gallery-image"><Image src="../images/image-0.png" responsive /></div>
-							<div className="gallery-image"><Image src="../images/image-1.png" responsive /></div>
-							<div className="gallery-image"><Image src="../images/image-2.png" responsive /></div>
-							<div className="gallery-image"><Image src="../images/image-3.png" responsive /></div>
+					</Row>
+					<Row className="project-gallery">
+						<Col xs={10} xsOffset={1} md={6} mdOffset={3} className="project-image">
+							<Image src="../images/juxtapose/image-2.png" responsive />
 						</Col>
-						<Col xs={10} xsOffset={1} md={10} mdOffset={1} className="project-extra">
-							<h2>Extra</h2>
+						<Col xs={10} xsOffset={1} md={8} mdOffset={2}>
+							<p>A modern front-end framework, Materialize, was chosen for the layout as it enabled a simple clean navigation. JuxtaposeJS from Knightlabs was forked in order to produce the final resulting multi-selectable features.</p>
+						</Col>
+					</Row>
+					<Row className="project-gallery">
+						<Col xs={10} xsOffset={1} md={4} mdOffset={2}>
+							<Image src="../images/juxtapose/image-3.png" responsive />
+						</Col>
+						<Col xs={10} xsOffset={1} md={4} mdOffset={0}>
+							<p>Nullam sapien augue, gravida nec dolor ac, vestibulum pulvinar massa. Curabitur ac justo nisl.<br/><br/>Fusce dapibus, libero vel fringilla dictum, magna tellus pellentesque nulla, feugiat sagittis dolor turpis nec tellus. Duis bibendum lacus tellus, et malesuada turpis bibendum vitae.</p>
+						</Col>
+					</Row>
+					<Row>
+						<Col xs={10} xsOffset={1} md={8} mdOffset={2} className="project-result">
+							<h2>Results</h2>
+							<p>The resulting website was a richly informative product which I believe perfectly answers the user feedback. The interactive functions were kept intuitive and easily understood and complimented the capabilities of the original toolkit. Future iterations of the Futurelearn course will undoubtedly benefit this production.</p>
 						</Col>
 					</Row>
 				</Grid>
-			</div>
+		</div>
 		);
 	};
 }

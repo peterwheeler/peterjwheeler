@@ -43,14 +43,13 @@ var webpackSettings = {
         "webpack/hot/dev-server?reload",
         "webpack-hot-middleware/client",
         "react-hot-loader/patch",
-        path.join(process.cwd(), "build/js/text-bitmap/three-bmfont-text.js"),
-        path.join(process.cwd(), "build/js/app/main.jsx")
+        path.join(process.cwd(), "build/js/app/Main.jsx")
     ]
   },
   output: {
     path: path.join(process.cwd(), "build/js/"),
-    publicPath: "/js/",
-    filename: "bundle.js"
+    filename: "bundle.js",
+    publicPath: "/js/"
   },
   plugins: environments.production() ? [
     new webpack.optimize.DedupePlugin(),
@@ -62,8 +61,10 @@ var webpackSettings = {
   resolve: {
     extensions: ['.js', '.jsx']
   },
-  // devtools: 'source-map',
-  // debug: environments.development(),
+  devtool: 'source-map',
+  devServer: {
+    historyApiFallback: true,
+  },
   module: {
     loaders: [{
         test: /\.(js|jsx)$/,

@@ -1,60 +1,52 @@
 import React from 'react';
-import queryString from 'query-string';
+import { Link } from "react-router-dom";
 import { Grid, Row, Col, Clearfix, Image } from "react-bootstrap";
 
-export default class Portus extends React.Component {
-	constructor(props, context) {
-	    super(props, context);
-	};
-	componentDidMount() {
-		const parsed = queryString.parse(this.props.location.search);
+import PortfolioChanger from "../../components/PortfolioChanger.jsx";
+
+export default class Archaeology extends React.Component {
+	constructor(props) {
+	    super(props);
 	};
 	render() {
 		return (
 			<div className="project-container">
+				<PortfolioChanger previousPage={"ws-institute"} nextPage={"acrg-wordpress"} />
 				<Grid fluid>
 					<Row>
 						<Col xs={10} xsOffset={1} md={6} mdOffset={0} mdPush={5} className="project-image">
-							<Image src="../images/acrg/image-1.png" responsive />
+							<Image src="../images/archaeology/image-1.png" responsive />
 						</Col>
 						<Col xs={10} xsOffset={1} md={4} mdOffset={1} mdPull={6} className="project-headline">
-							<h1>Archaeology Department WordPress Blog</h1>
+							<h1>Archaeology Department WordPress</h1>
 							<h3 className="light-text">Client: <i>University of Southampton</i></h3>
 							<div className="divider"></div>
-							<p>To support the work of the Futurelearn course I was commissioned with creating an interactive story telling application. The main purpose of this was to provide users with key information about the archaeological site of Portus, for which the online course was focused on.</p>
+							<p>This blog site provides an informal insight into the research and other activities of members of the Archaeology Department at the University of Southampton. The blog brings together the various work blogs written by members of the Department, and also the blogs run by individual centres and other groups.</p>
 							<h3 className="link"><a href="https://generic.wordpress.soton.ac.uk/archaeology/">View site</a></h3>
 						</Col>
 					</Row>
 					<Row>
 						<Col xs={10} xsOffset={1} md={8} mdOffset={2} className="project-details">
 							<h2>Details</h2>
-							<p>The key elements of the storytelling were the periodic changes that have been recorded across the archaeological site. The historic periods were identified and the key areas of interest pinpointed. Research into available toolkits highlighted StoryMap by Knightlabs as a good starting point. I wireframed a variety of options, eventually settling on a clear, open interaction with side menus allowing for changes to the period and map elements.</p>
+							<p>I was requested to update the blog space and refresh all content while also assisting in the new design layout. Working alongside the developers from the University I coordinated the collection of content to be used for the site. I filtered content from any previous sites, while acquiring suitable new content and media content.<br/><br/>The design of the site was to follow the branding of all University websites. The principal colour of the site was agreed as olive green, and assigned to all departmental related blogs. A simple cards layout was chosen to allow numerous posts to be seen at any one time with a responsive design fitting to any device. The cards take two thirds of the available space to the left with additional space for social media content and category or tags controls to filter results on the right.</p>
 						</Col>
 					</Row>
 					<Row className="project-gallery">
-						<Col xs={10} xsOffset={1} md={6} mdOffset={0} mdPush={5}>
-							<Image src="../images/acrg/image-2.png" responsive />
+						<Col xs={10} xsOffset={1} md={6} mdOffset={3} className="project-image">
+							<Image src="../images/archaeology/image-2.png" responsive />
 						</Col>
-						<Col xs={10} xsOffset={1} md={4} mdOffset={1} mdPull={6}>
-							<p>Nullam sapien augue, gravida nec dolor ac, vestibulum pulvinar massa. Curabitur ac justo nisl.<br/><br/>Fusce dapibus, libero vel fringilla dictum, magna tellus pellentesque nulla, feugiat sagittis dolor turpis nec tellus. Duis bibendum lacus tellus, et malesuada turpis bibendum vitae.</p>
-						</Col>
-					</Row>
-					<Row className="project-gallery">
-						<Col xs={10} xsOffset={1} md={6} mdOffset={1}>
-							<Image src="../images/acrg/image-2.png" responsive />
-						</Col>
-						<Col xs={10} xsOffset={1} md={4} mdOffset={0}>
+						<Col xs={10} xsOffset={1} md={8} mdOffset={2}>
 							<p>Nullam sapien augue, gravida nec dolor ac, vestibulum pulvinar massa. Curabitur ac justo nisl.<br/><br/>Fusce dapibus, libero vel fringilla dictum, magna tellus pellentesque nulla, feugiat sagittis dolor turpis nec tellus. Duis bibendum lacus tellus, et malesuada turpis bibendum vitae.</p>
 						</Col>
 					</Row>
 					<Row>
 						<Col xs={10} xsOffset={1} md={8} mdOffset={2} className="project-result">
 							<h2>Results</h2>
-							<p>The results of this work was a highly valuable website which on the running of the Futurelearn course proved invaluable to many users.<br/><br/>StoryTour is an interactive map tour using AngularJS. It was built with two intentions in mind – to support the Futurelearn learners and to give information to the archaeological site as users visited the site.</p>
+							<p>The design itself lends itself to easy reading.</p>
 						</Col>
 					</Row>
 				</Grid>
-			</div>
+		</div>
 		);
 	};
 }

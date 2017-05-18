@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Switch, Link } from "react-router-dom";
 import { Grid, Row, Col, Clearfix } from "react-bootstrap";
 import Breadcrumbs from "react-breadcrumbs";
+import ScrollUp from 'react-scroll-up';
 
 import BreadComponent from "./BreadComponent.jsx";
 import NavComponent from "./NavComponent.jsx";
@@ -67,72 +68,83 @@ export default class LayoutComponent extends React.Component {
   }
 
   render() {
-    const portfolioRoutes = [{
-      path: '/portfolio',
-      component: Portfolio,
-      routes: [
-        {
-            path: '/juxtapose',
+        const routes = [{
+            path: '/portfolio',
+            exact: true,
+            component: Portfolio,
+          },{
+            id: '1',
+            path: '/portfolio/juxtapose',
             component: Juxtapose
-        },{
-            path: '/portus',
+          },{
+            id: '2',
+            path: '/portfolio/portus',
             component: Portus
-        },{
-            path: '/lifelong',
+          },{
+            id: '3',
+            path: '/portfolio/lifelong',
             component: Lifelong
-        },{
-            path: '/wsi-institute',
+          },{
+            id: '4',
+            path: '/portfolio/ws-institute',
             component: WSInstitute
-        },{
-            path: '/archaeology-wordpress',
+          },{
+            id: '5',
+            path: '/portfolio/archaeology-wordpress',
             component: Archaeology
-        },{
-            path: '/acrg-wordpress',
+          },{
+            id: '6',
+            path: '/portfolio/acrg-wordpress',
             component: ACRG
-        }]
-      }]
-    return (
-      <div className="parent-container">
-         <div className="content-container">
-            <div className="top-content">
-            {/*<div id="breadcrumbs"><Breadcrumbs breadcrumbName="askdasd" routes={routes} params={params} /></div>*/}
-               <div className="navigation-container">
-                  <NavComponent
-                   load={this.state.loadProgress}
-                   currentProjectName={this.state.nameProject}
-                   currentProjectHref={this.state.hrefProject}
-                   submenuStyle={this.state.projectsStyle}
-                  />
+          },{
+            path: '/contact',
+            component: Contact
+          }]
+
+        // wrap <Route> and use this everywhere instead, then when
+        // sub routes are added to any route it'll work
+        const RouteWithSubRoutes = (route, id) => (
+          <Route path={route.path} render={props => (
+            // pass the sub-routes down to keep nesting
+            <route.component {...props} id={route.id} subRoutes={route.routes}/>
+          )}/>
+        )
+
+        return (
+          <div className="parent-container">
+               <div className="content-container">
+                  <div className="top-content">
+                    <div className="navigation-container">
+                      <NavComponent
+                        load={this.state.loadProgress}
+                        currentProjectName={this.state.nameProject}
+                        currentProjectHref={this.state.hrefProject}
+                        submenuStyle={this.state.projectsStyle}
+                      />
+                    </div>
+                  </div>
+                  <div className="middle-content">
+                    <ProgressComponent load={this.state.loadProgress}/>
+                      <div className="middle-content-container">
+                        <Switch>
+                          <Route path="/" exact component={Home}></Route>
+                          {routes.map((route, i) => (
+                            <RouteWithSubRoutes key={i} {...route}/>
+                          ))}
+                        </Switch>
+                      </div>
+                    <ParallaxComponent />
+                    <FooterComponent />
+                  </div>
+                  <div id="scroll-component">
+                  <ScrollUp showUnder={20} easing="easeOutCubic" duration={500}><i className="fa fa-chevron-up scroll-arrow" aria-hidden="true"></i></ScrollUp>
+                  </div>
+                 {/*<div className="bottom-content">
+                     <ParallaxComponent />
+                  </div>*/}
                </div>
             </div>
-            <div className="middle-content">
-               <ProgressComponent load={this.state.loadProgress}/>
-               <div className="middle-content-container">
-                 <Switch>
-                    <Route path="/" exact component={Home}></Route>
-                    <Route path="/portfolio" exact render={(props) => (
-                      <Portfolio/>)}
-                    />
-                    <Route path="/portfolio/juxtapose" component={Juxtapose}/>
-                    <Route path="/portfolio/storytour" component={Storytour}/>
-                    <Route path="/portfolio/portus" component={Portus}/>
-                    <Route path="/portfolio/lifelong" component={Lifelong}/>
-                    <Route path="/portfolio/wsi-institute" component={WSInstitute}/>
-                    <Route path="/portfolio/archaeology" component={Archaeology}/>
-                    <Route path="/portfolio/acrg-wordpress" component={ACRG}/>
-                    <Route path="/contact" component={Contact}/>
-                    <Route path="/coder" component={Coder}/>
-                 </Switch>
-               </div>
-               <ParallaxComponent />
-               <FooterComponent />
-            </div>
-           {/*<div className="bottom-content">
-               <ParallaxComponent />
-            </div>*/}
-         </div>
-      </div>
-      )
+          )
     }
 }
 
