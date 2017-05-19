@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from "react-router";
-import	svgMesh3d from 'svg-mesh-3d';
 
 const path = "M150 0 L75 200 L225 200 Z"
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Parallax from 'C:/Users/pw8g08/hubiC/webroot/htdocs/literatim/build/js/parallax/parallax.js';
+import Parallax from 'parallax-js';
   
 export default class ParallaxComponent extends React.Component {
   constructor(props) {

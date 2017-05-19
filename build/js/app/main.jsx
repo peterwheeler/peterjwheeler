@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import { AppContainer } from 'react-hot-loader';
-import App from './App';
+import App from './App.jsx';
 
 const AppElement = document.getElementById('app');
 
@@ -11,7 +10,7 @@ ReactDOM.render(
 	, AppElement);
 if (module.hot) {
     module.hot.accept("./App", () => {
-        const NextApp = require("./App").default;
+        const NextApp = require("./App.jsx").default;
         ReactDOM.render(
         	<AppContainer>
         		<NextApp />
