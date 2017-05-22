@@ -45,6 +45,7 @@
     "gulp-cssnano": "^2.1.2",
     "gulp-environments": "^0.1.2",
     "gulp-if": "^2.0.1",
+    "gulp-imagemin": "^3.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.1.0",
     "gulp-sourcemaps": "^1.5.2",
@@ -61,7 +62,8 @@
     "webpack-dev-server": "^2.4.2",
     "webpack-hot-middleware": "^2.17.1",
     "webpack-module-hot-accept": "^1.0.4",
-    "webpack-stream": "^3.2.0"
+    "webpack-stream": "^3.2.0",
+    "write-file-webpack-plugin": "^4.0.2"
   },
   "babel": {
     "env": {
@@ -72,27 +74,34 @@
           "react"
         ],
         "plugins": [
-          "react-hot-loader/babel"
+          [
+            "react-transform",
+            {
+              "transforms": [
+                {
+                  "transform": "react-transform-hmr",
+                  "imports": [
+                    "react"
+                  ],
+                  "locals": [
+                    "module"
+                  ]
+                }
+              ]
+            }
+          ]
         ]
       },
       "production": {
         "presets": [
-          "react-hmre",
           "es2015",
           "react"
-        ],
-        "plugins": [
-          "react-hot-loader/babel"
         ]
       },
       "docs": {
         "presets": [
-          "react-hmre",
           "es2015",
           "react"
-        ],
-        "plugins": [
-          "react-hot-loader/babel"
         ]
       }
     }
