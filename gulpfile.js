@@ -8,6 +8,7 @@ var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
 var babel = require('gulp-babel');
 var webpack = require('webpack');
+var webpackStream = require('webpack-stream');
 var environments = require('gulp-environments');
 var useref = require('gulp-useref');
 var gulpIf = require('gulp-if');
@@ -26,6 +27,8 @@ var bundler;
 // --------------------------------- //
 // Set variables for gulp to run in  //
 // --------------------------------- //
+process.env.NODE_ENV = 'production';
+process.env.BABEL_ENV = 'production';
 
 var env = process.env.NODE_ENV;
 var babelenv = process.env.BABEL_ENV;
@@ -54,7 +57,7 @@ var webpackDevelopment = {
         "webpack/hot/dev-server?reload",
         "webpack-hot-middleware/client",
         "react-hot-loader/patch",
-        path.join(__dirname, "build/js/app/Main.jsx")
+        path.join(__dirname, "build/js/app/Main.js")
     ]
   },
   output: {
@@ -65,7 +68,7 @@ var webpackDevelopment = {
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new WriteFilePlugin()
+    // new WriteFilePlugin()
   ],
   resolve: {
     extensions: ['.js', '.jsx']
@@ -100,16 +103,21 @@ var webpackDevelopment = {
 }
 
 var webpackProduction = {
-  entry: path.join(__dirname, "build/js/app/Main.jsx"),
+  watch: true,
+  entry: path.join(__dirname, "build/js/app/Main.js"),
   output: {
-    path: path.join(__dirname, "docs/js"),
+    path: path.join(__dirname, "dist/js"),
     filename: "bundle.js",
     publicPath: "/js/"
   },
   plugins: [
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin(),
-    new WriteFilePlugin()
+    new webpack.DefinePlugin({
+        'process.env': {
+            'NODE_ENV': JSON.stringify('production'),
+            'BABEL_ENV': JSON.stringify('development')
+        }
+    }),
+    new webpack.optimize.UglifyJsPlugin()
   ],
   resolve: {
     extensions: ['.js', '.jsx']
@@ -144,12 +152,22 @@ var webpackProduction = {
 
 gulp.task('set-variables', function() {
     source = 'build';
-    directory = env === 'development' ? "build" : env === 'production' ? "docs" : "development";
+    directory = env === 'development' ? "build" : env === 'production' ? "dist" : "development";
     webpackSettings = env === 'development' ? webpackDevelopment : env === 'production' ? webpackProduction : webpackDevelopment;
 });
 
-gulp.task('webpack', function(callback) {
+gulp.task('webpackDev', function(callback) {
   bundler = webpack(webpackSettings);
+});
+
+gulp.task('webpackProd', function(callback) {
+  webpack(webpackSettings, function(err, stats) {
+        if(err) throw new gutil.PluginError('webpackProd', err);
+        gutil.log('[webpackProd]', stats.toString({
+            colors: true
+        }));
+        callback();
+    });
 });
 
 gulp.task('sass-task', function() {
@@ -190,19 +208,10 @@ gulp.task('serve', function(){
 gulp.task('useref', function(){
   return gulp.src(source + "/index.html")
     .pipe(useref())
-    // Minifies only if it's a JavaScript file
-    // .pipe(gulpIf("*.js", uglify()))
-     // .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
     // Minifies only if it's a CSS file
     .pipe(gulpIf("*.css", cssnano()))
       .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
     .pipe(gulp.dest(directory));
-});
-
-gulp.task('css', function() {
-	return gulp.src(source + "/css/**/*")
-		.pipe(gulp.dest(directory + "/css"))
-    .pipe(browserSync.stream());
 });
 
 gulp.task('images', function(){
@@ -223,29 +232,21 @@ gulp.task('watch', function() {
 gulp.task('env-dev', function() {
     env = 'development';
     babelenv = env;
+    console.log(env, babelenv);
     return env = 'development';
 });
 
 gulp.task('env-prod', function() {
     env = 'production';
     babelenv = env;
+    console.log(env, babelenv);
     return env = 'production';
 });
 
-gulp.task('env-docs', function() {
-    env = 'docs';
-    babelenv = env;
-    return env = 'docs';
-});
-
 gulp.task('default', ['env-dev'], function(){
-  runSequence('set-variables', 'sass-task', ['webpack', 'serve'], 'watch')
+  runSequence('set-variables', 'sass-task', ['webpackDev', 'serve'], 'watch')
 });
 
 gulp.task('build', ['env-prod'], function(){
-  runSequence('set-variables', 'sass-task', ['webpack', 'serve'], 'watch')
-});
-
-gulp.task('docs', ['env-docs'], function(){
-  runSequence('set-variables', 'sass-task', 'useref', ['webpack', 'serve'], 'watch')
+  runSequence('set-variables', 'sass-task', 'useref', ['webpackProd', 'serve'], 'watch')
 });

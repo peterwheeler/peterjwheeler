@@ -4,7 +4,8 @@
   "description": "PJW personal website",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "SET NODE_ENV=production & gulp build"
   },
   "keywords": [
     "portfolio, website, react"
@@ -96,13 +97,8 @@
         "presets": [
           "es2015",
           "react"
-        ]
-      },
-      "docs": {
-        "presets": [
-          "es2015",
-          "react"
-        ]
+        ],
+        "plugins": []
       }
     }
   }

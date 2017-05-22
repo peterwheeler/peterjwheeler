@@ -1,1 +1,0 @@
-var createGeometry = window.createGeometry = require('three-bmfont-text');
