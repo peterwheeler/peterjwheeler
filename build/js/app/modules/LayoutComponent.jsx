@@ -3,6 +3,7 @@ import { Route, Switch, Link } from "react-router-dom";
 import { Grid, Row, Col, Clearfix } from "react-bootstrap";
 import Breadcrumbs from "react-breadcrumbs";
 import ScrollUp from 'react-scroll-up';
+import { Preload } from 'react-preload';
 
 import BreadComponent from "./BreadComponent.jsx";
 import NavComponent from "./NavComponent.jsx";
@@ -110,8 +111,12 @@ export default class LayoutComponent extends React.Component {
           )}/>
         )
 
+        const loadingIndicator = (<div className="loader-background"><div className="loader-ring"><div className="loader-ring-light"></div><div className="loader-ring-track"></div></div></div>)
+        var images = ["/images/juxtapose/image-1.png", "/images/portus/image-1.png", "/images/archaeology/image-1.png", "/images/acrg/image-1.png", "/images/lifelong/image-1.png", "/images/wsi/image-1.png", "/images/silhouttes/silhoutte-1-1.png", "/images/silhouttes/silhoutte-2-1.png", "/images/silhouttes/silhoutte-3-1.png", "/images/silhouttes/silhoutte-4-1.png", "/images/silhouttes/silhoutte-5-1.png", "/images/silhouttes/silhoutte-6-1.png", "/images/silhouttes/silhoutte-7-1.png", "/images/silhouttes/silhoutte-8-1.png"]
+
         return (
           <div className="parent-container">
+          <Preload loadingIndicator={loadingIndicator} images={images} resolveOnError={true} mountChildren={true}>
                <div className="content-container">
                   <div className="top-content">
                     <div className="navigation-container">
@@ -124,7 +129,7 @@ export default class LayoutComponent extends React.Component {
                     </div>
                   </div>
                   <div className="middle-content">
-                    <ProgressComponent load={this.state.loadProgress}/>
+
                       <div className="middle-content-container">
                         <Switch>
                           <Route path="/" exact component={Home}></Route>
@@ -133,8 +138,10 @@ export default class LayoutComponent extends React.Component {
                           ))}
                         </Switch>
                       </div>
-                    <ParallaxComponent />
-                    <FooterComponent />
+                    <div className="bottom-content-container">
+                      <ParallaxComponent />
+                      <FooterComponent />
+                    </div>
                   </div>
                   <div id="scroll-component">
                   <ScrollUp showUnder={20} easing="easeOutCubic" duration={500}><i className="fa fa-chevron-up scroll-arrow" aria-hidden="true"></i></ScrollUp>
@@ -143,6 +150,7 @@ export default class LayoutComponent extends React.Component {
                      <ParallaxComponent />
                   </div>*/}
                </div>
+              </Preload>
             </div>
           )
     }

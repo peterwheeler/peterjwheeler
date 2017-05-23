@@ -100,25 +100,43 @@ p {
   margin: 0px;
   z-index: 12; }
 
-/*-- Meter --*/
-.meter {
-  width: 100vw;
-  height: 4vh;
+/*-- Loader --*/
+.loader-background {
   position: absolute;
-  bottom: -1vh;
-  background: #fefefa;
-  z-index: 16; }
+  height: 100vh;
+  width: 100vw;
+  margin: 0px;
+  z-index: 100;
+  background-color: #fefefa; }
 
-.meter-hidden {
-  display: none; }
+.loader-ring {
+  position: relative;
+  top: 33.33vh;
+  height: 33.33vh;
+  margin: 0 auto;
+  width: 80px;
+  height: 80px; }
 
-#meter-id > line,
-polyline,
-polygon,
-ellipse,
-path,
-rect {
-  opacity: 1; }
+.loader-ring-light {
+  width: 80px;
+  height: 80px;
+  border-radius: 80px;
+  box-shadow: 0 4px 0 #353535 inset;
+  animation: rotate-360 2s linear infinite; }
+
+.loader-ring-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 80px; }
+
+@keyframes rotate-360 {
+  from {
+    transform: rotate(0); }
+  to {
+    transform: rotate(360deg); } }
 
 /*------- Top Containers -------*/
 .top-content {
@@ -388,17 +406,8 @@ rect {
   margin-right: 5vw; }
 
 /*------- Bottom Containers -------*/
-.bottom-content {
-  position: absolute;
-  width: 100vw;
-  height: 30vh;
-  bottom: 0px;
-  left: 0px;
-  z-index: 14;
-  display: none; }
-
-.loaded .bottom-content {
-  display: block; }
+.bottom-content-container {
+  overflow: hidden; }
 
 .home-silhoutte {
   position: relative;
@@ -449,7 +458,8 @@ rect {
   position: relative;
   width: 100vw;
   height: 5vh;
-  background-color: #353535; }
+  background-color: transparent;
+  overflow: hidden; }
 
 .footer h3, .footer p, .footer i, .footer a, .footer span {
   color: #fefefa; }
@@ -539,11 +549,9 @@ rect {
   .update-container {
     margin: 4vh 4vw; }
   /*------- Bottom Containers -------*/
-  .bottom-content {
-    height: 40vh; }
   .home-silhoutte .silhoutte {
     height: 40vh;
-    background-size: auto 40vh; } }
+    background-size: 110vw auto; } }
 
 @media (min-width: 1280px) {
   .logo-container .logo-item {

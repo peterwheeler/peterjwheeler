@@ -244,9 +244,9 @@ gulp.task('env-prod', function() {
 });
 
 gulp.task('default', ['env-dev'], function(){
-  runSequence('set-variables', 'sass-task', ['webpackDev', 'serve'], 'watch')
+  runSequence('set-variables', 'sass-task', 'watch', ['webpackDev', 'serve'])
 });
 
 gulp.task('build', ['env-prod'], function(){
-  runSequence('set-variables', 'sass-task', 'useref', ['webpackProd', 'serve'], 'watch')
+  runSequence('set-variables', 'sass-task', 'useref', 'watch', ['webpackProd', 'serve'])
 });
