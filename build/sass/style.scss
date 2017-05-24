@@ -1,67 +1,5 @@
 /*--- Font Imports ---*/
 
-@mixin font-face($font-family, $file-path, $font-weight, $font-style) {
-   @font-face {
-      font-family: $font-family;
-      src: url('#{$file-path}.otf');
-      src: url('#{$file-path}.otf?#iefix') format('opentype');
-      src: url('#{$file-path}.ttf?#iefix') format('truetype');
-      font-weight: $font-weight;
-      font-style: $font-style;
-   }
-}
-
-@include font-face(PierSans-Regular,
-'../fonts/pier/PierSans-Regular',
-400,
-normal);
-@include font-face(PierSans-Medium,
-'../fonts/pier/PierSans-Medium',
-500,
-normal);
-@include font-face(PierSans-Bold,
-'../fonts/pier/PierSans-Bold',
-600,
-normal);
-@mixin PierSans-Regular {
-   font-family: 'PierSans-Regular', arial, sans-serif;
-   font-weight: 400;
-   font-style: normal;
-}
-
-@mixin PierSans-Medium {
-   font-family: 'PierSans-Medium', arial, sans-serif;
-   font-weight: 500;
-   font-style: normal;
-}
-
-@mixin PierSans-Bold {
-   font-family: 'PierSans-Bold', arial, sans-serif;
-   font-weight: 600;
-   font-style: normal;
-}
-
-@include font-face(Karla-Regular,
-'../fonts/karla/Karla-Regular',
-400,
-normal);
-@include font-face(Karla-Bold,
-'../fonts/karla/Karla-Bold',
-600,
-normal);
-@mixin Karla-Regular {
-   font-family: 'Karla-Regular', sans-serif;
-   font-weight: 400;
-   font-style: normal;
-}
-
-@mixin Karla-Bold {
-   font-family: 'Karla-Bold', sans-serif;
-   font-weight: 600;
-   font-style: normal;
-}
-
-
 /*--- Variables settings ---*/
 $background: #fefefa;
 $lightblack: #353535;
@@ -81,6 +19,10 @@ $paragraph: 1rem;
 $subparagraph: 0.75rem;
 $menuLink: 1.5rem;
 $submenuLink: 1.15rem;
+$mobileMenuLink: 1rem;
+$mobileSubMenuLink: 0.75rem;
+
+
 
 $projectWidthLarge: 33.33vw;
 $projectWidthSmall: 16.66vw;
@@ -101,7 +43,6 @@ html, body, #app {
 }
 
 h1, h2, h3, h4, p, a, i, span {
-   // font-family: 'Karla-Regular', sans-serif;
    font-family: 'Open Sans', sans-serif;
    color: $black;
    font-weight: 400;
@@ -238,8 +179,8 @@ p {
 }
 
 .menu-item {
-   font-size: $menuLink;
-   margin-bottom: 10px;
+   font-size: $mobileMenuLink;
+   margin-top: 1vh;
    text-decoration: none;
    color: $lightblack;
 }
@@ -249,20 +190,19 @@ p {
 }
 
 .logo-container .logo-item {
-   height: 10vh;
-   margin-left: 2vh;
+   height: 5vh;
    background-image: url(../images/signature.svg);
-   background-size: auto 10vh;
+   background-size: auto 5vh;
    background-repeat: no-repeat;
 }
 
 .vertical-align {
-   display: flex;
-   align-items: baseline;
+   display: block;
 }
 
 .pull-bottom {
-   padding-bottom: 1vh;
+  padding: 0 0 0 1vh;
+  text-align: center;
 }
 
 
@@ -280,7 +220,7 @@ p {
 
 .middle-content-container {
    position: relative;
-   min-height: 45vh;
+   min-height: 30vh;
    overflow: hidden;
 }
 
@@ -289,7 +229,7 @@ p {
 .home-container {
    position: relative;
    width: 100vw;
-   height: 45vh;
+   height: 25vh;
    margin: 0;
 }
 
@@ -425,9 +365,61 @@ p {
    margin: 2vh 4vw;
 }
 
-.filter-form {
-
+input.checkbox-input[type=checkbox] {
+  display:none;
 }
+
+label.checkbox-label {
+  display: inline-block;
+  position: relative;
+  margin: 0 15px 0 20px;
+  color: $lightblack;
+  cursor: pointer;
+}
+
+input.checkbox-input[type=checkbox] + label.checkbox-label:before {
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 5px;
+    top: 6px;
+    left: 6px;
+    margin-left: -22px;
+    border: 3px solid $lightblack;
+    border-top: none;
+    border-right: none;
+    background: transparent;
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    opacity: 0;
+    -webkit-transition: all 0.15s ease-in-out;
+    -o-transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out;
+    z-index: 1;
+} /* unchecked icon */
+
+input.checkbox-input[type=checkbox] + label.checkbox-label:after {
+    position: absolute;
+    content: "";
+    width: 18px;
+    height: 18px;
+    left: 0;
+    top: 0;
+    margin-left: -20px;
+    background-color: white;
+    border: 3px solid $lightblack;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background-clip: padding-box;
+    cursor: pointer;
+} /* space between checkbox and label */
+
+input.checkbox-input[type=checkbox]:checked + label.checkbox-label:before {
+  opacity: 1;
+} /* checked icon */
 
 .image-item {
    overflow: hidden;
@@ -452,7 +444,9 @@ p {
 }
 
 .image-item p {
-   margin-bottom: 2vh;
+  cursor: default;
+  font-size: $subparagraph;
+  margin-bottom: 2vh;
 }
 
 .image-item img {
@@ -515,6 +509,34 @@ p {
    box-shadow: 2px 2px 2px #DDD
 }
 
+/*-- About --*/
+
+.about-container {
+   height: 40vh;
+   margin-top: 5vh;
+}
+
+.about-headline {
+   margin-bottom: 5vh;
+}
+
+.about-divider {
+   width: 100%;
+   height: 1px;
+   margin: 2.5vh 0;
+   overflow: hidden;
+   background-color: #e5e5e5;
+}
+
+.about-item {
+   font-size: $subheadline;
+   margin-bottom: 5vh;
+}
+
+.about-item i {
+   margin-right: 5vw;
+}
+
 /*-- Contact --*/
 
 .contact-container {
@@ -524,6 +546,14 @@ p {
 
 .contact-headline {
    margin-bottom: 5vh;
+}
+
+.contact-divider {
+   width: 100%;
+   height: 1px;
+   margin: 2.5vh 0;
+   overflow: hidden;
+   background-color: #e5e5e5;
 }
 
 .contact-item {
@@ -538,13 +568,14 @@ p {
 /*------- Bottom Containers -------*/
 
 .bottom-content-container {
-   overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
 
 .home-silhoutte {
    position: relative;
    width: 100vw;
-   height: 25vh;
+   height: 45vh;
 }
 
 .home-silhoutte #scene {
@@ -559,43 +590,48 @@ p {
 .home-silhoutte .silhoutte {
    position: absolute;
    width: 110vw;
-   height: 30vh;
+   height: 50vh;
    left: -5vw;
    right: -5vw;
-   background-size: auto 30vh;
+   background-size: auto 55vh;
+   background-position: 15% 0%;
    background-repeat: repeat-x;
 }
 
 .home-silhoutte #silhoutte-1 {
-   background-image: url("../images/silhouttes/silhoutte-1-1.png");
+   background-image: url("../images/silhouttes/silhoutte-1.png");
 }
 
 .home-silhoutte #silhoutte-2 {
-   background-image: url("../images/silhouttes/silhoutte-2-1.png");
+   background-image: url("../images/silhouttes/silhoutte-2.png");
 }
 
 .home-silhoutte #silhoutte-3 {
-   background-image: url("../images/silhouttes/silhoutte-3-1.png");
+   background-image: url("../images/silhouttes/silhoutte-3.png");
 }
 
 .home-silhoutte #silhoutte-4 { 
-   background-image: url("../images/silhouttes/silhoutte-4-1.png");
+   background-image: url("../images/silhouttes/silhoutte-4.png");
 }
 
 .home-silhoutte #silhoutte-5 {
-   background-image: url("../images/silhouttes/silhoutte-5-1.png");
+   background-image: url("../images/silhouttes/silhoutte-5.png");
 }
 
 .home-silhoutte #silhoutte-6 { 
-   background-image: url("../images/silhouttes/silhoutte-6-1.png");
+   background-image: url("../images/silhouttes/silhoutte-6.png");
 }
 
 .home-silhoutte #silhoutte-7 { 
-   background-image: url("../images/silhouttes/silhoutte-7-1.png");
+   background-image: url("../images/silhouttes/silhoutte-7.png");
 }
 
 .home-silhoutte #silhoutte-8 { 
-   background-image: url("../images/silhouttes/silhoutte-8-1.png");
+   background-image: url("../images/silhouttes/silhoutte-8.png");
+}
+
+.home-silhoutte #silhoutte-9 { 
+   background-image: url("../images/silhouttes/silhoutte-9.png");
 }
 
 .footer {
@@ -611,6 +647,7 @@ p {
 }
 
 .footer h3, .footer p, .footer i, .footer a, .footer span {
+  font-size: $subparagraph;
    color: $background;
 }
 
@@ -625,6 +662,19 @@ p {
 
 /*---------------------- Media Queries ----------------------*/
 
+@media all and (orientation:portrait) {
+  /*------- Bottom Container -------*/
+  .home-silhoutte .silhoutte {
+    background-size: auto 55vh;
+  }
+}
+@media all and (orientation:landscape) {
+  /*------- Bottom Container -------*/
+  .home-silhoutte .silhoutte {
+    background-size: 110vw auto;
+  }
+}
+
 @media (min-width: 360px) {
    html,
    body,
@@ -633,11 +683,6 @@ p {
    }
 
    /*------- Top Container -------*/
-
-   .logo-container .logo-item {
-      height: 10vh;
-      background-size: auto 10vh;
-   }
 
    /*------- Middle Container -------*/
 
@@ -658,18 +703,13 @@ p {
 
    /*------- Top Container -------*/
 
-   .logo-container .logo-item {
-      height: 10vh;
-      background-size: auto 10vh;
-   }
-
    /*------- Middle Container -------*/
 
    .home-typed {
       margin: 5vh 0px 0px 0px;
    }
 
-   /*------- Bottom Container -------*/
+  /*------- Bottom Container -------*/
 
 }
 
@@ -691,22 +731,30 @@ p {
    }
 
    .logo-container .logo-item {
-      height: 10vh;
-      background-size: auto 10vh;
+      height: 5vh;
+      background-size: auto 5vh;
+   }
+
+   .menu-item {
+    font-size: $menuLink;
    }
 
    /*------- Middle Container -------*/
 
-   /*-- Projects --*/
-   .projects-container {
-      margin: 6vh 8vw;
-   }
+  /*-- Projects --*/
+  .projects-container {
+    margin: 6vh 8vw;
+  }
 
-   .update-container {
-      margin: 2vh 8vw;
-   }
+  .update-container {
+    margin: 2vh 8vw;
+  }
 
    /*------- Bottom Container -------*/
+
+  .home-silhoutte .silhoutte {
+    background-position: 50% 0%;
+  }
 
 }
 
@@ -740,8 +788,8 @@ p {
    }
 
    .logo-container .logo-item {
-      height: 10vh;
-      background-size: auto 10vh;
+      height: 7.5vh;
+      background-size: auto 7.5vh;
    }
 
    /*------- Middle Containers -------*/
@@ -761,8 +809,7 @@ p {
    /*------- Bottom Containers -------*/
 
    .home-silhoutte .silhoutte {
-      height: 40vh;
-      background-size: 110vw auto;
+      background-position: 0% 0%;
    }
 
 }

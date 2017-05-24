@@ -1,44 +1,4 @@
 /*--- Font Imports ---*/
-@font-face {
-  font-family: PierSans-Regular;
-  src: url("../fonts/pier/PierSans-Regular.otf");
-  src: url("../fonts/pier/PierSans-Regular.otf?#iefix") format("opentype");
-  src: url("../fonts/pier/PierSans-Regular.ttf?#iefix") format("truetype");
-  font-weight: 400;
-  font-style: normal; }
-
-@font-face {
-  font-family: PierSans-Medium;
-  src: url("../fonts/pier/PierSans-Medium.otf");
-  src: url("../fonts/pier/PierSans-Medium.otf?#iefix") format("opentype");
-  src: url("../fonts/pier/PierSans-Medium.ttf?#iefix") format("truetype");
-  font-weight: 500;
-  font-style: normal; }
-
-@font-face {
-  font-family: PierSans-Bold;
-  src: url("../fonts/pier/PierSans-Bold.otf");
-  src: url("../fonts/pier/PierSans-Bold.otf?#iefix") format("opentype");
-  src: url("../fonts/pier/PierSans-Bold.ttf?#iefix") format("truetype");
-  font-weight: 600;
-  font-style: normal; }
-
-@font-face {
-  font-family: Karla-Regular;
-  src: url("../fonts/karla/Karla-Regular.otf");
-  src: url("../fonts/karla/Karla-Regular.otf?#iefix") format("opentype");
-  src: url("../fonts/karla/Karla-Regular.ttf?#iefix") format("truetype");
-  font-weight: 400;
-  font-style: normal; }
-
-@font-face {
-  font-family: Karla-Bold;
-  src: url("../fonts/karla/Karla-Bold.otf");
-  src: url("../fonts/karla/Karla-Bold.otf?#iefix") format("opentype");
-  src: url("../fonts/karla/Karla-Bold.ttf?#iefix") format("truetype");
-  font-weight: 600;
-  font-style: normal; }
-
 /*--- Variables settings ---*/
 /*--- CSS ---*/
 html, body, #app {
@@ -160,8 +120,8 @@ p {
   font-weight: 700; }
 
 .menu-item {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+  font-size: 1rem;
+  margin-top: 1vh;
   text-decoration: none;
   color: #353535; }
 
@@ -169,18 +129,17 @@ p {
   padding: 0px; }
 
 .logo-container .logo-item {
-  height: 10vh;
-  margin-left: 2vh;
+  height: 5vh;
   background-image: url(../images/signature.svg);
-  background-size: auto 10vh;
+  background-size: auto 5vh;
   background-repeat: no-repeat; }
 
 .vertical-align {
-  display: flex;
-  align-items: baseline; }
+  display: block; }
 
 .pull-bottom {
-  padding-bottom: 1vh; }
+  padding: 0 0 0 1vh;
+  text-align: center; }
 
 /*------- Middle Containers -------*/
 .middle-content {
@@ -194,14 +153,14 @@ p {
 
 .middle-content-container {
   position: relative;
-  min-height: 45vh;
+  min-height: 30vh;
   overflow: hidden; }
 
 /*-- Homepage --*/
 .home-container {
   position: relative;
   width: 100vw;
-  height: 45vh;
+  height: 25vh;
   margin: 0; }
 
 .home-fade {
@@ -324,6 +283,60 @@ p {
 .update-container {
   margin: 2vh 4vw; }
 
+input.checkbox-input[type=checkbox] {
+  display: none; }
+
+label.checkbox-label {
+  display: inline-block;
+  position: relative;
+  margin: 0 15px 0 20px;
+  color: #353535;
+  cursor: pointer; }
+
+input.checkbox-input[type=checkbox] + label.checkbox-label:before {
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 5px;
+  top: 6px;
+  left: 6px;
+  margin-left: -22px;
+  border: 3px solid #353535;
+  border-top: none;
+  border-right: none;
+  background: transparent;
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  opacity: 0;
+  -webkit-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  z-index: 1; }
+
+/* unchecked icon */
+input.checkbox-input[type=checkbox] + label.checkbox-label:after {
+  position: absolute;
+  content: "";
+  width: 18px;
+  height: 18px;
+  left: 0;
+  top: 0;
+  margin-left: -20px;
+  background-color: white;
+  border: 3px solid #353535;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  background-clip: padding-box;
+  cursor: pointer; }
+
+/* space between checkbox and label */
+input.checkbox-input[type=checkbox]:checked + label.checkbox-label:before {
+  opacity: 1; }
+
+/* checked icon */
 .image-item {
   overflow: hidden; }
 
@@ -342,6 +355,8 @@ p {
   margin: 1vh 0vw 0vh 0vw; }
 
 .image-item p {
+  cursor: default;
+  font-size: 0.75rem;
   margin-bottom: 2vh; }
 
 .image-item img {
@@ -390,6 +405,28 @@ p {
   border: #DDD solid 1px;
   box-shadow: 2px 2px 2px #DDD; }
 
+/*-- About --*/
+.about-container {
+  height: 40vh;
+  margin-top: 5vh; }
+
+.about-headline {
+  margin-bottom: 5vh; }
+
+.about-divider {
+  width: 100%;
+  height: 1px;
+  margin: 2.5vh 0;
+  overflow: hidden;
+  background-color: #e5e5e5; }
+
+.about-item {
+  font-size: 1.5rem;
+  margin-bottom: 5vh; }
+
+.about-item i {
+  margin-right: 5vw; }
+
 /*-- Contact --*/
 .contact-container {
   height: 40vh;
@@ -397,6 +434,13 @@ p {
 
 .contact-headline {
   margin-bottom: 5vh; }
+
+.contact-divider {
+  width: 100%;
+  height: 1px;
+  margin: 2.5vh 0;
+  overflow: hidden;
+  background-color: #e5e5e5; }
 
 .contact-item {
   font-size: 1.5rem;
@@ -407,12 +451,13 @@ p {
 
 /*------- Bottom Containers -------*/
 .bottom-content-container {
+  position: relative;
   overflow: hidden; }
 
 .home-silhoutte {
   position: relative;
   width: 100vw;
-  height: 25vh; }
+  height: 45vh; }
 
 .home-silhoutte #scene {
   margin: 0;
@@ -424,35 +469,39 @@ p {
 .home-silhoutte .silhoutte {
   position: absolute;
   width: 110vw;
-  height: 30vh;
+  height: 50vh;
   left: -5vw;
   right: -5vw;
-  background-size: auto 30vh;
+  background-size: auto 55vh;
+  background-position: 15% 0%;
   background-repeat: repeat-x; }
 
 .home-silhoutte #silhoutte-1 {
-  background-image: url("../images/silhouttes/silhoutte-1-1.png"); }
+  background-image: url("../images/silhouttes/silhoutte-1.png"); }
 
 .home-silhoutte #silhoutte-2 {
-  background-image: url("../images/silhouttes/silhoutte-2-1.png"); }
+  background-image: url("../images/silhouttes/silhoutte-2.png"); }
 
 .home-silhoutte #silhoutte-3 {
-  background-image: url("../images/silhouttes/silhoutte-3-1.png"); }
+  background-image: url("../images/silhouttes/silhoutte-3.png"); }
 
 .home-silhoutte #silhoutte-4 {
-  background-image: url("../images/silhouttes/silhoutte-4-1.png"); }
+  background-image: url("../images/silhouttes/silhoutte-4.png"); }
 
 .home-silhoutte #silhoutte-5 {
-  background-image: url("../images/silhouttes/silhoutte-5-1.png"); }
+  background-image: url("../images/silhouttes/silhoutte-5.png"); }
 
 .home-silhoutte #silhoutte-6 {
-  background-image: url("../images/silhouttes/silhoutte-6-1.png"); }
+  background-image: url("../images/silhouttes/silhoutte-6.png"); }
 
 .home-silhoutte #silhoutte-7 {
-  background-image: url("../images/silhouttes/silhoutte-7-1.png"); }
+  background-image: url("../images/silhouttes/silhoutte-7.png"); }
 
 .home-silhoutte #silhoutte-8 {
-  background-image: url("../images/silhouttes/silhoutte-8-1.png"); }
+  background-image: url("../images/silhouttes/silhoutte-8.png"); }
+
+.home-silhoutte #silhoutte-9 {
+  background-image: url("../images/silhouttes/silhoutte-9.png"); }
 
 .footer {
   position: relative;
@@ -462,6 +511,7 @@ p {
   overflow: hidden; }
 
 .footer h3, .footer p, .footer i, .footer a, .footer span {
+  font-size: 0.75rem;
   color: #fefefa; }
 
 .footer span {
@@ -472,15 +522,22 @@ p {
   color: #252525; }
 
 /*---------------------- Media Queries ----------------------*/
+@media all and (orientation: portrait) {
+  /*------- Bottom Container -------*/
+  .home-silhoutte .silhoutte {
+    background-size: auto 55vh; } }
+
+@media all and (orientation: landscape) {
+  /*------- Bottom Container -------*/
+  .home-silhoutte .silhoutte {
+    background-size: 110vw auto; } }
+
 @media (min-width: 360px) {
   html,
   body,
   #app {
     font-size: 12px; }
   /*------- Top Container -------*/
-  .logo-container .logo-item {
-    height: 10vh;
-    background-size: auto 10vh; }
   /*------- Middle Container -------*/
   .home-typed {
     margin: 5vh 0px 0px 0px; }
@@ -492,9 +549,6 @@ p {
   #app {
     font-size: 14px; }
   /*------- Top Container -------*/
-  .logo-container .logo-item {
-    height: 10vh;
-    background-size: auto 10vh; }
   /*------- Middle Container -------*/
   .home-typed {
     margin: 5vh 0px 0px 0px; }
@@ -511,15 +565,19 @@ p {
   .logo-container {
     padding-left: 2vh; }
   .logo-container .logo-item {
-    height: 10vh;
-    background-size: auto 10vh; }
+    height: 5vh;
+    background-size: auto 5vh; }
+  .menu-item {
+    font-size: 1.5rem; }
   /*------- Middle Container -------*/
   /*-- Projects --*/
   .projects-container {
     margin: 6vh 8vw; }
   .update-container {
     margin: 2vh 8vw; }
-  /*------- Bottom Container -------*/ }
+  /*------- Bottom Container -------*/
+  .home-silhoutte .silhoutte {
+    background-position: 50% 0%; } }
 
 @media (min-width: 992px) {
   /*------- Bottom Container -------*/
@@ -539,8 +597,8 @@ p {
     top: 0px;
     left: 0px; }
   .logo-container .logo-item {
-    height: 10vh;
-    background-size: auto 10vh; }
+    height: 7.5vh;
+    background-size: auto 7.5vh; }
   /*------- Middle Containers -------*/
   /*-- Projects --*/
   /*-- Project --*/
@@ -550,8 +608,7 @@ p {
     margin: 4vh 4vw; }
   /*------- Bottom Containers -------*/
   .home-silhoutte .silhoutte {
-    height: 40vh;
-    background-size: 110vw auto; } }
+    background-position: 0% 0%; } }
 
 @media (min-width: 1280px) {
   .logo-container .logo-item {

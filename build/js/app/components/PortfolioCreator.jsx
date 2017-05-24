@@ -11,10 +11,9 @@ class PortfolioItem extends React.Component {
       	<Col xs={12} sm={6} md={6} lg={4}>
 	    	<Link className="menu-item" to={{pathname: this.props.project.path}}>
 		    	<div className="image-item">
-              <div className="corner-ribbon">{this.props.project.category}</div>
 		    	    <Image src={this.props.project.image} alt={this.props.project.caption} responsive/>
 		    	    <h3 className="image-caption">{this.props.project.caption}</h3>
-		    	    <p>{this.props.project.description}</p>
+		    	    <p><i>{this.props.project.category}</i></p>
 				</div>
 			</Link>
 		</Col>
@@ -89,35 +88,14 @@ export class FilterBar extends React.Component {
    	<div className="update-container">
       <Grid fluid>
         <Row className="show-grid">
-          <Col xs={12} sm={6} smOffset={6} md={4} mdOffset={7} lg={4} lgOffset={7}>
+          <Col xs={12} sm={6} smOffset={6} md={6} mdOffset={6} lg={6} lgOffset={6}>
           <form className="filter-form">
-            <label className="checkbox-label" htmlFor="cb1">
-            <input className="checkbox-input"
-            	id="cb1"
-                type="checkbox"
-                checked={this.props.checkedContentEditing}
-                onChange={this.handleContentEditing}
-              />
-              Content Editing
-            </label>
-            <label className="checkbox-label" htmlFor="cb2">
-            <input className="checkbox-input"
-            	id="cb2"
-                type="checkbox"
-                checked={this.props.checkedWebDevelopment}
-                onChange={this.handleWebDevelopment}
-              />
-              Web Development
-            </label>
-            <label className="checkbox-label" htmlFor="cb3">
-            <input className="checkbox-input"
-            	id="cb3"
-                type="checkbox"
-                checked={this.props.checkedProjects}
-                onChange={this.handleProjects}
-              />
-              Projects
-            </label>
+            <input className="checkbox-input" id="cb1" type="checkbox" checked={this.props.checkedContentEditing} onChange={this.handleContentEditing}/>
+            <label className="checkbox-label" htmlFor="cb1">Content Editing</label>
+            <input className="checkbox-input" id="cb2" type="checkbox" checked={this.props.checkedWebDevelopment} onChange={this.handleWebDevelopment}/>
+            <label className="checkbox-label" htmlFor="cb2">Web Development</label>
+            <input className="checkbox-input"	id="cb3" type="checkbox" checked={this.props.checkedProjects} onChange={this.handleProjects}/>
+            <label className="checkbox-label" htmlFor="cb3">Projects</label>
           </form>
         </Col>
       </Row>

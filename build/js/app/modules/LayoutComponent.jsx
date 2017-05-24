@@ -20,8 +20,8 @@ import Lifelong from "../routes/portfolio/Lifelong.jsx";
 import WSInstitute from "../routes/portfolio/WSInstitute.jsx";
 import Archaeology from "../routes/portfolio/Archaeology.jsx";
 import ACRG from "../routes/portfolio/ACRG.jsx";
+import About from "../routes/About.jsx";
 import Contact from "../routes/Contact.jsx";
-import Coder from "../routes/Coder.jsx";
 
 export default class LayoutComponent extends React.Component {
   constructor(props) {
@@ -98,6 +98,9 @@ export default class LayoutComponent extends React.Component {
             path: '/portfolio/acrg-wordpress',
             component: ACRG
           },{
+            path: '/about',
+            component: About
+          },{
             path: '/contact',
             component: Contact
           }]
@@ -112,24 +115,21 @@ export default class LayoutComponent extends React.Component {
         )
 
         const loadingIndicator = (<div className="loader-background"><div className="loader-ring"><div className="loader-ring-light"></div><div className="loader-ring-track"></div></div></div>)
-        var images = ["/images/juxtapose/image-1.png", "/images/portus/image-1.png", "/images/archaeology/image-1.png", "/images/acrg/image-1.png", "/images/lifelong/image-1.png", "/images/wsi/image-1.png", "/images/silhouttes/silhoutte-1-1.png", "/images/silhouttes/silhoutte-2-1.png", "/images/silhouttes/silhoutte-3-1.png", "/images/silhouttes/silhoutte-4-1.png", "/images/silhouttes/silhoutte-5-1.png", "/images/silhouttes/silhoutte-6-1.png", "/images/silhouttes/silhoutte-7-1.png", "/images/silhouttes/silhoutte-8-1.png"]
+        var images = ["/images/acrg/image-1.png", "/images/acrg/image-2.png", "/images/archaeology/image-1.png", "/images/archaeology/image-2.png", "/images/juxtapose/image-1.png", "/images/juxtapose/image-2.png", "/images/juxtapose/image-3.png", "/images/lifelong/image-1.png", "/images/lifelong/image-2.png", "/images/lifelong/image-3.png", "/images/lifelong/wireframe-1.png", "/images/portus/image-1.png", "/images/portus/image-2.png", "/images/portus/image-3.png", "/images/portus/image-4.png", "/images/portus/image-5.png", "/images/portus/image-6.png", "/images/portus/wireframe-1.png", "/images/wsi/image-1.png", "/images/wsi/image-2.png", "/images/wsi/image-3.png", "/images/wsi/image-4.png", "/images/wsi/image-5.png", "/images/wsi/wireframe-1.png", "/images/silhouttes/silhoutte-1.png", "/images/silhouttes/silhoutte-2.png", "/images/silhouttes/silhoutte-3.png", "/images/silhouttes/silhoutte-4.png", "/images/silhouttes/silhoutte-5.png", "/images/silhouttes/silhoutte-6.png", "/images/silhouttes/silhoutte-7.png", "/images/silhouttes/silhoutte-8.png", "/images/silhouttes/silhoutte-9.png"]
 
         return (
           <div className="parent-container">
           <Preload loadingIndicator={loadingIndicator} images={images} resolveOnError={true} mountChildren={true}>
                <div className="content-container">
                   <div className="top-content">
-                    <div className="navigation-container">
                       <NavComponent
                         load={this.state.loadProgress}
                         currentProjectName={this.state.nameProject}
                         currentProjectHref={this.state.hrefProject}
                         submenuStyle={this.state.projectsStyle}
                       />
-                    </div>
                   </div>
                   <div className="middle-content">
-
                       <div className="middle-content-container">
                         <Switch>
                           <Route path="/" exact component={Home}></Route>

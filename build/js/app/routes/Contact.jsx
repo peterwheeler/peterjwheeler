@@ -13,7 +13,7 @@ export default class Contact extends React.Component {
 				    	<Col xs={8} xsOffset={2} md={4} className="contact-headline">
 							<h1><strong>Contact me</strong></h1>
 							<i>You can reach me on any one of these social networks or just send me a good old fashioned email.</i>
-							<div className="divider"></div>
+							<div className="contact-divider"></div>
 						</Col>
 					    <Col className="contact-item" xs={6} xsOffset={2} md={6} lg={6}>
 					    	<i className="fa fa-envelope" aria-hidden="true"></i><a href="mailto:PWheeler@soton.ac.uk">Email</a>
