@@ -36,13 +36,13 @@ export default class Archaeology extends React.Component {
 							<Image src="../images/archaeology/image-2.png" responsive />
 						</Col>
 						<Col xs={10} xsOffset={1} md={8} mdOffset={2}>
-							<p>Nullam sapien augue, gravida nec dolor ac, vestibulum pulvinar massa. Curabitur ac justo nisl.<br/><br/>Fusce dapibus, libero vel fringilla dictum, magna tellus pellentesque nulla, feugiat sagittis dolor turpis nec tellus. Duis bibendum lacus tellus, et malesuada turpis bibendum vitae.</p>
+							<p>A key part of this system was the tagging, categorising and social media interactions for each page. Collating this and providing a strong linking between each blog post helped increase traffic between similar topics and drive the traffic throught the site.</p>
 						</Col>
 					</Row>
 					<Row>
 						<Col xs={10} xsOffset={1} md={8} mdOffset={2} className="project-result">
 							<h2>Results</h2>
-							<p>The design itself lends itself to easy reading.</p>
+							<p>The update to this website encouraged a new wave of posts to be published and an increase in the effort by memebers of the group to produce public outreach pieces. Continued effort by myself in the content management and education of group members in how to use the WordPress CMS properly aided this process.</p>
 						</Col>
 					</Row>
 				</Grid>

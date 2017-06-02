@@ -8,7 +8,7 @@ class PortfolioItem extends React.Component {
     //     {this.props.product.name}
     //   </span>;
     return (
-      	<Col xs={12} sm={6} md={6} lg={4}>
+      	<Col xs={12} sm={6} md={6} lg={6}>
 	    	<Link className="menu-item" to={{pathname: this.props.project.path}}>
 		    	<div className="image-item">
 		    	    <Image src={this.props.project.image} alt={this.props.project.caption} responsive/>
@@ -62,7 +62,6 @@ export class FilterBar extends React.Component {
 	handleContentEditing(e) {
 		event.preventDefault();
   		event.stopPropagation();
-  		console.log("1");
 		this.props.includeContentEditing(e.target.checked);
 		return false;
 	}
@@ -70,7 +69,6 @@ export class FilterBar extends React.Component {
 	handleWebDevelopment(e) {
 		event.preventDefault();
   		event.stopPropagation();
-  		console.log("2");
 		this.props.includeWebDevelopment(e.target.checked);
 		return false;
 	}
@@ -78,7 +76,6 @@ export class FilterBar extends React.Component {
 	handleProjects(e) {
 		event.preventDefault();
   		event.stopPropagation();
-  		console.log("3");
 		this.props.includeProjects(e.target.checked);
 		return false;
 	}

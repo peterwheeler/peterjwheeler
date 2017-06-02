@@ -28,7 +28,7 @@ export default class ACRG extends React.Component {
 					<Row>
 						<Col xs={10} xsOffset={1} md={8} mdOffset={2} className="project-details">
 							<h2>Details</h2>
-							<p>I was requested to update the blog space refresh all content assist in the design layout. Working alongside the developer at the time I coordinated the content to be used for the site. I filtered content from the old site, while acquiring suitable new content and imagery.</p>
+							<p>I was requested to update the blog space refresh all content assist in the design layout. Working alongside the developer at the time I coordinated the content to be used for the site. I filtered content from the old site, while acquiring suitable new material and imagery.</p>
 						</Col>
 					</Row>
 					<Row className="project-gallery">
@@ -36,13 +36,13 @@ export default class ACRG extends React.Component {
 							<Image src="../images/acrg/image-2.png" responsive />
 						</Col>
 						<Col xs={10} xsOffset={1} md={8} mdOffset={2}>
-							<p>Nullam sapien augue, gravida nec dolor ac, vestibulum pulvinar massa. Curabitur ac justo nisl.<br/><br/>Fusce dapibus, libero vel fringilla dictum, magna tellus pellentesque nulla, feugiat sagittis dolor turpis nec tellus. Duis bibendum lacus tellus, et malesuada turpis bibendum vitae.</p>
+							<p>A key part of this system was the tagging, categorising and social media interactions for each page. Collating this and providing a strong linking between each blog post helped increase traffic between similar topics and drive the traffic throught the site.</p>
 						</Col>
 					</Row>
 					<Row>
 						<Col xs={10} xsOffset={1} md={8} mdOffset={2} className="project-result">
 							<h2>Results</h2>
-							<p>The update to this website encouraged a new wave of posts to be published and a continuous effort of public dissemination from the department. Continued effort by myself in content management and education aided this process.</p>
+							<p>The update to this website encouraged a new wave of posts to be published and an increase in the effort by memebers of the group to produce public outreach pieces. Continued effort by myself in the content management and education of group members in how to use the WordPress CMS properly aided this process.</p>
 						</Col>
 					</Row>
 				</Grid>

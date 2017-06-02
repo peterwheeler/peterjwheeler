@@ -57,7 +57,7 @@ var webpackDevelopment = {
         "webpack/hot/dev-server?reload",
         "webpack-hot-middleware/client",
         "react-hot-loader/patch",
-        path.join(__dirname, "build/js/app/Main.js")
+        path.join(__dirname, "build/js/app/Main.jsx")
     ]
   },
   output: {
@@ -104,7 +104,7 @@ var webpackDevelopment = {
 
 var webpackProduction = {
   watch: true,
-  entry: path.join(__dirname, "build/js/app/Main.js"),
+  entry: path.join(__dirname, "build/js/app/Main.jsx"),
   output: {
     path: path.join(__dirname, "dist/js"),
     filename: "bundle.js",

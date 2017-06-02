@@ -47,7 +47,7 @@ export default class PortfolioChanger extends React.Component {
 			<div className="update-container">
 				<Grid fluid>
 		    		<Row className="show-grid">
-		    			<Col xs={12} sm={6} smOffset={6} md={2} mdOffset={8} lg={1} lgOffset={10}>
+		    			<Col xs={12} sm={4} smOffset={8} md={2} mdOffset={9} lg={2} lgOffset={9} className="portfolio-changer">
 		    				<Link to={{pathname: "/portfolio/" + this.props.previousPage}} style={this.state.previousDisplay}><i className="fa fa-chevron-left page-arrow" aria-hidden="true" style={this.state.previousDisplay}></i></Link>
 		    				<Link to={{pathname: "/portfolio/" + this.props.nextPage}} style={this.state.nextDisplay}><i className="fa fa-chevron-right page-arrow" aria-hidden="true" style={this.state.nextDisplay}></i></Link>
 		    			</Col>

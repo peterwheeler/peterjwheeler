@@ -283,6 +283,9 @@ p {
 .update-container {
   margin: 2vh 4vw; }
 
+.portfolio-changer {
+  text-align: right; }
+
 input.checkbox-input[type=checkbox] {
   display: none; }
 
@@ -369,17 +372,13 @@ input.checkbox-input[type=checkbox]:checked + label.checkbox-label:before {
 
 .update-container .page-arrow {
   font-size: 1.75rem;
-  margin: 0 0.5vw; }
+  margin: 0 1vw; }
 
 .project-headline, .project-details, .project-gallery {
   margin-bottom: 6vh; }
 
 .project-headline .light-text i {
   cursor: default; }
-
-.project-image img {
-  border: #DDD solid 1px;
-  box-shadow: 2px 2px 2px #DDD; }
 
 .project-headline .link {
   margin-top: 6vh; }
@@ -395,11 +394,22 @@ input.checkbox-input[type=checkbox]:checked + label.checkbox-label:before {
   overflow: hidden;
   background-color: #e5e5e5; }
 
-.project-image {
-  margin-bottom: 6vh; }
+.project-text a {
+  font-weight: bold; }
 
-.project-gallery {
-  margin-top: 2vh; }
+.project-list {
+  list-style-type: disc;
+  margin: 2vh 0;
+  color: #353535; }
+
+.project-image {
+  margin-top: 4vh;
+  margin-bottom: 4vh; }
+
+.project-image img {
+  border: #DDD solid 1px;
+  box-shadow: 2px 2px 2px #DDD;
+  margin: 0 auto; }
 
 .project-gallery img {
   border: #DDD solid 1px;
@@ -575,6 +585,8 @@ input.checkbox-input[type=checkbox]:checked + label.checkbox-label:before {
     margin: 6vh 8vw; }
   .update-container {
     margin: 2vh 8vw; }
+  .update-container .page-arrow {
+    margin: 0 0.5vw; }
   /*------- Bottom Container -------*/
   .home-silhoutte .silhoutte {
     background-position: 50% 0%; } }

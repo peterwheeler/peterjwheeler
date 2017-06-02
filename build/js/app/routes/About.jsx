@@ -16,10 +16,10 @@ export default class About extends React.Component {
 							<div className="about-divider"></div>
 						</Col>
 					    <Col className="about-item" xs={10} xsOffset={1} md={8} lg={8}>
-					    	<p>I have 4 years experience working in HTML5, CSS3, Javascript & WordPress.</p>
-					    	<p>I have been working for the Unviversity of Southampton since graduating there with a Masters in Archaeological Computing</p>
-					    	<p>Since then I developed a number of educational applications for archaeological projects. Most notably is my work with FutureLearn education platform in creating the Portus MOOC.</p>
+					    	<p>My name is Peter John Wheeler and I am originally from Ireland, though now working in both Ireland and the UK.</p>
+					    	<p>I have 3 years experience working in HTML5, CSS3, Javascript & WordPress. I have been working for the Unviversity of Southampton since graduating there with a Masters in Archaeological Computing. Since then I been developing on a number of educational applications for archaeological projects. Most notably is my work with FutureLearn education platform in creating the Portus MOOC.</p>
 					    	<p>I have a great interest in producing top quality and beautiful looking web content, especially for the heritage sector.</p>
+					    	<p>In my spare time I am an avid DIY'r, along with football and learning a little Spanish.</p>
 					    	<p>Thanks for visiting.</p>
 						</Col>
 				    </Row>

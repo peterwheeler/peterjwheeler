@@ -10,13 +10,13 @@ export default class App extends React.Component {
 	}
 	render() {
 		return (
-			<BrowserRouter>
+			<HashRouter>
 				<div>
 					<Switch>
 						<Route path="/" component={LayoutComponent}></Route>
 					</Switch>
 				</div>
-			</BrowserRouter>
+			</HashRouter>
 		)
 	}
 }

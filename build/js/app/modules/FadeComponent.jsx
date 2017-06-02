@@ -20,8 +20,8 @@ export default class TypedComponent extends React.Component {
           </Col>
         </Row>
         <Row>
-          <Col xs={8} xsOffset={1} md={5} mdOffset={2} lg={5} lgOffset={2}>
-		  			<h2 className="home-text"><strong>Web Developer</strong>, Online Educator, Archaeological Surveyor & Football Fanatic.</h2>
+          <Col xs={10} xsOffset={1} md={5} mdOffset={2} lg={5} lgOffset={2}>
+		  			<h2 className="home-text"><strong>Web Developer</strong>, Online Educator & Archaeological Surveyor.</h2>
 		   	 		{/*<h3 className="home-text fade-2">A freelance <strong>web developer</strong> with a strong background in heritage.</h3>
 		    		<h3 className="home-text fade-3">I have 4 years experience working in HTML5, CSS3, Javascript & WordPress.</h3>
             <h3 className="home-text fade-4">Please check out my portfolio!</h3>*/}
