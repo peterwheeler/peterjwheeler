@@ -19,10 +19,10 @@ export default class Juxtapose extends React.Component {
 						</Col>
 						<Col xs={10} xsOffset={1} md={4} mdOffset={1} mdPull={6} className="project-headline">
 							<h1>Multi-select Juxtapose</h1>
-							<h3 className="light-text">Client: <i>Personal</i></h3>
+							<h3 className="light-text">Client: <i>Portus Project</i></h3>
 							<div className="divider"></div>
 							<p>JuxtaposeJS is an elegant site designed in response to user’s desire to better under maps produced as part of the Futurelearn course. Its principal function is to allow the sliding comparison of imagery content – in this case map graphics.</p>
-							<h3 className="link"><a href="https://tour.portusproject.org">View site</a></h3>
+							<h3 className="link"><a href="https://tour.portusproject.org/en/maps">View site</a></h3>
 						</Col>
 					</Row>
 					<Row>
